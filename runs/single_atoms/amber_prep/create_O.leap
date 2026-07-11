@@ -1,0 +1,22 @@
+logFile create_O.log
+loadamberparams frcmod.O
+
+addAtomTypes {
+    { "O0" "O" "sp3" }
+}
+
+a0 = createAtom  O1  O0  0.00000
+
+set a0 element "O"
+
+set a0 position {  0.00000  0.00000  0.00000 }
+
+r = createResidue O
+add r a0
+
+
+O = createUnit O
+add O r
+
+saveOff O O.lib
+quit

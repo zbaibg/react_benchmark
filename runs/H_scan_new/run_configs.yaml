@@ -1,0 +1,113 @@
+ref_qmrun_to_minimize: run16
+expand_nh_oh_radius: true
+
+run8:
+  name: mDFTB3D3/3ob_prime
+  comment: Use mDFTB3D3/3ob_prime.
+  qm_level: DFTB3-D3
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":*"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: true
+  DFTBPLUS_mdftb_scale: true
+  DFTBPLUS_skroot: soft:3ob-3-1_modify_O
+  qm_theory: DFTBPLUS
+  XTB_mm_hardness: 0
+  core_number: 1
+  min_maxcyc: 99999
+
+
+run41:
+  name: M052X aug-cc-pVTZ D3ZERO RIJCOSX AutoAux VERYTIGHTSCF DEFGRID3 PCDTrimAuxJ NoAutoStart
+  comment: Use M052X aug-cc-pVTZ D3ZERO RIJCOSX AutoAux VERYTIGHTSCF DEFGRID3 PCDTrimAuxJ NoAutoStart
+  qm_level: "-"
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":*"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: false
+  DFTBPLUS_mdftb_scale: false
+  DFTBPLUS_skroot: ""
+  qm_theory: EXTERN
+  XTB_mm_hardness: 0
+  core_number: 32
+  min_maxcyc: 1
+  #use_amber_interface: true
+  orca_template: |
+    !  D3ZERO RIJCOSX VERYTIGHTSCF DEFGRID3 PrintBasis NoAutoStart
+    %basis
+      Basis "aug-cc-pVTZ"
+      AuxJ  "AutoAux"
+      PCDTrimAuxJ  Coulomb # Trim the AuxJ basis in the Coulomb metric
+      PCDThresh    -1      # Threshold for the PCD: chosen automatically if <0
+    end
+    %maxcore 3000
+    %method 
+      method      dft
+      exchange    hyb_mgga_x_m05_2x
+      correlation mgga_c_m05_2x
+      D3S6     1.000
+      D3RS6    1.417
+      D3S8     0.000
+      D3alpha6 14
+    end
+    %pal
+        nprocs 32
+    end
+
+run102:
+  name: Molpro PNO-LCCSD(T)-F12 avtz-f12 (Zn avtz-pp-f12) ldf-hf,energy=1.d-8,orbital=1.d-7;twoint=1.d-15;oneint=1.d-15;
+  comment: Molpro-only mode (auto-generate run.input from xyz)
+  qm_level: "-"
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":*"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: false
+  DFTBPLUS_mdftb_scale: false
+  DFTBPLUS_skroot: ""
+  qm_theory: EXTERN
+  XTB_mm_hardness: 0
+  core_number: 32
+  min_maxcyc: 1
+  molpro_template: |
+    ***,none
+    gprint,basis
+    basis=avtz-f12,zn=avtz-pp-f12
+
+    %GEOMETRY%
+    %DUMMY%
+
+    %SYMMETRY%
+    %CHARGE_SPIN%
+    gthresh,energy=1.d-8
+    gthresh,orbital=1.d-7
+    gthresh,twoint=1.e-15
+    gthresh,oneint=1.e-15
+    {ldf-hf;
+    }
+    STATUS,LAST,CRASH
+    {pno-lccsd(t)-f12;
+    core,large,Zn=0000
+    }
+
+run110:
+  name: mDFTB3D3/optimized_run59 all QM
+  comment: Use mDFTB3D3/3ob_prime.
+  qm_level: DFTB3-D3
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":*"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: true
+  DFTBPLUS_mdftb_scale: true
+  DFTBPLUS_skroot: params/skf/run59
+  qm_theory: DFTBPLUS
+  XTB_mm_hardness: 0
+  core_number: 1
+  min_maxcyc: 99999

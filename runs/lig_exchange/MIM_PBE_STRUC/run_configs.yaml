@@ -1,0 +1,388 @@
+ref_qmrun_to_minimize: run16
+run0:
+  name: MM
+  comment: Use MM force field to calculate the energy.
+  qm_level: DFTB3-D3
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":*"
+  open_qm_min: false
+  open_qm_min_wat: false
+  water_model: spce
+  DFTBPLUS_mdftb: false
+  DFTBPLUS_mdftb_scale: false
+  DFTBPLUS_skroot: ""
+  qm_theory: DFTBPLUS
+  XTB_mm_hardness: 0
+  core_number: 1
+  min_maxcyc: 99999
+
+run1:
+  name: DFTB3-D3
+  comment: Use DFTB3-D3.
+  qm_level: DFTB3-D3
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":*"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: false
+  DFTBPLUS_mdftb_scale: false
+  DFTBPLUS_skroot: ""
+  qm_theory: DFTBPLUS
+  XTB_mm_hardness: 0
+  core_number: 1
+  min_maxcyc: 99999
+
+run2:
+  name: DFTB3-D3H5
+  comment: Use DFTB3-D3H5.
+  qm_level: DFTB3-D3H5
+  DFTBPLUS_hcorrection: -1
+  mol_mask: ":*"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: false
+  DFTBPLUS_mdftb_scale: false
+  DFTBPLUS_skroot: ""
+  qm_theory: DFTBPLUS
+  XTB_mm_hardness: 0
+  core_number: 1
+  min_maxcyc: 99999
+
+run5:
+  name: MM OPC
+  comment: Use MM force field with OPC water model.
+  qm_level: DFTB3-D3
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":*"
+  open_qm_min: false
+  open_qm_min_wat: false
+  water_model: opc
+  DFTBPLUS_mdftb: false
+  DFTBPLUS_mdftb_scale: false
+  DFTBPLUS_skroot: ""
+  qm_theory: DFTBPLUS
+  XTB_mm_hardness: 0
+  core_number: 1
+  min_maxcyc: 99999
+  regenerate_prmtop_inpcrd: true
+
+run6:
+  name: DFTB3-D3 DampingH
+  comment: Use DFTB3-D3 DampingH.
+  qm_level: DFTB3-D3
+  DFTBPLUS_hcorrection: -1
+  mol_mask: ":*"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: false
+  DFTBPLUS_mdftb_scale: false
+  DFTBPLUS_skroot: ""
+  qm_theory: DFTBPLUS
+  XTB_mm_hardness: 0
+  core_number: 1
+  min_maxcyc: 99999
+
+run7:
+  name: GFN2-xTB
+  comment: Use GFN2-xTB.
+  qm_level: GFN2-xTB
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":*"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: false
+  DFTBPLUS_mdftb_scale: false
+  DFTBPLUS_skroot: ""
+  qm_theory: XTB
+  XTB_mm_hardness: 0
+  core_number: 1
+  min_maxcyc: 99999
+
+run8:
+  name: mDFTB3D3/3ob_prime
+  comment: Use mDFTB3D3/3ob_prime.
+  qm_level: DFTB3-D3
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":*"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: true
+  DFTBPLUS_mdftb_scale: true
+  DFTBPLUS_skroot: soft:3ob-3-1_modify_O
+  qm_theory: DFTBPLUS
+  XTB_mm_hardness: 0
+  core_number: 1
+  min_maxcyc: 99999
+
+run9:
+  name: mDFTB3D3/3ob
+  comment: Use mDFTB3D3/3ob.
+  qm_level: DFTB3-D3
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":*"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: true
+  DFTBPLUS_mdftb_scale: false
+  DFTBPLUS_skroot: soft:3ob-3-1
+  qm_theory: DFTBPLUS
+  XTB_mm_hardness: 0
+  core_number: 1
+  min_maxcyc: 99999
+
+
+run13:
+  name: M06L-D3 def2-TZVPPD DEFGRID3
+  comment: Use M06L-D3. DEFGRID3
+  qm_level: "-"
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":*"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: false
+  DFTBPLUS_mdftb_scale: false
+  DFTBPLUS_skroot: ""
+  qm_theory: EXTERN
+  XTB_mm_hardness: 0
+  core_number: 16
+  min_maxcyc: 1
+  orca_template: |
+    ! M06L def2-TZVPPD D3ZERO DEFGRID3
+
+    %pal
+        nprocs 16
+    end
+
+run14:
+  name: M06L-D3 def2-SVPD DEFGRID3
+  comment: Use M06L-D3 def2-SVPD DEFGRID3
+  qm_level: "-"
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":*"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: false
+  DFTBPLUS_mdftb_scale: false
+  DFTBPLUS_skroot: ""
+  qm_theory: EXTERN
+  XTB_mm_hardness: 0
+  core_number: 16
+  min_maxcyc: 1
+  orca_template: |
+    ! M06L def2-SVPD D3ZERO DEFGRID3
+
+    %pal
+        nprocs 16
+    end
+
+run15:
+  name: mDFTB3D3/3ob_prime O_unmodified
+  comment: Use mDFTB3D3/3ob_prime.
+  qm_level: DFTB3-D3
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":*"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: true
+  DFTBPLUS_mdftb_scale: true
+  DFTBPLUS_skroot: soft:3ob-3-1
+  qm_theory: DFTBPLUS
+  XTB_mm_hardness: 0
+  core_number: 1
+  min_maxcyc: 99999
+
+run16:
+  name: PBE-D3(BJ) def2-TZVPPD
+  comment: Use PBE-D3(BJ) def2-TZVPPD.
+  qm_level: "-"
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":*"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: false
+  DFTBPLUS_mdftb_scale: false
+  DFTBPLUS_skroot: ""
+  qm_theory: EXTERN
+  XTB_mm_hardness: 0
+  core_number: 16
+  min_maxcyc: 1
+  orca_template: |
+    ! PBE def2-TZVPPD D3BJ
+
+    %pal
+        nprocs 16
+    end
+
+run17:
+  name: DFTB3 DampingH
+  comment: Use DFTB3 DampingH.
+  qm_level: DFTB3
+  DFTBPLUS_hcorrection: -1
+  mol_mask: ":*"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: false
+  DFTBPLUS_mdftb_scale: false
+  DFTBPLUS_skroot: ""
+  qm_theory: DFTBPLUS
+  XTB_mm_hardness: 0
+  core_number: 1
+  min_maxcyc: 99999
+
+run18:
+  name: B3LYP aug-cc-pVTZ D3BJ
+  comment: Use B3LYP aug-cc-pVTZ D3BJ
+  qm_level: "-"
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":*"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: false
+  DFTBPLUS_mdftb_scale: false
+  DFTBPLUS_skroot: ""
+  qm_theory: EXTERN
+  XTB_mm_hardness: 0
+  core_number: 16
+  min_maxcyc: 1
+  orca_template: |
+    ! B3LYP aug-cc-pVTZ D3BJ
+
+    %pal
+        nprocs 16
+    end
+
+run19:
+  name: B3LYP def2-TZVPPD D3BJ
+  comment: Use B3LYP def2-TZVPPD D3BJ
+  qm_level: "-"
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":*"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: false
+  DFTBPLUS_mdftb_scale: false
+  DFTBPLUS_skroot: ""
+  qm_theory: EXTERN
+  XTB_mm_hardness: 0
+  core_number: 16
+  min_maxcyc: 1
+  orca_template: |
+    ! B3LYP def2-TZVPPD D3BJ
+
+    %pal
+        nprocs 16
+    end
+
+run20:
+  name: RI-MP2 def2-TZVPPD def2-TZVPPD/C
+  comment: Use RI-MP2 def2-TZVPPD def2-TZVPPD/C
+  qm_level: "-"
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":*"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: false
+  DFTBPLUS_mdftb_scale: false
+  DFTBPLUS_skroot: ""
+  qm_theory: EXTERN
+  XTB_mm_hardness: 0
+  core_number: 16
+  min_maxcyc: 1
+  orca_template: |
+    ! RI-MP2 def2-TZVPPD def2-TZVPPD/C
+
+    %pal
+        nprocs 16
+    end
+
+run22:
+  name: RI-MP2 RIJCOSX def2-TZVPPD def2-TZVPPD/C AutoAux
+  comment: Use RI-MP2 RIJCOSX def2-TZVPPD def2-TZVPPD/C AutoAux
+  qm_level: "-"
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":*"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: false
+  DFTBPLUS_mdftb_scale: false
+  DFTBPLUS_skroot: ""
+  qm_theory: EXTERN
+  XTB_mm_hardness: 0
+  core_number: 16
+  min_maxcyc: 1
+  orca_template: |
+    ! RI-MP2 RIJCOSX def2-TZVPPD def2-TZVPPD/C AutoAux
+
+    %pal
+        nprocs 16
+    end
+
+run23:
+  name: B3LYP def2-TZVPPD D3BJ AutoAux
+  comment: Use B3LYP def2-TZVPPD D3BJ AutoAux
+  qm_level: "-"
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":*"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: false
+  DFTBPLUS_mdftb_scale: false
+  DFTBPLUS_skroot: ""
+  qm_theory: EXTERN
+  XTB_mm_hardness: 0
+  core_number: 16
+  min_maxcyc: 1
+  orca_template: |
+    ! B3LYP def2-TZVPPD D3BJ AutoAux
+
+    %pal
+        nprocs 16
+    end
+
+run24:
+  name: DLPNO-CCSD(T) RIJCOSX def2-TZVPPD def2-TZVPPD/C AutoAux
+  comment: Use DLPNO-CCSD(T) RIJCOSX def2-TZVPPD def2-TZVPPD/C AutoAux
+  qm_level: "-"
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":*"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: false
+  DFTBPLUS_mdftb_scale: false
+  DFTBPLUS_skroot: ""
+  qm_theory: EXTERN
+  XTB_mm_hardness: 0
+  core_number: 16
+  min_maxcyc: 1
+  orca_template: |
+    ! DLPNO-CCSD(T) RIJCOSX def2-TZVPPD def2-TZVPPD/C AutoAux
+
+    %pal
+        nprocs 16
+    end
+
+run27:
+  name: g-xTB
+  comment: g-xTB
+  qm_level: g-xtb
+  core_number: 1
+  min_maxcyc: 99999
+  GXTBHOME: "soft:gxtb_home"   # 参数文件目录 .gxtb .eeq .basisq
+  gxtb_path: "soft:gxtb_binary"      # gxtb 可执行文件所在目录

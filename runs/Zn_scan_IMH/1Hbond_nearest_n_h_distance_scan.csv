@@ -1,0 +1,17 @@
+scan_value,zn_n_distance,n_atom_index,nearest_h_atom_index,n_h_distance,xyz_path
+-0.1,4.15973966421436,2,27,1.5126563814393403,/home/zbai29/data/qmmm_test/react_benchmark/Zn_scan_IMH/xyz/xyz_files/1Zn_1ImH_6Wat_1Hbond_IMH_m0.1.xyz
+0.0,4.259739664185972,2,27,1.6077458062891041,/home/zbai29/data/qmmm_test/react_benchmark/Zn_scan_IMH/xyz/xyz_files/1Zn_1ImH_6Wat_1Hbond.xyz
+0.1,4.359739664157584,2,27,1.703397730114693,/home/zbai29/data/qmmm_test/react_benchmark/Zn_scan_IMH/xyz/xyz_files/1Zn_1ImH_6Wat_1Hbond_IMH_0.1.xyz
+0.2,4.459739664226648,2,27,1.7995224579391462,/home/zbai29/data/qmmm_test/react_benchmark/Zn_scan_IMH/xyz/xyz_files/1Zn_1ImH_6Wat_1Hbond_IMH_0.2.xyz
+0.5,4.759739664218344,2,27,2.090079621678046,/home/zbai29/data/qmmm_test/react_benchmark/Zn_scan_IMH/xyz/xyz_files/1Zn_1ImH_6Wat_1Hbond_IMH_0.5.xyz
+1.0,5.259739664162147,2,27,2.5791508431668855,/home/zbai29/data/qmmm_test/react_benchmark/Zn_scan_IMH/xyz/xyz_files/1Zn_1ImH_6Wat_1Hbond_IMH_1.0.xyz
+1.5,5.7597396641945195,2,27,3.071743042502582,/home/zbai29/data/qmmm_test/react_benchmark/Zn_scan_IMH/xyz/xyz_files/1Zn_1ImH_6Wat_1Hbond_IMH_1.5.xyz
+2.0,6.259739664150032,2,27,3.566397561397296,/home/zbai29/data/qmmm_test/react_benchmark/Zn_scan_IMH/xyz/xyz_files/1Zn_1ImH_6Wat_1Hbond_IMH_2.0.xyz
+2.5,6.7597396641912875,2,27,4.0623611131170625,/home/zbai29/data/qmmm_test/react_benchmark/Zn_scan_IMH/xyz/xyz_files/1Zn_1ImH_6Wat_1Hbond_IMH_2.5.xyz
+3.0,7.259739664223659,2,27,4.5592065165823,/home/zbai29/data/qmmm_test/react_benchmark/Zn_scan_IMH/xyz/xyz_files/1Zn_1ImH_6Wat_1Hbond_IMH_3.0.xyz
+4.0,8.259739664199834,2,27,5.554595984853191,/home/zbai29/data/qmmm_test/react_benchmark/Zn_scan_IMH/xyz/xyz_files/1Zn_1ImH_6Wat_1Hbond_IMH_4.0.xyz
+5.0,9.259739664167125,2,27,6.551389856274028,/home/zbai29/data/qmmm_test/react_benchmark/Zn_scan_IMH/xyz/xyz_files/1Zn_1ImH_6Wat_1Hbond_IMH_5.0.xyz
+6.0,10.259739664163893,2,27,7.549031828189327,/home/zbai29/data/qmmm_test/react_benchmark/Zn_scan_IMH/xyz/xyz_files/1Zn_1ImH_6Wat_1Hbond_IMH_6.0.xyz
+7.0,11.259739664237522,2,27,8.547224932019642,/home/zbai29/data/qmmm_test/react_benchmark/Zn_scan_IMH/xyz/xyz_files/1Zn_1ImH_6Wat_1Hbond_IMH_7.0.xyz
+8.0,12.259739664204812,2,27,9.545796275448179,/home/zbai29/data/qmmm_test/react_benchmark/Zn_scan_IMH/xyz/xyz_files/1Zn_1ImH_6Wat_1Hbond_IMH_8.0.xyz
+9.0,13.259739664180987,2,27,10.544638401869696,/home/zbai29/data/qmmm_test/react_benchmark/Zn_scan_IMH/xyz/xyz_files/1Zn_1ImH_6Wat_1Hbond_IMH_9.0.xyz

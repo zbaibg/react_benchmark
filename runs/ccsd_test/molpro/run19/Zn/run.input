@@ -1,0 +1,16 @@
+***,none
+gprint,basis
+
+basis=avtz-f12,zn=avtz-pp-f12
+
+geometry={
+angstrom
+Zn          0.13215507     0.20237766     0.83842335
+}
+
+!symmetry,nosym
+wf,charge=2,spin=0
+{hf;accu,14}
+{ccsd(t)-f12
+ core,H=0000,C=0000,N=0000,O=0000,Zn=0000
+}

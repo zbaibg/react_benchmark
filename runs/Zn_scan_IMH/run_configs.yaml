@@ -1,0 +1,295 @@
+ref_qmrun_to_minimize: run110
+expand_nh_oh_radius: false
+CALC_BSSE: false
+distribute_tasks:
+  max_qm_workers: 4
+  max_other_workers: 30
+  qm_cpus_per_task: 16
+  other_cpus_per_task: 1
+    
+run0:
+  name: MM
+  comment: Use MM force field to calculate the energy.
+  qm_level: DFTB3-D3
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":*"
+  open_qm_min: false
+  open_qm_min_wat: false
+  water_model: spce
+  DFTBPLUS_mdftb: false
+  DFTBPLUS_mdftb_scale: false
+  DFTBPLUS_skroot: ""
+  qm_theory: DFTBPLUS
+  XTB_mm_hardness: 0
+  core_number: 1
+  min_maxcyc: 99999
+
+run8:
+  name: mDFTB3D3/3ob_prime
+  comment: Use mDFTB3D3/3ob_prime.
+  qm_level: DFTB3-D3
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":*"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: true
+  DFTBPLUS_mdftb_scale: true
+  DFTBPLUS_skroot: soft:3ob-3-1_modify_O
+  qm_theory: DFTBPLUS
+  XTB_mm_hardness: 0
+  core_number: 1
+  min_maxcyc: 99999
+
+run41:
+  name: M052X D3 aug-cc-pVTZ
+  comment: Use M052X aug-cc-pVTZ D3ZERO RIJCOSX AutoAux VERYTIGHTSCF DEFGRID3 PCDTrimAuxJ NoAutoStart
+  qm_level: "-"
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":*"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: false
+  DFTBPLUS_mdftb_scale: false
+  DFTBPLUS_skroot: ""
+  qm_theory: EXTERN
+  XTB_mm_hardness: 0
+  core_number: 16
+  min_maxcyc: 1
+  use_amber_interface: true
+  orca_template: |
+    !  D3ZERO RIJCOSX VERYTIGHTSCF DEFGRID3 PrintBasis NoAutoStart
+    %basis
+      Basis "aug-cc-pVTZ"
+      AuxJ  "AutoAux"
+      PCDTrimAuxJ  Coulomb # Trim the AuxJ basis in the Coulomb metric
+      PCDThresh    -1      # Threshold for the PCD: chosen automatically if <0
+    end
+    %maxcore 3000
+    %method 
+      method      dft
+      exchange    hyb_mgga_x_m05_2x
+      correlation mgga_c_m05_2x
+      D3S6     1.000
+      D3RS6    1.417
+      D3S8     0.000
+      D3alpha6 14
+    end
+    %pal
+        nprocs 16
+    end
+
+run110:
+  name: mDFTB3D3/optimized_run59
+  comment: Use mDFTB3D3/3ob_prime.
+  qm_level: DFTB3-D3
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":*"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: true
+  DFTBPLUS_mdftb_scale: true
+  DFTBPLUS_skroot: params/skf/run59
+  qm_theory: DFTBPLUS
+  XTB_mm_hardness: 0
+  core_number: 1
+  min_maxcyc: 99999
+
+run110:
+  name: mDFTB3D3/optimized_run59 all QM
+  comment: Use mDFTB3D3/3ob_prime.
+  qm_level: DFTB3-D3
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":*"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: true
+  DFTBPLUS_mdftb_scale: true
+  DFTBPLUS_skroot: params/skf/run59
+  qm_theory: DFTBPLUS
+  XTB_mm_hardness: 0
+  core_number: 1
+  min_maxcyc: 99999
+
+run111:
+  name: mDFTB3D3/optimized_run59 QM-Zn,IMH
+  comment: Use mDFTB3D3/3ob_prime.
+  qm_level: DFTB3-D3
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":ZN,IMH"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: true
+  DFTBPLUS_mdftb_scale: true
+  DFTBPLUS_skroot: params/skf/run59
+  qm_theory: DFTBPLUS
+  XTB_mm_hardness: 0
+  core_number: 1
+  min_maxcyc: 99999
+
+run112:
+  name: mDFTB3D3/optimized_run59 QM-Zn
+  comment: Use mDFTB3D3/3ob_prime.
+  qm_level: DFTB3-D3
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":ZN"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: true
+  DFTBPLUS_mdftb_scale: true
+  DFTBPLUS_skroot: params/skf/run59
+  qm_theory: DFTBPLUS
+  XTB_mm_hardness: 0
+  core_number: 1
+  min_maxcyc: 99999
+
+run113:
+  name: mDFTB3D3/optimized_run59 QM-IMH MM-Zn,Wat
+  comment: Use mDFTB3D3/3ob_prime.
+  qm_level: DFTB3-D3
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":IMH"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: true
+  DFTBPLUS_mdftb_scale: true
+  DFTBPLUS_skroot: params/skf/run59
+  qm_theory: DFTBPLUS
+  XTB_mm_hardness: 0
+  core_number: 1
+  min_maxcyc: 99999
+
+run114:
+  name: mDFTB3D3/optimized_run59 QM-IMH,WAT MM-Zn
+  comment: Use mDFTB3D3/3ob_prime.
+  qm_level: DFTB3-D3
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":IMH,WAT"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: true
+  DFTBPLUS_mdftb_scale: true
+  DFTBPLUS_skroot: params/skf/run59
+  qm_theory: DFTBPLUS
+  XTB_mm_hardness: 0
+  core_number: 1
+  min_maxcyc: 99999
+
+run115:
+  name: mDFTB3D3/optimized_run59 QM-WAT,ZN MM-IMH
+  comment: Use mDFTB3D3/3ob_prime.
+  qm_level: DFTB3-D3
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":ZN,WAT"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: true
+  DFTBPLUS_mdftb_scale: true
+  DFTBPLUS_skroot: params/skf/run59
+  qm_theory: DFTBPLUS
+  XTB_mm_hardness: 0
+  core_number: 1
+  min_maxcyc: 99999
+
+run116:
+  name: mDFTB3D3/optimized_run59 QM-WAT, MM-IMH,ZN
+  comment: Use mDFTB3D3/3ob_prime.
+  qm_level: DFTB3-D3
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":WAT"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: true
+  DFTBPLUS_mdftb_scale: true
+  DFTBPLUS_skroot: params/skf/run59
+  qm_theory: DFTBPLUS
+  XTB_mm_hardness: 0
+  core_number: 1
+  min_maxcyc: 99999
+
+run117:
+  name: M052X D3 aug-cc-pVTZ QM-Zn,Wat MM-IMH
+  comment: Use M052X aug-cc-pVTZ D3ZERO RIJCOSX AutoAux VERYTIGHTSCF DEFGRID3 PCDTrimAuxJ NoAutoStart
+  qm_level: "-"
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":ZN,WAT"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: false
+  DFTBPLUS_mdftb_scale: false
+  DFTBPLUS_skroot: ""
+  qm_theory: EXTERN
+  XTB_mm_hardness: 0
+  core_number: 16
+  min_maxcyc: 1
+  use_amber_interface: true
+  orca_template: |
+    !  D3ZERO RIJCOSX VERYTIGHTSCF DEFGRID3 PrintBasis NoAutoStart
+    %basis
+      Basis "aug-cc-pVTZ"
+      AuxJ  "AutoAux"
+      PCDTrimAuxJ  Coulomb # Trim the AuxJ basis in the Coulomb metric
+      PCDThresh    -1      # Threshold for the PCD: chosen automatically if <0
+    end
+    %maxcore 3000
+    %method 
+      method      dft
+      exchange    hyb_mgga_x_m05_2x
+      correlation mgga_c_m05_2x
+      D3S6     1.000
+      D3RS6    1.417
+      D3S8     0.000
+      D3alpha6 14
+    end
+    %pal
+        nprocs 16
+    end
+
+run118:
+  name: M052X D3 aug-cc-pVTZ QM-IMH MM-Zn,Wat
+  comment: Use M052X aug-cc-pVTZ D3ZERO RIJCOSX AutoAux VERYTIGHTSCF DEFGRID3 PCDTrimAuxJ NoAutoStart
+  qm_level: "-"
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":IMH"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: false
+  DFTBPLUS_mdftb_scale: false
+  DFTBPLUS_skroot: ""
+  qm_theory: EXTERN
+  XTB_mm_hardness: 0
+  core_number: 16
+  min_maxcyc: 1
+  use_amber_interface: true
+  orca_template: |
+    !  D3ZERO RIJCOSX VERYTIGHTSCF DEFGRID3 PrintBasis NoAutoStart
+    %basis
+      Basis "aug-cc-pVTZ"
+      AuxJ  "AutoAux"
+      PCDTrimAuxJ  Coulomb # Trim the AuxJ basis in the Coulomb metric
+      PCDThresh    -1      # Threshold for the PCD: chosen automatically if <0
+    end
+    %maxcore 3000
+    %method 
+      method      dft
+      exchange    hyb_mgga_x_m05_2x
+      correlation mgga_c_m05_2x
+      D3S6     1.000
+      D3RS6    1.417
+      D3S8     0.000
+      D3alpha6 14
+    end
+    %pal
+        nprocs 16
+    end

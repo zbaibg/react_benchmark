@@ -1,0 +1,2399 @@
+
+          -------------------------------------------------------
+          Amber 24 SANDER                              2024
+          -------------------------------------------------------
+
+| Run on 04/02/2026 at 00:26:26
+
+|   Executable path: sander
+| Working directory: /home/zbai29/data/qmmm_test/react_benchmark/iter_struc/relax_struc/dlfind_test/run6/LBFGS_HDLC_4.5d-4_5d-6
+|          Hostname: Unknown
+  [-O]verwriting output
+
+File Assignments:
+|  MDIN: min.in                                                                
+| MDOUT: min.out                                                               
+|INPCRD: init.rst                                                              
+|  PARM: box.prmtop                                                            
+|RESTRT: min.rst                                                               
+|  REFC: init.rst                                                              
+| MDVEL: mdvel                                                                 
+| MDFRC: mdfrc                                                                 
+|  MDEN: mden                                                                  
+| MDCRD: min.nc                                                                
+|MDINFO: min.info                                                              
+|  MTMD: mtmd                                                                  
+|INPDIP: inpdip                                                                
+|RSTDIP: rstdip                                                                
+|INPTRA: inptraj                                                               
+
+
+ Here is the input file:
+
+####                                                                           
+&cntrl                                                                         
+  imin=1,        ! Perform energy minimization                                 
+  ntmin=5, ! use DL-Find module for minimization.                              
+  ntc=1, ! do not use SHAKE. Suggested by DL-Find setting                      
+  ntf=1, ! calculate all forces. Suggested by DL-Find setting                  
+  !ncyc=10,      ! Use steepest descent for the first 10 steps, then conjugate gradient
+  cut=99999,       ! (Default: 8.0) Non-bonded interaction cutoff distance (in Å).
+  ntb=0,         ! Periodic boundary conditions, constant volume               
+  ifqnt=1,           ! QM/MM calculation                                       
+/                                                                              
+&ewald                                                                         
+  !verbose=3,                                                                  
+/                                                                              
+&qmmm                                                                          
+  qm_theory='DFTBPLUS',                                                        
+  qmcut=99999,                                                                 
+  !writepdb=1,                                                                 
+  qmmm_int=1,                                                                  
+  qm_ewald=1,                                                                  
+  !verbosity=3,                                                                
+  kmaxqx=8,                                                                    
+  kmaxqy=8,                                                                    
+  kmaxqz=8,                                                                    
+  ksqmaxq=100,                                                                 
+  qmmask=':*', qmcharge=2,                                                     
+/                                                                              
+&dftbplus                                                                      
+  qm_level = 'DFTB3-D3',                                                       
+  tfermi = 0,                                                                  
+  scftol = 1.d-7,                                                              
+  maxiter = 250,                                                               
+  hcorrection = -1,                                                            
+  silent = F,                                                                  
+  debug = T,                                                                   
+  mixer = "BROYDEN"                                                            
+  mdftb= .false.,                                                              
+  mdftb_scale= .false.,                                                        
+  skroot= '',                                                                  
+/                                                                              
+&xtb                                                                           
+  qm_level='DFTB3-D3',                                                         
+  maxiter=250,                                                                 
+  mmhardness=0,                                                                
+/                                                                              
+&orc                                                                           
+  use_template=1,                                                              
+/                                                                              
+&dlfind                                                                        
+ ! use the default method (LBFGS minimization)                                 
+ maxcycle=99999,                                                               
+ !tol=3.0d-4 ! maximum gradient component in a.u. (default: 4.5d-4)            
+ tole=5.0d-6 ! maximum predicted energy change in a.u. (default: 1.0d-6)       
+ !optalg='NR'                                                                  
+ !hessupd='BFGS'                                                               
+ !crdrep='DLC'                                                                 
+/                                                                              
+
+--------------------------------------------------------------------------------
+   1.  RESOURCE   USE: 
+--------------------------------------------------------------------------------
+
+| Flags:                                                                        
+|    NONPERIODIC   ntb=0 and igb=0: Setting up nonperiodic simulation
+|  *** cutoff > system size, list only builds once
+|Largest sphere to fit in unit cell has radius =    34.153
+| New format PARM file being parsed.
+| Version =    1.000 Date = 03/31/26 Time = 01:33:02
+ NATOM  =      61 NTYPES =      11 NBONH =      32 MBONA  =      26
+ NTHETH =      62 MTHETA =      28 NPHIH =      78 MPHIA  =      32
+ NHPARM =       0 NPARM  =       0 NNB   =     233 NRES   =       7
+ NBONA  =      26 NTHETA =      28 NPHIA =      32 NUMBND =      12
+ NUMANG =      17 NPTRA  =       6 NATYP =      13 NPHB   =       0
+ IFBOX  =       0 NMXRS  =      12 IFCAP =       0 NEXTRA =       0
+ NCOPY  =       0
+
+
+|     Memory Use     Allocated
+|     Real              708452
+|     Hollerith            192
+|     Integer            27247
+|     Max Pairs           1830
+|     nblistReal           732
+|     nblist Int       1109814
+|       Total             9990 kbytes
+
+| Note: 1-4 EEL scale factors are being read from the topology file.
+
+| Note: 1-4 VDW scale factors are being read from the topology file.
+| Duplicated    0 dihedrals
+| Duplicated    0 dihedrals
+LOADING THE QUANTUM ATOMS AS GROUPS
+     Mask :*; matches    61 atoms
+
+--------------------------------------------------------------------------------
+   2.  CONTROL  DATA  FOR  THE  RUN
+--------------------------------------------------------------------------------
+
+default_name                                                                    
+
+General flags:
+     imin    =       1, nmropt  =       0
+
+Nature and format of input:
+     ntx     =       1, irest   =       0, ntrx    =       1
+
+Nature and format of output:
+     ntxo    =       2, ntpr    =      50, ntrx    =       1, ntwr    =       1
+     iwrap   =       0, ntwx    =       0, ntwv    =       0, ntwe    =       0
+     ioutfm  =       1, ntwprt  =       0, idecomp =       0, rbornstat=      0
+
+Potential function:
+     ntf     =       1, ntb     =       0, igb     =       0, nsnb    =      25
+     ipol    =       0, gbsa    =       0, iesp    =       0
+     dielc   =   1.00000, cut     =**********, intdiel =   1.00000
+
+Frozen or restrained atoms:
+     ibelly  =       0, ntr     =       0
+
+Energy minimization:
+     maxcyc  =       1, ncyc    =      10, ntmin   =       5
+     dx0     =   0.01000, drms    =   0.00010
+
+QMMM options:
+             ifqnt = True       nquant =       61
+              qmgb =        0  qmcharge =        2   adjust_q =        2
+              spin =        1     qmcut = ********    qmshake =        1
+          qmmm_int =        1
+     lnk_atomic_no =        1   lnk_dis =   1.0900 lnk_method =        1
+          qm_theory = DFTBPLUS verbosity =        0
+            qmqmdx = Analytical
+          qm_ewald =        0 qm_pme = False 
+|  INFO: Old style inpcrd file read
+
+
+--------------------------------------------------------------------------------
+   3.  ATOMIC COORDINATES AND VELOCITIES
+--------------------------------------------------------------------------------
+
+default_name                                                                    
+ begin time read from input coords =     0.000 ps
+
+ Number of triangulated 3-point waters found:        0
+
+     Sum of charges from parm topology file =   2.00000000
+
+&dlfind active selection in VMD mask format:
+resid 1 to 7
+
+&dlfind active selection in Amber mask format:
+:1-7
+
+Residues with at least 1 active atom in VMD mask format:
+resid 1 to 7
+
+Residues with at least 1 active atom in Amber mask format:
+:1-7
+
+
+***********************************************************************
+**                                                                   **
+**                       ---------------------                       **
+**                              DL-FIND                              **
+**                       Geometry Optimisation                       **
+**                       ---------------------                       **
+**                                                                   **
+**                 J. Kaestner, J.M. Carr, T.W. Keal,                **
+**                W. Thiel, A. Wander and P. Sherwood                **
+**                                                                   **
+**              J. Phys. Chem. A, 2009, 113 (43), 11856.             **
+**                                                                   **
+**   Please include this reference in published work using DL-FIND.  **
+**                                                                   **
+**               Copyright:  STFC Daresbury Laboratory               **
+**                                                                   **
+***********************************************************************
+
+Residue member list:
+    0 :     1    2    2    2    2    2    2    2    2    2
+   10 :     2    2    2    3    3    3    3    3    3    3
+   20 :     3    3    3    3    3    4    4    4    4    4
+   30 :     4    4    4    4    4    4    4    5    5    5
+   40 :     5    5    5    5    5    5    5    5    5    6
+   50 :     6    6    6    6    6    7    7    7    7    7
+   60 :     7
+           1  groups will be deleted as they only contain one atom
+
+Generating new HDLC for    6 residues
+
+Located a new residue for HDLC
+   Residue number is    1
+   Number of atoms it contains    12
+   Atoms:      2     3     4     5     6     7     8     9    10    11
+   Atoms:     12    13
+   Generating HDLC for residue    1
+       System near planar - making improper
+       System near planar - making improper
+       System near planar - making improper
+       System near planar - making improper
+
+   The Cartesian coordinates
+         1    -0.08856264259916     0.42891736022838     7.99682680898992
+         2    -0.37166978664474     0.46547766666682     3.88606106182444
+         3     0.94205333841992    -0.40438930620786     5.82426795978106
+         4     3.26108318672224    -1.98473235485659     5.76540341160166
+         5    -2.14856674805878     1.89988343547411     7.44182971573968
+         6    -2.29830557751324     1.90967864077691     4.88629515628978
+         7     0.55001891744601     0.01505584933258     9.73661641110755
+         8     3.25962671400297    -3.16781473794988     4.09442277036534
+         9     4.94509235334926    -0.80374288757509     5.76496178780206
+        10     3.34229632068647    -3.20727168362990     7.41205030129619
+        11    -3.29561392249265     2.76196617633151     8.87152637877623
+        12    -3.64252812345235     2.86831926129487     3.71310405527246
+
+   The primitive internal coordinates
+
+
+     The system has    12 stretches
+         1 Stre     3     1              =    2.54491282
+         2 Stre     3     2              =    2.49783566
+         3 Stre     4     3              =    2.80692868
+         4 Stre     5     1              =    2.59140500
+         5 Stre     6     2              =    2.60731858
+         6 Stre     6     5              =    2.55993643
+         7 Stre     7     1              =    1.89893012
+         8 Stre     8     4              =    2.04740381
+         9 Stre     9     4              =    2.05684788
+        10 Stre    10     4              =    2.05247265
+        11 Stre    11     5              =    2.02557064
+        12 Stre    12     6              =    2.02541439
+
+
+     The system has    19 bends and impropers
+        13 Bend     3     1     5        =  108.96311948 deg =    1.90176520
+        14 Bend     7     1     3        =  125.07120096 deg =    2.18290426
+        15 Impr     7     1     5     3  = -179.39098591 deg =   -3.13096335
+        16 Bend     3     2     6        =  106.49059193 deg =    1.85861145
+        17 Bend     1     3     2        =  109.59683063 deg =    1.91282554
+        18 Bend     1     3     4        =  122.46849179 deg =    2.13747841
+        19 Impr     2     3     4     1  =  177.72056758 deg =    3.10180905
+        20 Bend     8     4     3        =  109.99043824 deg =    1.91969529
+        21 Bend     9     4     3        =  110.68052769 deg =    1.93173963
+        22 Bend    10     4     3        =  110.56204923 deg =    1.92967179
+        23 Bend     9     4     8        =  109.40182111 deg =    1.90942199
+        24 Bend    10     4     8        =  108.09615003 deg =    1.88663373
+        25 Bend    10     4     9        =  108.04590030 deg =    1.88575670
+        26 Bend     1     5     6        =  105.21670394 deg =    1.83637791
+        27 Bend    11     5     1        =  122.72305932 deg =    2.14192145
+        28 Impr    11     5     6     1  = -179.25619093 deg =   -3.12861074
+        29 Bend     2     6     5        =  109.73217579 deg =    1.91518776
+        30 Bend    12     6     2        =  122.03045781 deg =    2.12983328
+        31 Impr    12     6     5     2  = -179.30756626 deg =   -3.12950741
+
+
+     The system has    27 dihedrals
+        32 Dihe     3     1     5     6  =   -0.05331461 deg =   -0.00093052
+        33 Dihe     3     1     5    11  =  179.29023580 deg =    3.12920493
+        34 Dihe     3     1     5     2  =    0.06132502 deg =    0.00107032
+        35 Dihe     3     1     5     4  =   -1.55524899 deg =   -0.02714422
+        36 Dihe     7     1     3     2  =  179.29441263 deg =    3.12927783
+        37 Dihe     7     1     3     4  =   -2.61462410 deg =   -0.04563380
+        38 Dihe     7     1     5     6  = -179.44430052 deg =   -3.13189387
+        39 Dihe     7     1     5    11  =   -0.10075011 deg =   -0.00175842
+        40 Dihe     3     2     6     5  =   -0.25025559 deg =   -0.00436778
+        41 Dihe     3     2     6    12  =  179.10817623 deg =    3.12602739
+        42 Dihe     3     2     6     1  =   -0.13136167 deg =   -0.00229269
+        43 Dihe     1     3     2     6  =    0.21336211 deg =    0.00372387
+        44 Dihe     1     3     2     5  =    0.06308851 deg =    0.00110110
+        45 Dihe     1     3     2     7  =   -0.37757543 deg =   -0.00658993
+        46 Dihe     1     3     4     8  =  152.32211932 deg =    2.65852251
+        47 Dihe     1     3     4     9  =  -86.67004575 deg =   -1.51267766
+        48 Dihe     1     3     4    10  =   33.01582696 deg =    0.57623489
+        49 Dihe     1     3     4     5  =   -3.19280299 deg =   -0.05572492
+        50 Dihe     1     3     4     7  =    1.04115596 deg =    0.01817160
+        51 Dihe     2     3     4     8  =  -29.95731310 deg =   -0.52285375
+        52 Dihe     2     3     4     9  =   91.05052183 deg =    1.58913139
+        53 Dihe     2     3     4    10  = -149.26360546 deg =   -2.60514137
+        54 Dihe     2     3     4     6  =    5.50635039 deg =    0.09610394
+        55 Dihe     1     5     6     2  =    0.18515326 deg =    0.00323153
+        56 Dihe     1     5     6     3  =    0.03264854 deg =    0.00056982
+        57 Dihe    11     5     6     2  = -179.07103766 deg =   -3.12537920
+        58 Dihe     2     6     5     3  =    0.15250472 deg =    0.00266171
+
+
+   Residue      1 has internal coords      1 to     36
+
+Located a new residue for HDLC
+   Residue number is    2
+   Number of atoms it contains    12
+   Atoms:     14    15    16    17    18    19    20    21    22    23
+   Atoms:     24    25
+   Generating HDLC for residue    2
+       System near planar - making improper
+       System near planar - making improper
+       System near planar - making improper
+       System near planar - making improper
+
+   The Cartesian coordinates
+         1    -0.27526872542103    -0.84293535617019    -8.22586557358422
+         2     0.22779411464935     0.08962259844710    -4.24834045876349
+         3    -1.02754430018603    -1.35883290884762    -5.84971165991869
+         4    -3.01657742286803    -3.25273727072220    -5.27190960348165
+         5     1.52703937663090     1.01892360429565    -8.15757563592027
+         6     1.81967933800381     1.58088078170919    -5.67893533809920
+         7    -0.95971866172836    -1.67348917157268    -9.78987254295632
+         8    -2.95063310529411    -4.80085592012063    -6.61883822469379
+         9    -4.88138868424173    -2.39433402770352    -5.37315303421656
+        10    -2.75367086853823    -3.99731876140019    -3.38371511201641
+        11     2.40334364777419     1.75726498256589    -9.82754644968841
+        12     3.02352311958342     2.97534053090063    -4.83888337731555
+
+   The primitive internal coordinates
+
+
+     The system has    12 stretches
+         1 Stre     3     1              =    2.54522617
+         2 Stre     3     2              =    2.49765642
+         3 Stre     4     3              =    2.80659611
+         4 Stre     5     1              =    2.59219922
+         5 Stre     6     2              =    2.60855348
+         6 Stre     6     5              =    2.55833769
+         7 Stre     7     1              =    1.89852816
+         8 Stre     8     4              =    2.05310417
+         9 Stre     9     4              =    2.05538984
+        10 Stre    10     4              =    2.04665578
+        11 Stre    11     5              =    2.02530484
+        12 Stre    12     6              =    2.02470866
+
+
+     The system has    19 bends and impropers
+        13 Bend     3     1     5        =  109.05586606 deg =    1.90338393
+        14 Bend     7     1     3        =  125.01909481 deg =    2.18199483
+        15 Impr     7     1     5     3  =  178.87076855 deg =    3.12188385
+        16 Bend     3     2     6        =  106.65621825 deg =    1.86150218
+        17 Bend     1     3     2        =  109.41822962 deg =    1.90970837
+        18 Bend     1     3     4        =  122.57754602 deg =    2.13938177
+        19 Impr     2     3     4     1  =  178.53576724 deg =    3.11603697
+        20 Bend     8     4     3        =  110.54871386 deg =    1.92943904
+        21 Bend     9     4     3        =  110.55001087 deg =    1.92946168
+        22 Bend    10     4     3        =  110.14473248 deg =    1.92238824
+        23 Bend     9     4     8        =  108.16405507 deg =    1.88781889
+        24 Bend    10     4     8        =  109.07484684 deg =    1.90371521
+        25 Bend    10     4     9        =  108.29605762 deg =    1.89012277
+        26 Bend     1     5     6        =  105.23772263 deg =    1.83674476
+        27 Bend    11     5     1        =  122.74874225 deg =    2.14236970
+        28 Impr    11     5     6     1  =  179.67451248 deg =    3.13591182
+        29 Bend     2     6     5        =  109.63100038 deg =    1.91342192
+        30 Bend    12     6     2        =  121.93997112 deg =    2.12825399
+        31 Impr    12     6     5     2  = -178.37115076 deg =   -3.11316387
+
+
+     The system has    27 dihedrals
+        32 Dihe     3     1     5     6  =    0.13580938 deg =    0.00237032
+        33 Dihe     3     1     5    11  = -179.57665080 deg =   -3.13420382
+        34 Dihe     3     1     5     2  =    0.17257664 deg =    0.00301203
+        35 Dihe     3     1     5     4  =   -1.16870440 deg =   -0.02039774
+        36 Dihe     7     1     3     2  = -179.17337485 deg =   -3.12716532
+        37 Dihe     7     1     3     4  =   -0.39690719 deg =   -0.00692734
+        38 Dihe     7     1     5     6  =  179.00657793 deg =    3.12425417
+        39 Dihe     7     1     5    11  =   -0.70588225 deg =   -0.01231997
+        40 Dihe     3     2     6     5  =   -0.23398931 deg =   -0.00408388
+        41 Dihe     3     2     6    12  =  178.26196652 deg =    3.11125825
+        42 Dihe     3     2     6     1  =   -0.19590655 deg =   -0.00341921
+        43 Dihe     1     3     2     6  =    0.31760384 deg =    0.00554323
+        44 Dihe     1     3     2     5  =    0.17711110 deg =    0.00309117
+        45 Dihe     1     3     2     7  =    0.44148009 deg =    0.00770528
+        46 Dihe     1     3     4     8  =   33.48160079 deg =    0.58436417
+        47 Dihe     1     3     4     9  =  -86.25881773 deg =   -1.50550038
+        48 Dihe     1     3     4    10  =  154.09613186 deg =    2.68948487
+        49 Dihe     1     3     4     5  =   -2.40784568 deg =   -0.04202483
+        50 Dihe     1     3     4     7  =    0.15823473 deg =    0.00276172
+        51 Dihe     2     3     4     8  = -147.98263197 deg =   -2.58278416
+        52 Dihe     2     3     4     9  =   92.27694951 deg =    1.61053659
+        53 Dihe     2     3     4    10  =  -27.36810090 deg =   -0.47766347
+        54 Dihe     2     3     4     6  =    3.97655547 deg =    0.06940399
+        55 Dihe     1     5     6     2  =    0.05925574 deg =    0.00103421
+        56 Dihe     1     5     6     3  =   -0.08302717 deg =   -0.00144910
+        57 Dihe    11     5     6     2  =  179.73376822 deg =    3.13694603
+        58 Dihe     2     6     5     3  =    0.14228291 deg =    0.00248331
+
+
+   Residue      2 has internal coords     37 to     72
+
+Located a new residue for HDLC
+   Residue number is    3
+   Number of atoms it contains    12
+   Atoms:     26    27    28    29    30    31    32    33    34    35
+   Atoms:     36    37
+   Generating HDLC for residue    3
+       System near planar - making improper
+       System near planar - making improper
+       System near planar - making improper
+       System near planar - making improper
+
+   The Cartesian coordinates
+         1    -0.20411923737217     8.35664726997521     0.28187486557860
+         2    -0.08772931848874     4.30779075768630    -0.45668352876237
+         3     0.74191432635121     6.12225379865955     1.04804114646246
+         4     2.42985456974713     5.85880487258132     3.27427806145523
+         5    -1.70686640559542     7.97315466728295    -1.79356987670302
+         6    -1.61570532920895     5.45370564687303    -2.24067222386669
+         7     0.15549782638827    10.03154826177230     1.10169062174958
+         8     3.36232296830051     4.03814199403267     3.21793330177205
+         9     1.34849903807813     5.97870847490547     5.01937898654849
+        10     3.84549211797414     7.34679315119778     3.28929224643645
+        11    -2.65176482846661     9.48517452461207    -2.75467825022436
+        12    -2.47136910131543     4.40243973657718    -3.74907441584332
+
+   The primitive internal coordinates
+
+
+     The system has    12 stretches
+         1 Stre     3     1              =    2.54450476
+         2 Stre     3     2              =    2.49895599
+         3 Stre     4     3              =    2.80618574
+         4 Stre     5     1              =    2.59090457
+         5 Stre     6     2              =    2.61351244
+         6 Stre     6     5              =    2.56043633
+         7 Stre     7     1              =    1.89913550
+         8 Stre     8     4              =    2.04633462
+         9 Stre     9     4              =    2.05647366
+        10 Stre    10     4              =    2.05386568
+        11 Stre    11     5              =    2.02552867
+        12 Stre    12     6              =    2.02795406
+
+
+     The system has    19 bends and impropers
+        13 Bend     3     1     5        =  109.07889441 deg =    1.90378585
+        14 Bend     7     1     3        =  125.03381050 deg =    2.18225167
+        15 Impr     7     1     5     3  =  179.50180818 deg =    3.13289757
+        16 Bend     3     2     6        =  106.66428745 deg =    1.86164301
+        17 Bend     1     3     2        =  109.44206566 deg =    1.91012439
+        18 Bend     1     3     4        =  123.02152436 deg =    2.14713065
+        19 Impr     2     3     4     1  = -179.35169894 deg =   -3.13027767
+        20 Bend     8     4     3        =  109.61981141 deg =    1.91322663
+        21 Bend     9     4     3        =  110.57594347 deg =    1.92991429
+        22 Bend    10     4     3        =  110.63269674 deg =    1.93090482
+        23 Bend     9     4     8        =  108.35174373 deg =    1.89109468
+        24 Bend    10     4     8        =  109.31178624 deg =    1.90785058
+        25 Bend    10     4     9        =  108.29963779 deg =    1.89018526
+        26 Bend     1     5     6        =  105.35947360 deg =    1.83886971
+        27 Bend    11     5     1        =  122.69568399 deg =    2.14144366
+        28 Impr    11     5     6     1  =  178.83734435 deg =    3.12130048
+        29 Bend     2     6     5        =  109.45453999 deg =    1.91034210
+        30 Bend    12     6     2        =  121.81062625 deg =    2.12599649
+        31 Impr    12     6     5     2  = -177.26993327 deg =   -3.09394400
+
+
+     The system has    27 dihedrals
+        32 Dihe     3     1     5     6  =   -0.24946870 deg =   -0.00435405
+        33 Dihe     3     1     5    11  = -179.22173185 deg =   -3.12800931
+        34 Dihe     3     1     5     2  =   -0.07834139 deg =   -0.00136732
+        35 Dihe     3     1     5     4  =    0.51689518 deg =    0.00902152
+        36 Dihe     7     1     3     2  = -179.37536584 deg =   -3.13069073
+        37 Dihe     7     1     3     4  =    1.16981680 deg =    0.02041715
+        38 Dihe     7     1     5     6  =  179.25233948 deg =    3.12854352
+        39 Dihe     7     1     5    11  =    0.28007633 deg =    0.00488825
+        40 Dihe     3     2     6     5  =   -0.20181111 deg =   -0.00352227
+        41 Dihe     3     2     6    12  =  177.29035819 deg =    3.09430048
+        42 Dihe     3     2     6     1  =   -0.02530379 deg =   -0.00044163
+        43 Dihe     1     3     2     6  =    0.04105959 deg =    0.00071663
+        44 Dihe     1     3     2     5  =   -0.08035033 deg =   -0.00140238
+        45 Dihe     1     3     2     7  =    0.33379182 deg =    0.00582577
+        46 Dihe     1     3     4     8  = -164.06283689 deg =   -2.86343668
+        47 Dihe     1     3     4     9  =   76.54062323 deg =    1.33588589
+        48 Dihe     1     3     4    10  =  -43.44047471 deg =   -0.75817931
+        49 Dihe     1     3     4     5  =    1.09795207 deg =    0.01916288
+        50 Dihe     1     3     4     7  =   -0.46701366 deg =   -0.00815093
+        51 Dihe     2     3     4     8  =   16.58546418 deg =    0.28947096
+        52 Dihe     2     3     4     9  = -102.81107571 deg =   -1.79439178
+        53 Dihe     2     3     4    10  =  137.20782636 deg =    2.39472833
+        54 Dihe     2     3     4     6  =   -1.27558175 deg =   -0.02226310
+        55 Dihe     1     5     6     2  =    0.27506906 deg =    0.00480086
+        56 Dihe     1     5     6     3  =    0.15236291 deg =    0.00265923
+        57 Dihe    11     5     6     2  =  179.11241342 deg =    3.12610135
+        58 Dihe     2     6     5     3  =    0.12270616 deg =    0.00214163
+
+
+   Residue      3 has internal coords     73 to    108
+
+Located a new residue for HDLC
+   Residue number is    4
+   Number of atoms it contains    12
+   Atoms:     38    39    40    41    42    43    44    45    46    47
+   Atoms:     48    49
+   Generating HDLC for residue    4
+       System near planar - making improper
+       System near planar - making improper
+       System near planar - making improper
+       System near planar - making improper
+
+   The Cartesian coordinates
+         1     1.26653339326898    -7.82354723767902    -0.55897531652011
+         2     0.60884102845396    -3.81103016875599     0.09650770668912
+         3     1.88776570473783    -5.46364859486278    -1.27748860392917
+         4     3.74213645856432    -4.93652986196286    -3.32052654333639
+         5    -0.48323548221080    -7.69299021231733     1.34940710571718
+         6    -0.87382195798898    -5.19450151767109     1.74198290612709
+         7     1.99173546840814    -9.41678730055814    -1.29534399078434
+         8     5.54979905813374    -5.82596409651629    -2.91234376394980
+         9     3.07410407396827    -5.67935965924625    -5.11815628186167
+        10     4.00608305752013    -2.91812373303334    -3.52769969699397
+        11    -1.25857503888791    -9.34119607319781     2.23550354749137
+        12    -2.08493067202759    -4.29529756021920     3.09464316368526
+
+   The primitive internal coordinates
+
+
+     The system has    12 stretches
+         1 Stre     3     1              =    2.54387746
+         2 Stre     3     2              =    2.50093220
+         3 Stre     4     3              =    2.80901212
+         4 Stre     5     1              =    2.59242352
+         5 Stre     6     2              =    2.61148830
+         6 Stre     6     5              =    2.55912472
+         7 Stre     7     1              =    1.89909736
+         8 Stre     8     4              =    2.05556574
+         9 Stre     9     4              =    2.05658359
+        10 Stre    10     4              =    2.04610650
+        11 Stre    11     5              =    2.02556187
+        12 Stre    12     6              =    2.02609029
+
+
+     The system has    19 bends and impropers
+        13 Bend     3     1     5        =  109.02803088 deg =    1.90289812
+        14 Bend     7     1     3        =  125.13456925 deg =    2.18401024
+        15 Impr     7     1     5     3  =  179.28705421 deg =    3.12914940
+        16 Bend     3     2     6        =  106.64454803 deg =    1.86129849
+        17 Bend     1     3     2        =  109.44810317 deg =    1.91022976
+        18 Bend     1     3     4        =  122.73289597 deg =    2.14209314
+        19 Impr     2     3     4     1  = -179.93003719 deg =   -3.14037157
+        20 Bend     8     4     3        =  110.78811174 deg =    1.93361732
+        21 Bend     9     4     3        =  110.70290086 deg =    1.93213011
+        22 Bend    10     4     3        =  110.11549916 deg =    1.92187802
+        23 Bend     9     4     8        =  107.63397209 deg =    1.87856720
+        24 Bend    10     4     8        =  109.48146272 deg =    1.91081199
+        25 Bend    10     4     9        =  108.04147079 deg =    1.88567939
+        26 Bend     1     5     6        =  105.37337703 deg =    1.83911237
+        27 Bend    11     5     1        =  122.64332218 deg =    2.14052978
+        28 Impr    11     5     6     1  =  179.55313055 deg =    3.13379331
+        29 Bend     2     6     5        =  109.50575674 deg =    1.91123600
+        30 Bend    12     6     2        =  121.66288371 deg =    2.12341790
+        31 Impr    12     6     5     2  = -179.08152869 deg =   -3.12556231
+
+
+     The system has    27 dihedrals
+        32 Dihe     3     1     5     6  =   -0.13524810 deg =   -0.00236052
+        33 Dihe     3     1     5    11  = -179.74075263 deg =   -3.13706793
+        34 Dihe     3     1     5     2  =   -0.05520537 deg =   -0.00096352
+        35 Dihe     3     1     5     4  =    0.11646566 deg =    0.00203271
+        36 Dihe     7     1     3     2  = -179.20050154 deg =   -3.12763877
+        37 Dihe     7     1     3     4  =    0.85810989 deg =    0.01497684
+        38 Dihe     7     1     5     6  =  179.15180611 deg =    3.12678888
+        39 Dihe     7     1     5    11  =   -0.45369842 deg =   -0.00791853
+        40 Dihe     3     2     6     5  =   -0.07587295 deg =   -0.00132423
+        41 Dihe     3     2     6    12  =  179.08345008 deg =    3.12559584
+        42 Dihe     3     2     6     1  =    0.00678884 deg =    0.00011849
+        43 Dihe     1     3     2     6  =   -0.01102276 deg =   -0.00019238
+        44 Dihe     1     3     2     5  =   -0.05664535 deg =   -0.00098865
+        45 Dihe     1     3     2     7  =    0.42634675 deg =    0.00744115
+        46 Dihe     1     3     4     8  =  -56.44936067 deg =   -0.98522720
+        47 Dihe     1     3     4     9  =   62.88259976 deg =    1.09750841
+        48 Dihe     1     3     4    10  = -177.71042894 deg =   -3.10163210
+        49 Dihe     1     3     4     5  =    0.24308920 deg =    0.00424271
+        50 Dihe     1     3     4     7  =   -0.34179553 deg =   -0.00596546
+        51 Dihe     2     3     4     8  =  123.62060214 deg =    2.15758653
+        52 Dihe     2     3     4     9  = -117.04743744 deg =   -2.04286316
+        53 Dihe     2     3     4    10  =    2.35953387 deg =    0.04118163
+        54 Dihe     2     3     4     6  =   -0.17798899 deg =   -0.00310649
+        55 Dihe     1     5     6     2  =    0.12879533 deg =    0.00224790
+        56 Dihe     1     5     6     3  =    0.08261652 deg =    0.00144193
+        57 Dihe    11     5     6     2  =  179.68192588 deg =    3.13604121
+        58 Dihe     2     6     5     3  =    0.04617881 deg =    0.00080597
+
+
+   Residue      4 has internal coords    109 to    144
+
+Located a new residue for HDLC
+   Residue number is    5
+   Number of atoms it contains     6
+   Atoms:     50    51    52    53    54    55
+   Generating HDLC for residue    5
+
+   The Cartesian coordinates
+         1     5.47388917537381     3.92090134597146    -1.14916267197086
+         2     6.30195998087521     2.07463325182208    -0.84350937574108
+         3     7.85854995343960     2.23690328315484     0.48100289103843
+         4     6.96369157397148     1.30691923641743    -2.62742921132268
+         5     4.33966985674239     0.50414625785981     0.20799843903347
+         6     5.03040775176368    -1.11809755807769     0.63142709080929
+
+   The primitive internal coordinates
+
+
+     The system has     5 stretches
+         1 Stre     2     1              =    2.04641909
+         2 Stre     3     2              =    2.05027721
+         3 Stre     4     2              =    2.05174157
+         4 Stre     5     2              =    2.72445969
+         5 Stre     6     5              =    1.81330793
+
+
+     The system has     7 bends and impropers
+         6 Bend     3     2     1        =  109.40806481 deg =    1.90953096
+         7 Bend     4     2     1        =  109.76865814 deg =    1.91582450
+         8 Bend     1     2     5        =  106.63430409 deg =    1.86111970
+         9 Bend     4     2     3        =  110.26983831 deg =    1.92457174
+        10 Bend     3     2     5        =  110.06659430 deg =    1.92102447
+        11 Bend     4     2     5        =  110.62053281 deg =    1.93069252
+        12 Bend     6     5     2        =  109.35761887 deg =    1.90865051
+
+
+     The system has     3 dihedrals
+        13 Dihe     1     2     5     6  = -175.55320480 deg =   -3.06398144
+        14 Dihe     3     2     5     6  =  -56.97511620 deg =   -0.99440337
+        15 Dihe     4     2     5     6  =   65.13385106 deg =    1.13680016
+
+
+   Residue      5 has internal coords    145 to    162
+
+Located a new residue for HDLC
+   Residue number is    6
+   Number of atoms it contains     6
+   Atoms:     56    57    58    59    60    61
+   Generating HDLC for residue    6
+
+   The Cartesian coordinates
+         1    -6.33904482359226    -0.89739498701321     2.47454837604472
+         2    -6.09749482821027    -1.26775991458845     0.46990661824365
+         3    -7.83853206160440    -0.87261707774973    -0.53785027831808
+         4    -5.58954825874245    -3.22914865683556     0.18899948840940
+         5    -4.06823564399285     0.23380416102828    -0.54894051035287
+         6    -4.61602382311843     1.95690824238351    -0.71105590867949
+
+   The primitive internal coordinates
+
+
+     The system has     5 stretches
+         1 Stre     2     1              =    2.05282857
+         2 Stre     3     2              =    2.05010304
+         3 Stre     4     2              =    2.04547411
+         4 Stre     5     2              =    2.72224852
+         5 Stre     6     5              =    1.81533495
+
+
+     The system has     7 bends and impropers
+         6 Bend     3     2     1        =  110.20153791 deg =    1.92337968
+         7 Bend     4     2     1        =  109.65328988 deg =    1.91381094
+         8 Bend     1     2     5        =  110.71246828 deg =    1.93229709
+         9 Bend     4     2     3        =  109.15973125 deg =    1.90519672
+        10 Bend     3     2     5        =  110.04541761 deg =    1.92065486
+        11 Bend     4     2     5        =  107.00198094 deg =    1.86753687
+        12 Bend     6     5     2        =  109.39319393 deg =    1.90927141
+
+
+     The system has     3 dihedrals
+        13 Dihe     1     2     5     6  =  -74.41875699 deg =   -1.29885233
+        14 Dihe     3     2     5     6  =   47.65123248 deg =    0.83167090
+        15 Dihe     4     2     5     6  =  166.13431944 deg =    2.89959087
+
+
+   Residue      6 has internal coords    163 to    180
+
+DL-FIND Report:
+===============
+Optimisation algorithm: L-BFGS
+Number of steps in L-BFGS memory ...............          5
+
+Step length: simple scaled
+Maximum step length ............................  5.000E-01
+Scaling step by ................................  1.000E+00
+
+Coordinate system: Hybrid delocalised internal coordinates (HDLC)
+
+Number of atoms ................................         61
+Number of input geometries .....................          1
+Variables to be optimised ......................        183
+No restart information is written
+This run has not been restarted.
+Maximum number of steps ........................      99999
+Maximum number of energy evaluations ...........     699993
+
+ ---------------------------------------------------
+
+     eedmeth=4: Setting switch to one everywhere
+
+ ---------------------------------------------------
+| Local SIZE OF NONBOND LIST =          0
+| TOTAL SIZE OF NONBOND LIST =          0
+
+QMMM: Link Atom Information
+QMMM: ------------------------------------------------------------------------
+QMMM: nlink =     0
+QMMM: ------------------------------------------------------------------------
+
+  QMMM: QM Region Cartesian Coordinates (*=link atom) 
+  QMMM: QM_NO.   MM_NO.  ATOM         X         Y         Z
+  QMMM:     1        1      Zn       0.0980    0.1376   -0.0983
+  QMMM:     2        2      N       -0.0469    0.2270    4.2317
+  QMMM:     3        3      N       -0.1967    0.2463    2.0564
+  QMMM:     4        4      C        0.4985   -0.2140    3.0821
+  QMMM:     5        5      C        1.7257   -1.0503    3.0509
+  QMMM:     6        6      C       -1.1370    1.0054    3.9380
+  QMMM:     7        7      C       -1.2162    1.0106    2.5857
+  QMMM:     8        8      H        0.2911    0.0080    5.1524
+  QMMM:     9        9      H        1.7249   -1.6763    2.1667
+  QMMM:    10       10      H        2.6168   -0.4253    3.0507
+  QMMM:    11       11      H        1.7687   -1.6972    3.9223
+  QMMM:    12       12      H       -1.7440    1.4616    4.6946
+  QMMM:    13       13      H       -1.9275    1.5178    1.9649
+  QMMM:    14       14      N       -0.1457   -0.4461   -4.3529
+  QMMM:    15       15      N        0.1205    0.0474   -2.2481
+  QMMM:    16       16      C       -0.5438   -0.7191   -3.0955
+  QMMM:    17       17      C       -1.5963   -1.7213   -2.7898
+  QMMM:    18       18      C        0.8081    0.5392   -4.3168
+  QMMM:    19       19      C        0.9629    0.8366   -3.0052
+  QMMM:    20       20      H       -0.5079   -0.8856   -5.1806
+  QMMM:    21       21      H       -1.5614   -2.5405   -3.5025
+  QMMM:    22       22      H       -2.5831   -1.2670   -2.8434
+  QMMM:    23       23      H       -1.4572   -2.1153   -1.7906
+  QMMM:    24       24      H        1.2718    0.9299   -5.2005
+  QMMM:    25       25      H        1.6000    1.5745   -2.5606
+  QMMM:    26       26      N       -0.1080    4.4221    0.1492
+  QMMM:    27       27      N       -0.0464    2.2796   -0.2417
+  QMMM:    28       28      C        0.3926    3.2398    0.5546
+  QMMM:    29       29      C        1.2858    3.1003    1.7327
+  QMMM:    30       30      C       -0.9032    4.2192   -0.9491
+  QMMM:    31       31      C       -0.8550    2.8860   -1.1857
+  QMMM:    32       32      H        0.0823    5.3085    0.5830
+  QMMM:    33       33      H        1.7793    2.1369    1.7029
+  QMMM:    34       34      H        0.7136    3.1638    2.6561
+  QMMM:    35       35      H        2.0349    3.8878    1.7406
+  QMMM:    36       36      H       -1.4033    5.0193   -1.4577
+  QMMM:    37       37      H       -1.3078    2.3297   -1.9839
+  QMMM:    38       38      N        0.6702   -4.1400   -0.2958
+  QMMM:    39       39      N        0.3222   -2.0167    0.0511
+  QMMM:    40       40      C        0.9990   -2.8912   -0.6760
+  QMMM:    41       41      C        1.9803   -2.6123   -1.7571
+  QMMM:    42       42      C       -0.2557   -4.0710    0.7141
+  QMMM:    43       43      C       -0.4624   -2.7488    0.9218
+  QMMM:    44       44      H        1.0540   -4.9831   -0.6855
+  QMMM:    45       45      H        2.9368   -3.0830   -1.5411
+  QMMM:    46       46      H        1.6267   -3.0054   -2.7084
+  QMMM:    47       47      H        2.1199   -1.5442   -1.8668
+  QMMM:    48       48      H       -0.6660   -4.9431    1.1830
+  QMMM:    49       49      H       -1.1033   -2.2730    1.6376
+  QMMM:    50       50      H        2.8967    2.0749   -0.6081
+  QMMM:    51       51      C        3.3349    1.0978   -0.4464
+  QMMM:    52       52      H        4.1586    1.1837    0.2545
+  QMMM:    53       53      H        3.6850    0.6916   -1.3904
+  QMMM:    54       54      O        2.2965    0.2668    0.1101
+  QMMM:    55       55      H        2.6620   -0.5917    0.3341
+  QMMM:    56       56      H       -3.3545   -0.4749    1.3095
+  QMMM:    57       57      C       -3.2267   -0.6709    0.2487
+  QMMM:    58       58      H       -4.1480   -0.4618   -0.2846
+  QMMM:    59       59      H       -2.9579   -1.7088    0.1000
+  QMMM:    60       60      O       -2.1528    0.1237   -0.2905
+  QMMM:    61       61      H       -2.4427    1.0356   -0.3763
+
+--------------------------------------------------------------------------------
+  3.1 QM CALCULATION INFO
+--------------------------------------------------------------------------------
+ <<< leaving subroutine read_dftbplus_nml
+ 
+ >>> entered subroutine set_skf_filenames
+ qm_level is DFTB3/3ob
+ The skf file directory is: /home/zbai29/soft/ambertools25_dev/c4d4a71/install/dat/slko/3ob-3-1/
+ <<< leaving subroutine set_skf_filenames
+Input tree in HSD format:
+Geometry = {
+  TypeNames = {
+ "Zn" "N" "C" "H" "O"
+  }
+  TypesAndCoordinates = {
+ 1 0.18517264651446297 0.26004641721606775 -0.18572053388360599
+ 2 -8.8562642599164895E-002 0.42891736022838395 7.9968268089899208
+ 2 -0.37166978664474376 0.46547766666681900 3.8860610618244391
+ 3 0.94205333841992012 -0.40438930620785568 5.8242679597810554
+ 3 3.2610831867222387 -1.9847323548565883 5.7654034116016604
+ 3 -2.1485667480587813 1.8998834354741074 7.4418297157396829
+ 3 -2.2983055775132377 1.9096786407769126 4.8862951562897790
+ 4 0.55001891744601372 1.5055849332576993E-002 9.7366164111075477
+ 4 3.2596267140029656 -3.1678147379498780 4.0944227703653358
+ 4 4.9450923533492608 -0.80374288757509127 5.7649617878020587
+ 4 3.3422963206864695 -3.2072716836298958 7.4120503012961896
+ 4 -3.2956139224926524 2.7619661763315109 8.8715263787762257
+ 4 -3.6425281234523497 2.8683192612948711 3.7131040552724568
+ 2 -0.27526872542102704 -0.84293535617019189 -8.2258655735842190
+ 2 0.22779411464934546 8.9622598447103421E-002 -4.2483404587634865
+ 3 -1.0275443001860252 -1.3588329088476245 -5.8497116599186896
+ 3 -3.0165774228680253 -3.2527372707222026 -5.2719096034816548
+ 3 1.5270393766309045 1.0189236042956498 -8.1575756359202671
+ 3 1.8196793380038094 1.5808807817091919 -5.6789353380992038
+ 4 -0.95971866172835962 -1.6734891715726832 -9.7898725429563225
+ 4 -2.9506331052941119 -4.8008559201206289 -6.6188382246937900
+ 4 -4.8813886842417302 -2.3943340277035210 -5.3731530342165552
+ 4 -2.7536708685382294 -3.9973187614001944 -3.3837151120164086
+ 4 2.4033436477741854 1.7572649825658886 -9.8275464496884055
+ 4 3.0235231195834218 2.9753405309006347 -4.8388833773155451
+ 2 -0.20411923737216536 8.3566472699752126 0.28187486557860486
+ 2 -8.7729318488743047E-002 4.3077907576862966 -0.45668352876236656
+ 3 0.74191432635120680 6.1222537986595462 1.0480411464624635
+ 3 2.4298545697471274 5.8588048725813193 3.2742780614552349
+ 3 -1.7068664055954232 7.9731546672829481 -1.7935698767030237
+ 3 -1.6157053292089478 5.4537056468730274 -2.2406722238666923
+ 4 0.15549782638826617 10.031548261772299 1.1016906217495814
+ 4 3.3623229683005098 4.0381419940326655 3.2179333017720504
+ 4 1.3484990380781330 5.9787084749054697 5.0193789865484941
+ 4 3.8454921179741377 7.3467931511977804 3.2892922464364491
+ 4 -2.6517648284666073 9.4851745246120736 -2.7546782502243556
+ 4 -2.4713691013154264 4.4024397365771772 -3.7490744158433182
+ 2 1.2665333932689813 -7.8235472376790245 -0.55897531652011001
+ 2 0.60884102845395527 -3.8110301687559942 9.6507706689122646E-002
+ 3 1.8877657047378327 -5.4636485948627795 -1.2774886039291737
+ 3 3.7421364585643198 -4.9365298619628559 -3.3205265433363889
+ 3 -0.48323548221079621 -7.6929902123173255 1.3494071057171759
+ 3 -0.87382195798898155 -5.1945015176710854 1.7419829061270915
+ 4 1.9917354684081385 -9.4167873005581377 -1.2953439907843352
+ 4 5.5497990581337424 -5.8259640965162918 -2.9123437639498007
+ 4 3.0741040739682695 -5.6793596592462547 -5.1181562818616699
+ 4 4.0060830575201347 -2.9181237330333398 -3.5276996969939733
+ 4 -1.2585750388879129 -9.3411960731978052 2.2355035474913714
+ 4 -2.0849306720275860 -4.2952975602192032 3.0946431636852592
+ 4 5.4738891753738068 3.9209013459714552 -1.1491626719708552
+ 3 6.3019599808752087 2.0746332518220831 -0.84350937574108253
+ 4 7.8585499534395993 2.2369032831548448 0.48100289103842658
+ 4 6.9636915739714800 1.3069192364174260 -2.6274292113226769
+ 5 4.3396698567423906 0.50414625785981282 0.20799843903346790
+ 4 5.0304077517636800 -1.1180975580776931 0.63142709080928960
+ 4 -6.3390448235922623 -0.89739498701321307 2.4745483760447207
+ 3 -6.0974948282102677 -1.2677599145884468 0.46990661824365099
+ 4 -7.8385320616044032 -0.87261707774972941 -0.53785027831807530
+ 4 -5.5895482587424485 -3.2291486568355570 0.18899948840940103
+ 5 -4.0682356439928462 0.23380416102827728 -0.54894051035287217
+ 4 -4.6160238231184278 1.9569082423835069 -0.71105590867949342
+  }
+}
+Hamiltonian = Dftb {
+  Scc = Yes
+  SccTolerance = 9.9999999999999995E-008
+  MaxSCCIterations = 250
+  ConvergentSCCOnly = Yes
+  Charge = 2.0000000000000000
+  ReadInitialCharges = No
+  Filling = Fermi {
+    Temperature [K] = 0.0000000000000000
+  }
+  ThirdOrderFull = Yes
+  HubbardDerivs = {
+    Zn = -2.9999999999999999E-002
+    N = -0.15350000000000000
+    C = -0.14920000000000000
+    H = -0.18570000000000000
+    O = -0.15750000000000000
+  }
+  OrbitalResolvedSCC = No
+  MaxAngularMomentum = {
+    Zn = "d"
+    N = "p"
+    C = "p"
+    H = "s"
+    O = "p"
+  }
+  SlaterKosterFiles = {
+    Zn-Zn = "/home/zbai29/soft/ambertools25_dev/c4d4a71/install/dat/slko/3ob-3-1/Zn-Zn.skf"
+    Zn-N = "/home/zbai29/soft/ambertools25_dev/c4d4a71/install/dat/slko/3ob-3-1/Zn-N.skf"
+    Zn-C = "/home/zbai29/soft/ambertools25_dev/c4d4a71/install/dat/slko/3ob-3-1/Zn-C.skf"
+    Zn-H = "/home/zbai29/soft/ambertools25_dev/c4d4a71/install/dat/slko/3ob-3-1/Zn-H.skf"
+    Zn-O = "/home/zbai29/soft/ambertools25_dev/c4d4a71/install/dat/slko/3ob-3-1/Zn-O.skf"
+    N-Zn = "/home/zbai29/soft/ambertools25_dev/c4d4a71/install/dat/slko/3ob-3-1/N-Zn.skf"
+    N-N = "/home/zbai29/soft/ambertools25_dev/c4d4a71/install/dat/slko/3ob-3-1/N-N.skf"
+    N-C = "/home/zbai29/soft/ambertools25_dev/c4d4a71/install/dat/slko/3ob-3-1/N-C.skf"
+    N-H = "/home/zbai29/soft/ambertools25_dev/c4d4a71/install/dat/slko/3ob-3-1/N-H.skf"
+    N-O = "/home/zbai29/soft/ambertools25_dev/c4d4a71/install/dat/slko/3ob-3-1/N-O.skf"
+    C-Zn = "/home/zbai29/soft/ambertools25_dev/c4d4a71/install/dat/slko/3ob-3-1/C-Zn.skf"
+    C-N = "/home/zbai29/soft/ambertools25_dev/c4d4a71/install/dat/slko/3ob-3-1/C-N.skf"
+    C-C = "/home/zbai29/soft/ambertools25_dev/c4d4a71/install/dat/slko/3ob-3-1/C-C.skf"
+    C-H = "/home/zbai29/soft/ambertools25_dev/c4d4a71/install/dat/slko/3ob-3-1/C-H.skf"
+    C-O = "/home/zbai29/soft/ambertools25_dev/c4d4a71/install/dat/slko/3ob-3-1/C-O.skf"
+    H-Zn = "/home/zbai29/soft/ambertools25_dev/c4d4a71/install/dat/slko/3ob-3-1/H-Zn.skf"
+    H-N = "/home/zbai29/soft/ambertools25_dev/c4d4a71/install/dat/slko/3ob-3-1/H-N.skf"
+    H-C = "/home/zbai29/soft/ambertools25_dev/c4d4a71/install/dat/slko/3ob-3-1/H-C.skf"
+    H-H = "/home/zbai29/soft/ambertools25_dev/c4d4a71/install/dat/slko/3ob-3-1/H-H.skf"
+    H-O = "/home/zbai29/soft/ambertools25_dev/c4d4a71/install/dat/slko/3ob-3-1/H-O.skf"
+    O-Zn = "/home/zbai29/soft/ambertools25_dev/c4d4a71/install/dat/slko/3ob-3-1/O-Zn.skf"
+    O-N = "/home/zbai29/soft/ambertools25_dev/c4d4a71/install/dat/slko/3ob-3-1/O-N.skf"
+    O-C = "/home/zbai29/soft/ambertools25_dev/c4d4a71/install/dat/slko/3ob-3-1/O-C.skf"
+    O-H = "/home/zbai29/soft/ambertools25_dev/c4d4a71/install/dat/slko/3ob-3-1/O-H.skf"
+    O-O = "/home/zbai29/soft/ambertools25_dev/c4d4a71/install/dat/slko/3ob-3-1/O-O.skf"
+  }
+  HCorrection = Damping {
+    Exponent = 4.0000000000000000
+  }
+  Dispersion = SimpleDftD3 {
+    s6 = 1.0000000000000000
+    s8 = 3.2090000000000001
+    a1 = 0.74600000000000000
+    a2 = 4.1909999999999998
+  }
+  Mixer = Broyden {
+    MixingParameter = 0.20000000000000001
+    InverseJacobiWeight = 1.0000000000000000E-002
+    MinimalWeight = 1.0000000000000000
+    MaximalWeight = 100000.00000000000
+    WeightFactor = 1.0000000000000000E-002
+  }
+}
+Analysis = {
+  CalculateForces = Yes
+  WriteBandOut = No
+}
+ParserOptions = {
+  ParserVersion = 5
+  WriteHSDInput = Yes
+}
+Options = {
+  WriteDetailedOut = Yes
+  WriteCharges = Yes
+}
+
+     ======== DFTBPLUS settings ======== 
+ qm_level          : DFTB3-D3
+ mdftb             : F
+ scftol            :   0.10E-06
+ tfermi            :   0.00E+00
+ maxiter           :    250
+ hcorrection       : T
+ thirdorderfull    : T
+ debug             : T
+ silent            : F
+ reqconv           : T
+ mixer             : BROYDEN
+ broyden_mixpar    :   0.20E+00
+ broyden_invjacwt  :   0.10E-01
+ broyden_minwt     :   0.10E+01
+ broyden_maxwt     :   0.10E+06
+ broyden_wtfact    :   0.10E-01
+ diis_mixpar       :   0.20E+00
+ diis_gen          :   6
+ diis_fromstart    : T
+ simple_mixpar     :   0.70-309
+ d3s8              :   3.20900
+ d3a1              :   0.74600
+ d3a2              :   4.19100
+ 
+ <<< leaving subroutine dftbplus_input_setting
+
+ NSTEP =        1   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45605.9690  EKtot   =         0.0000  EPtot      =    -45605.9690
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45605.9690
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.267773833E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle    1
+  Max grad  2.0737E-02 Target: 4.5000E-04 converged?   no component    12
+  RMS grad  5.9657E-03 Target: 3.0000E-04 converged?   no
+
+Converting HDLC to Cartesians
+
+ NSTEP =        2   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45606.9329  EKtot   =         0.0000  EPtot      =    -45606.9329
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45606.9329
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.267927437E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle    2
+    Energy  1.5360E-03 Target: 5.0000E-06 converged?   no
+  Max step  5.1392E-03 Target: 1.8000E-03 converged?   no component    12
+  RMS step  1.4784E-03 Target: 1.2000E-03 converged?   no
+  Max grad  1.8119E-02 Target: 4.5000E-04 converged?   no component    58
+  RMS grad  5.3934E-03 Target: 3.0000E-04 converged?   no
+
+Converting HDLC to Cartesians
+
+ NSTEP =        3   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45612.2219  EKtot   =         0.0000  EPtot      =    -45612.2219
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45612.2219
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.268770299E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle    3
+    Energy  8.4286E-03 Target: 5.0000E-06 converged?   no
+  Max step  5.4677E-02 Target: 1.8000E-03 converged?   no component    58
+  RMS step  1.5908E-02 Target: 1.2000E-03 converged?   no
+  Max grad  4.2304E-03 Target: 4.5000E-04 converged?   no component   158
+  RMS grad  1.2056E-03 Target: 3.0000E-04 converged?   no
+
+Converting HDLC to Cartesians
+
+ NSTEP =        4   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45612.7164  EKtot   =         0.0000  EPtot      =    -45612.7164
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45612.7164
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.268849092E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle    4
+    Energy  7.8793E-04 Target: 5.0000E-06 converged?   no
+  Max step  1.7111E-02 Target: 1.8000E-03 converged?   no component    27
+  RMS step  4.9709E-03 Target: 1.2000E-03 converged?   no
+  Max grad  3.8194E-03 Target: 4.5000E-04 converged?   no component   158
+  RMS grad  9.0437E-04 Target: 3.0000E-04 converged?   no
+
+Converting HDLC to Cartesians
+
+ NSTEP =        5   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45613.2483  EKtot   =         0.0000  EPtot      =    -45613.2483
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45613.2483
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.268933853E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle    5
+    Energy  8.4761E-04 Target: 5.0000E-06 converged?   no
+  Max step  4.1681E-02 Target: 1.8000E-03 converged?   no component   158
+  RMS step  8.7658E-03 Target: 1.2000E-03 converged?   no
+  Max grad  2.9684E-03 Target: 4.5000E-04 converged?   no component   158
+  RMS grad  6.3813E-04 Target: 3.0000E-04 converged?   no
+
+Converting HDLC to Cartesians
+
+ NSTEP =        6   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45613.6013  EKtot   =         0.0000  EPtot      =    -45613.6013
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45613.6013
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.268990112E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle    6
+    Energy  5.6259E-04 Target: 5.0000E-06 converged?   no
+  Max step  6.0591E-02 Target: 1.8000E-03 converged?   no component   158
+  RMS step  9.9299E-03 Target: 1.2000E-03 converged?   no
+  Max grad  2.0691E-03 Target: 4.5000E-04 converged?   no component   158
+  RMS grad  5.7794E-04 Target: 3.0000E-04 converged?   no
+
+Converting HDLC to Cartesians
+
+ NSTEP =        7   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45613.7738  EKtot   =         0.0000  EPtot      =    -45613.7738
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45613.7738
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269017611E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle    7
+    Energy  2.7499E-04 Target: 5.0000E-06 converged?   no
+  Max step  9.2070E-02 Target: 1.8000E-03 converged?   no component   158
+  RMS step  1.3972E-02 Target: 1.2000E-03 converged?   no
+  Max grad  2.3185E-03 Target: 4.5000E-04 converged?   no component   118
+  RMS grad  7.5409E-04 Target: 3.0000E-04 converged?   no
+
+Converting HDLC to Cartesians
+
+ NSTEP =        8   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45613.9333  EKtot   =         0.0000  EPtot      =    -45613.9333
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45613.9333
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269043020E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle    8
+    Energy  2.5408E-04 Target: 5.0000E-06 converged?   no
+  Max step  1.2315E-02 Target: 1.8000E-03 converged?   no component   158
+  RMS step  3.3591E-03 Target: 1.2000E-03 converged?   no
+  Max grad  9.3180E-04 Target: 4.5000E-04 converged?   no component    29
+  RMS grad  3.0142E-04 Target: 3.0000E-04 converged?   no
+
+Converting HDLC to Cartesians
+
+ NSTEP =        9   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45613.9892  EKtot   =         0.0000  EPtot      =    -45613.9892
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45613.9892
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269051928E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle    9
+    Energy  8.9086E-05 Target: 5.0000E-06 converged?   no
+  Max step  1.1430E-02 Target: 1.8000E-03 converged?   no component   158
+  RMS step  2.5705E-03 Target: 1.2000E-03 converged?   no
+  Max grad  8.0981E-04 Target: 4.5000E-04 converged?   no component   158
+  RMS grad  2.4834E-04 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       10   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.0533  EKtot   =         0.0000  EPtot      =    -45614.0533
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.0533
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269062141E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   10
+    Energy  1.0213E-04 Target: 5.0000E-06 converged?   no
+  Max step  3.6575E-02 Target: 1.8000E-03 converged?   no component   158
+  RMS step  5.5098E-03 Target: 1.2000E-03 converged?   no
+  Max grad  1.1692E-03 Target: 4.5000E-04 converged?   no component    12
+  RMS grad  2.6069E-04 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       11   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.0338  EKtot   =         0.0000  EPtot      =    -45614.0338
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.0338
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269059037E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   11
+    Energy  3.1037E-05 Target: 5.0000E-06 converged?   no
+  Max step  4.9397E-02 Target: 1.8000E-03 converged?   no component   158
+  RMS step  7.5238E-03 Target: 1.2000E-03 converged?   no
+  Max grad  5.2816E-03 Target: 4.5000E-04 converged?   no component    12
+  RMS grad  6.3350E-04 Target: 3.0000E-04 converged?   no
+
+Converting HDLC to Cartesians
+
+ NSTEP =       12   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.0968  EKtot   =         0.0000  EPtot      =    -45614.0968
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.0968
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269069080E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   12
+    Energy  1.0042E-04 Target: 5.0000E-06 converged?   no
+  Max step  1.1618E-02 Target: 1.8000E-03 converged?   no component   158
+  RMS step  2.4486E-03 Target: 1.2000E-03 converged?   no
+  Max grad  3.5513E-04 Target: 4.5000E-04 converged?  yes component   154
+  RMS grad  1.2394E-04 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       13   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.1030  EKtot   =         0.0000  EPtot      =    -45614.1030
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.1030
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269070060E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   13
+    Energy  9.8074E-06 Target: 5.0000E-06 converged?   no
+  Max step  2.0742E-03 Target: 1.8000E-03 converged?   no component   158
+  RMS step  5.8152E-04 Target: 1.2000E-03 converged?  yes
+  Max grad  3.5314E-04 Target: 4.5000E-04 converged?  yes component   178
+  RMS grad  1.0008E-04 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       14   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.1187  EKtot   =         0.0000  EPtot      =    -45614.1187
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.1187
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269072561E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   14
+    Energy  2.5003E-05 Target: 5.0000E-06 converged?   no
+  Max step  1.2506E-02 Target: 1.8000E-03 converged?   no component   158
+  RMS step  2.5311E-03 Target: 1.2000E-03 converged?   no
+  Max grad  5.5437E-04 Target: 4.5000E-04 converged?   no component    12
+  RMS grad  1.1559E-04 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       15   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.1363  EKtot   =         0.0000  EPtot      =    -45614.1363
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.1363
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269075372E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   15
+    Energy  2.8113E-05 Target: 5.0000E-06 converged?   no
+  Max step  1.3085E-02 Target: 1.8000E-03 converged?   no component   158
+  RMS step  3.3902E-03 Target: 1.2000E-03 converged?   no
+  Max grad  6.2005E-04 Target: 4.5000E-04 converged?   no component    84
+  RMS grad  1.4160E-04 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       16   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.1416  EKtot   =         0.0000  EPtot      =    -45614.1416
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.1416
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269076219E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   16
+    Energy  8.4730E-06 Target: 5.0000E-06 converged?   no
+  Max step  3.1756E-02 Target: 1.8000E-03 converged?   no component   158
+  RMS step  8.8630E-03 Target: 1.2000E-03 converged?   no
+  Max grad  2.3427E-03 Target: 4.5000E-04 converged?   no component    12
+  RMS grad  3.8092E-04 Target: 3.0000E-04 converged?   no
+
+Converting HDLC to Cartesians
+
+ NSTEP =       17   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.1695  EKtot   =         0.0000  EPtot      =    -45614.1695
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.1695
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269080660E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   17
+    Energy  4.4410E-05 Target: 5.0000E-06 converged?   no
+  Max step  5.4749E-03 Target: 1.8000E-03 converged?   no component    84
+  RMS step  1.2012E-03 Target: 1.2000E-03 converged?   no
+  Max grad  4.7667E-04 Target: 4.5000E-04 converged?   no component   158
+  RMS grad  1.1679E-04 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       18   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.1783  EKtot   =         0.0000  EPtot      =    -45614.1783
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.1783
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269082059E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   18
+    Energy  1.3986E-05 Target: 5.0000E-06 converged?   no
+  Max step  4.2643E-03 Target: 1.8000E-03 converged?   no component   178
+  RMS step  1.0816E-03 Target: 1.2000E-03 converged?  yes
+  Max grad  4.2547E-04 Target: 4.5000E-04 converged?  yes component   158
+  RMS grad  1.0230E-04 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       19   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.1925  EKtot   =         0.0000  EPtot      =    -45614.1925
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.1925
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269084330E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   19
+    Energy  2.2713E-05 Target: 5.0000E-06 converged?   no
+  Max step  1.5995E-02 Target: 1.8000E-03 converged?   no component   178
+  RMS step  3.6403E-03 Target: 1.2000E-03 converged?   no
+  Max grad  5.6423E-04 Target: 4.5000E-04 converged?   no component    84
+  RMS grad  1.2317E-04 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       20   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.2010  EKtot   =         0.0000  EPtot      =    -45614.2010
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.2010
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269085680E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   20
+    Energy  1.3499E-05 Target: 5.0000E-06 converged?   no
+  Max step  3.1952E-02 Target: 1.8000E-03 converged?   no component   178
+  RMS step  7.1967E-03 Target: 1.2000E-03 converged?   no
+  Max grad  2.9106E-03 Target: 4.5000E-04 converged?   no component    12
+  RMS grad  3.4235E-04 Target: 3.0000E-04 converged?   no
+
+Converting HDLC to Cartesians
+
+ NSTEP =       21   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.2200  EKtot   =         0.0000  EPtot      =    -45614.2200
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.2200
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269088718E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   21
+    Energy  3.0374E-05 Target: 5.0000E-06 converged?   no
+  Max step  9.1484E-03 Target: 1.8000E-03 converged?   no component   178
+  RMS step  2.1254E-03 Target: 1.2000E-03 converged?   no
+  Max grad  9.6702E-04 Target: 4.5000E-04 converged?   no component    12
+  RMS grad  1.5109E-04 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       22   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.2327  EKtot   =         0.0000  EPtot      =    -45614.2327
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.2327
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269090735E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   22
+    Energy  2.0178E-05 Target: 5.0000E-06 converged?   no
+  Max step  1.2749E-02 Target: 1.8000E-03 converged?   no component   178
+  RMS step  2.9932E-03 Target: 1.2000E-03 converged?   no
+  Max grad  4.4706E-04 Target: 4.5000E-04 converged?  yes component    66
+  RMS grad  1.1411E-04 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       23   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.2464  EKtot   =         0.0000  EPtot      =    -45614.2464
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.2464
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269092923E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   23
+    Energy  2.1879E-05 Target: 5.0000E-06 converged?   no
+  Max step  2.0542E-02 Target: 1.8000E-03 converged?   no component   104
+  RMS step  4.6842E-03 Target: 1.2000E-03 converged?   no
+  Max grad  1.0415E-03 Target: 4.5000E-04 converged?   no component    12
+  RMS grad  1.5629E-04 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       24   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.2694  EKtot   =         0.0000  EPtot      =    -45614.2694
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.2694
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269096586E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   24
+    Energy  3.6628E-05 Target: 5.0000E-06 converged?   no
+  Max step  3.8150E-02 Target: 1.8000E-03 converged?   no component   104
+  RMS step  8.2983E-03 Target: 1.2000E-03 converged?   no
+  Max grad  1.2636E-03 Target: 4.5000E-04 converged?   no component    12
+  RMS grad  1.8495E-04 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       25   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.2404  EKtot   =         0.0000  EPtot      =    -45614.2404
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.2404
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269091958E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   25
+    Energy  4.6279E-05 Target: 5.0000E-06 converged?   no
+  Max step  6.3836E-02 Target: 1.8000E-03 converged?   no component   104
+  RMS step  1.2891E-02 Target: 1.2000E-03 converged?   no
+  Max grad  4.2266E-03 Target: 4.5000E-04 converged?   no component    84
+  RMS grad  6.1766E-04 Target: 3.0000E-04 converged?   no
+
+Converting HDLC to Cartesians
+
+ NSTEP =       26   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.2932  EKtot   =         0.0000  EPtot      =    -45614.2932
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.2932
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269100376E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   26
+    Energy  8.4176E-05 Target: 5.0000E-06 converged?   no
+  Max step  1.3312E-02 Target: 1.8000E-03 converged?   no component   104
+  RMS step  2.9767E-03 Target: 1.2000E-03 converged?   no
+  Max grad  8.6153E-04 Target: 4.5000E-04 converged?   no component    12
+  RMS grad  1.2873E-04 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       27   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.2975  EKtot   =         0.0000  EPtot      =    -45614.2975
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.2975
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269101068E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   27
+    Energy  6.9258E-06 Target: 5.0000E-06 converged?   no
+  Max step  1.7704E-03 Target: 1.8000E-03 converged?  yes component   178
+  RMS step  4.8209E-04 Target: 1.2000E-03 converged?  yes
+  Max grad  2.7212E-04 Target: 4.5000E-04 converged?  yes component   104
+  RMS grad  7.9224E-05 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       28   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.3046  EKtot   =         0.0000  EPtot      =    -45614.3046
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.3046
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269102198E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   28
+    Energy  1.1294E-05 Target: 5.0000E-06 converged?   no
+  Max step  1.1084E-02 Target: 1.8000E-03 converged?   no component   104
+  RMS step  1.9246E-03 Target: 1.2000E-03 converged?   no
+  Max grad  4.9919E-04 Target: 4.5000E-04 converged?   no component    12
+  RMS grad  8.7338E-05 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       29   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.3115  EKtot   =         0.0000  EPtot      =    -45614.3115
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.3115
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269103286E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   29
+    Energy  1.0880E-05 Target: 5.0000E-06 converged?   no
+  Max step  1.4565E-02 Target: 1.8000E-03 converged?   no component   104
+  RMS step  2.3627E-03 Target: 1.2000E-03 converged?   no
+  Max grad  5.1348E-04 Target: 4.5000E-04 converged?   no component    12
+  RMS grad  1.0151E-04 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       30   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.3208  EKtot   =         0.0000  EPtot      =    -45614.3208
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.3208
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269104781E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   30
+    Energy  1.4957E-05 Target: 5.0000E-06 converged?   no
+  Max step  4.4579E-02 Target: 1.8000E-03 converged?   no component   104
+  RMS step  6.8768E-03 Target: 1.2000E-03 converged?   no
+  Max grad  1.9138E-03 Target: 4.5000E-04 converged?   no component    12
+  RMS grad  2.4434E-04 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       31   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.3325  EKtot   =         0.0000  EPtot      =    -45614.3325
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.3325
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269106641E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   31
+    Energy  1.8595E-05 Target: 5.0000E-06 converged?   no
+  Max step  1.6806E-02 Target: 1.8000E-03 converged?   no component   104
+  RMS step  2.5815E-03 Target: 1.2000E-03 converged?   no
+  Max grad  5.0928E-04 Target: 4.5000E-04 converged?   no component    12
+  RMS grad  1.1711E-04 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       32   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.3399  EKtot   =         0.0000  EPtot      =    -45614.3399
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.3399
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269107810E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   32
+    Energy  1.1693E-05 Target: 5.0000E-06 converged?   no
+  Max step  1.2152E-02 Target: 1.8000E-03 converged?   no component   104
+  RMS step  1.8683E-03 Target: 1.2000E-03 converged?   no
+  Max grad  3.0477E-04 Target: 4.5000E-04 converged?  yes component    12
+  RMS grad  9.4926E-05 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       33   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.3488  EKtot   =         0.0000  EPtot      =    -45614.3488
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.3488
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269109238E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   33
+    Energy  1.4276E-05 Target: 5.0000E-06 converged?   no
+  Max step  2.3607E-02 Target: 1.8000E-03 converged?   no component   104
+  RMS step  3.5298E-03 Target: 1.2000E-03 converged?   no
+  Max grad  8.2530E-04 Target: 4.5000E-04 converged?   no component    12
+  RMS grad  1.2116E-04 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       34   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.3604  EKtot   =         0.0000  EPtot      =    -45614.3604
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.3604
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269111080E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   34
+    Energy  1.8417E-05 Target: 5.0000E-06 converged?   no
+  Max step  4.0337E-02 Target: 1.8000E-03 converged?   no component   104
+  RMS step  5.9619E-03 Target: 1.2000E-03 converged?   no
+  Max grad  7.4725E-04 Target: 4.5000E-04 converged?   no component    84
+  RMS grad  1.4892E-04 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       35   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.3655  EKtot   =         0.0000  EPtot      =    -45614.3655
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.3655
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269111893E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   35
+    Energy  8.1339E-06 Target: 5.0000E-06 converged?   no
+  Max step  6.2030E-02 Target: 1.8000E-03 converged?   no component   104
+  RMS step  9.1773E-03 Target: 1.2000E-03 converged?   no
+  Max grad  1.6373E-03 Target: 4.5000E-04 converged?   no component    48
+  RMS grad  2.3318E-04 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       36   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.3761  EKtot   =         0.0000  EPtot      =    -45614.3761
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.3761
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269113579E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   36
+    Energy  1.6860E-05 Target: 5.0000E-06 converged?   no
+  Max step  7.8348E-03 Target: 1.8000E-03 converged?   no component   104
+  RMS step  1.3364E-03 Target: 1.2000E-03 converged?   no
+  Max grad  2.5673E-04 Target: 4.5000E-04 converged?  yes component   107
+  RMS grad  8.7010E-05 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       37   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.3807  EKtot   =         0.0000  EPtot      =    -45614.3807
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.3807
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269114321E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   37
+    Energy  7.4250E-06 Target: 5.0000E-06 converged?   no
+  Max step  2.8190E-03 Target: 1.8000E-03 converged?   no component   154
+  RMS step  7.5090E-04 Target: 1.2000E-03 converged?  yes
+  Max grad  2.5323E-04 Target: 4.5000E-04 converged?  yes component   107
+  RMS grad  7.7770E-05 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       38   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.3878  EKtot   =         0.0000  EPtot      =    -45614.3878
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.3878
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269115455E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   38
+    Energy  1.1332E-05 Target: 5.0000E-06 converged?   no
+  Max step  1.6722E-02 Target: 1.8000E-03 converged?   no component   104
+  RMS step  2.7687E-03 Target: 1.2000E-03 converged?   no
+  Max grad  5.3810E-04 Target: 4.5000E-04 converged?   no component    48
+  RMS grad  1.0225E-04 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       39   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.4002  EKtot   =         0.0000  EPtot      =    -45614.4002
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.4002
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269117429E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   39
+    Energy  1.9745E-05 Target: 5.0000E-06 converged?   no
+  Max step  4.4195E-02 Target: 1.8000E-03 converged?   no component   104
+  RMS step  6.9387E-03 Target: 1.2000E-03 converged?   no
+  Max grad  1.0171E-03 Target: 4.5000E-04 converged?   no component    12
+  RMS grad  1.4219E-04 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       40   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.4035  EKtot   =         0.0000  EPtot      =    -45614.4035
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.4035
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269117957E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   40
+    Energy  5.2777E-06 Target: 5.0000E-06 converged?   no
+  Max step  8.7654E-02 Target: 1.8000E-03 converged?   no component   104
+  RMS step  1.3842E-02 Target: 1.2000E-03 converged?   no
+  Max grad  1.9616E-03 Target: 4.5000E-04 converged?   no component    12
+  RMS grad  2.9366E-04 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       41   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.4195  EKtot   =         0.0000  EPtot      =    -45614.4195
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.4195
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269120496E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   41
+    Energy  2.5387E-05 Target: 5.0000E-06 converged?   no
+  Max step  4.8766E-03 Target: 1.8000E-03 converged?   no component    12
+  RMS step  9.4897E-04 Target: 1.2000E-03 converged?  yes
+  Max grad  3.4293E-04 Target: 4.5000E-04 converged?  yes component    30
+  RMS grad  9.5236E-05 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       42   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.4249  EKtot   =         0.0000  EPtot      =    -45614.4249
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.4249
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269121359E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   42
+    Energy  8.6388E-06 Target: 5.0000E-06 converged?   no
+  Max step  9.3959E-03 Target: 1.8000E-03 converged?   no component   104
+  RMS step  1.5897E-03 Target: 1.2000E-03 converged?   no
+  Max grad  3.2805E-04 Target: 4.5000E-04 converged?  yes component    30
+  RMS grad  7.9317E-05 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       43   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.4331  EKtot   =         0.0000  EPtot      =    -45614.4331
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.4331
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269122664E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   43
+    Energy  1.3047E-05 Target: 5.0000E-06 converged?   no
+  Max step  3.1913E-02 Target: 1.8000E-03 converged?   no component   104
+  RMS step  5.1623E-03 Target: 1.2000E-03 converged?   no
+  Max grad  4.3496E-04 Target: 4.5000E-04 converged?  yes component    12
+  RMS grad  9.2874E-05 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       44   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.4415  EKtot   =         0.0000  EPtot      =    -45614.4415
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.4415
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269124005E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   44
+    Energy  1.3408E-05 Target: 5.0000E-06 converged?   no
+  Max step  6.9019E-02 Target: 1.8000E-03 converged?   no component   104
+  RMS step  1.1201E-02 Target: 1.2000E-03 converged?   no
+  Max grad  1.6729E-03 Target: 4.5000E-04 converged?   no component    48
+  RMS grad  2.1599E-04 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       45   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.4517  EKtot   =         0.0000  EPtot      =    -45614.4517
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.4517
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269125636E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   45
+    Energy  1.6314E-05 Target: 5.0000E-06 converged?   no
+  Max step  3.6629E-02 Target: 1.8000E-03 converged?   no component   104
+  RMS step  6.0647E-03 Target: 1.2000E-03 converged?   no
+  Max grad  4.4018E-04 Target: 4.5000E-04 converged?  yes component    48
+  RMS grad  9.4603E-05 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       46   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.4566  EKtot   =         0.0000  EPtot      =    -45614.4566
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.4566
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269126415E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   46
+    Energy  7.7835E-06 Target: 5.0000E-06 converged?   no
+  Max step  1.6070E-02 Target: 1.8000E-03 converged?   no component   104
+  RMS step  2.8437E-03 Target: 1.2000E-03 converged?   no
+  Max grad  1.9491E-04 Target: 4.5000E-04 converged?  yes component   153
+  RMS grad  6.0941E-05 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       47   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.4601  EKtot   =         0.0000  EPtot      =    -45614.4601
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.4601
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269126978E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   47
+    Energy  5.6278E-06 Target: 5.0000E-06 converged?   no
+  Max step  1.4515E-02 Target: 1.8000E-03 converged?   no component   104
+  RMS step  2.6621E-03 Target: 1.2000E-03 converged?   no
+  Max grad  3.2393E-04 Target: 4.5000E-04 converged?  yes component    48
+  RMS grad  6.2567E-05 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       48   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.4647  EKtot   =         0.0000  EPtot      =    -45614.4647
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.4647
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269127706E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   48
+    Energy  7.2842E-06 Target: 5.0000E-06 converged?   no
+  Max step  1.7316E-02 Target: 1.8000E-03 converged?   no component    72
+  RMS step  3.3893E-03 Target: 1.2000E-03 converged?   no
+  Max grad  4.5713E-04 Target: 4.5000E-04 converged?   no component    84
+  RMS grad  7.5505E-05 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       49   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.4666  EKtot   =         0.0000  EPtot      =    -45614.4666
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.4666
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269128014E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   49
+    Energy  3.0793E-06 Target: 5.0000E-06 converged?  yes
+  Max step  2.6584E-02 Target: 1.8000E-03 converged?   no component    72
+  RMS step  5.3764E-03 Target: 1.2000E-03 converged?   no
+  Max grad  9.5176E-04 Target: 4.5000E-04 converged?   no component    48
+  RMS grad  1.5798E-04 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       50   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.4717  EKtot   =         0.0000  EPtot      =    -45614.4717
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.4717
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269128824E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   50
+    Energy  8.1042E-06 Target: 5.0000E-06 converged?   no
+  Max step  2.1811E-03 Target: 1.8000E-03 converged?   no component    48
+  RMS step  5.1936E-04 Target: 1.2000E-03 converged?  yes
+  Max grad  2.1046E-04 Target: 4.5000E-04 converged?  yes component   153
+  RMS grad  5.6145E-05 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       51   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.4739  EKtot   =         0.0000  EPtot      =    -45614.4739
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.4739
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269129169E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   51
+    Energy  3.4453E-06 Target: 5.0000E-06 converged?  yes
+  Max step  2.5048E-03 Target: 1.8000E-03 converged?   no component   144
+  RMS step  6.0118E-04 Target: 1.2000E-03 converged?  yes
+  Max grad  2.1573E-04 Target: 4.5000E-04 converged?  yes component    48
+  RMS grad  5.2355E-05 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       52   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.4771  EKtot   =         0.0000  EPtot      =    -45614.4771
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.4771
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269129677E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   52
+    Energy  5.0769E-06 Target: 5.0000E-06 converged?   no
+  Max step  7.7984E-03 Target: 1.8000E-03 converged?   no component    36
+  RMS step  1.8041E-03 Target: 1.2000E-03 converged?   no
+  Max grad  2.9837E-04 Target: 4.5000E-04 converged?  yes component    84
+  RMS grad  6.4163E-05 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       53   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.4803  EKtot   =         0.0000  EPtot      =    -45614.4803
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.4803
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269130189E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   53
+    Energy  5.1245E-06 Target: 5.0000E-06 converged?   no
+  Max step  1.8974E-02 Target: 1.8000E-03 converged?   no component    72
+  RMS step  4.2945E-03 Target: 1.2000E-03 converged?   no
+  Max grad  1.0074E-03 Target: 4.5000E-04 converged?   no component    48
+  RMS grad  1.5141E-04 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       54   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.4852  EKtot   =         0.0000  EPtot      =    -45614.4852
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.4852
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269130970E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   54
+    Energy  7.8069E-06 Target: 5.0000E-06 converged?   no
+  Max step  1.1128E-02 Target: 1.8000E-03 converged?   no component    72
+  RMS step  2.4390E-03 Target: 1.2000E-03 converged?   no
+  Max grad  3.0506E-04 Target: 4.5000E-04 converged?  yes component    48
+  RMS grad  7.1099E-05 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       55   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.4886  EKtot   =         0.0000  EPtot      =    -45614.4886
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.4886
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269131508E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   55
+    Energy  5.3838E-06 Target: 5.0000E-06 converged?   no
+  Max step  1.1719E-02 Target: 1.8000E-03 converged?   no component    72
+  RMS step  2.4973E-03 Target: 1.2000E-03 converged?   no
+  Max grad  1.8792E-04 Target: 4.5000E-04 converged?  yes component   138
+  RMS grad  5.1239E-05 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       56   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.4911  EKtot   =         0.0000  EPtot      =    -45614.4911
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.4911
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269131910E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   56
+    Energy  4.0180E-06 Target: 5.0000E-06 converged?  yes
+  Max step  1.1806E-02 Target: 1.8000E-03 converged?   no component    72
+  RMS step  2.5412E-03 Target: 1.2000E-03 converged?   no
+  Max grad  2.0838E-04 Target: 4.5000E-04 converged?  yes component    84
+  RMS grad  5.0918E-05 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       57   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.4937  EKtot   =         0.0000  EPtot      =    -45614.4937
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.4937
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269132320E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   57
+    Energy  4.1035E-06 Target: 5.0000E-06 converged?  yes
+  Max step  1.7103E-02 Target: 1.8000E-03 converged?   no component    72
+  RMS step  3.8098E-03 Target: 1.2000E-03 converged?   no
+  Max grad  7.9857E-04 Target: 4.5000E-04 converged?   no component    48
+  RMS grad  1.2375E-04 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       58   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.4970  EKtot   =         0.0000  EPtot      =    -45614.4970
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.4970
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269132859E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   58
+    Energy  5.3846E-06 Target: 5.0000E-06 converged?   no
+  Max step  1.1503E-02 Target: 1.8000E-03 converged?   no component    72
+  RMS step  2.5672E-03 Target: 1.2000E-03 converged?   no
+  Max grad  2.4064E-04 Target: 4.5000E-04 converged?  yes component    48
+  RMS grad  5.4115E-05 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       59   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.4990  EKtot   =         0.0000  EPtot      =    -45614.4990
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.4990
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269133174E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   59
+    Energy  3.1572E-06 Target: 5.0000E-06 converged?  yes
+  Max step  5.0889E-03 Target: 1.8000E-03 converged?   no component   142
+  RMS step  1.2516E-03 Target: 1.2000E-03 converged?   no
+  Max grad  1.8562E-04 Target: 4.5000E-04 converged?  yes component   182
+  RMS grad  4.2390E-05 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       60   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.5010  EKtot   =         0.0000  EPtot      =    -45614.5010
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.5010
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269133498E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   60
+    Energy  3.2391E-06 Target: 5.0000E-06 converged?  yes
+  Max step  7.0235E-03 Target: 1.8000E-03 converged?   no component   142
+  RMS step  1.6829E-03 Target: 1.2000E-03 converged?   no
+  Max grad  2.3849E-04 Target: 4.5000E-04 converged?  yes component    48
+  RMS grad  4.9741E-05 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       61   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.5046  EKtot   =         0.0000  EPtot      =    -45614.5046
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.5046
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269134057E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   61
+    Energy  5.5912E-06 Target: 5.0000E-06 converged?   no
+  Max step  1.4050E-02 Target: 1.8000E-03 converged?   no component   142
+  RMS step  3.1833E-03 Target: 1.2000E-03 converged?   no
+  Max grad  2.8150E-04 Target: 4.5000E-04 converged?  yes component    12
+  RMS grad  5.8124E-05 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       62   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.5029  EKtot   =         0.0000  EPtot      =    -45614.5029
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.5029
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269133790E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   62
+    Energy  2.6707E-06 Target: 5.0000E-06 converged?  yes
+  Max step  2.8724E-02 Target: 1.8000E-03 converged?   no component   142
+  RMS step  6.4847E-03 Target: 1.2000E-03 converged?   no
+  Max grad  9.6958E-04 Target: 4.5000E-04 converged?   no component     8
+  RMS grad  1.8882E-04 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       63   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.5091  EKtot   =         0.0000  EPtot      =    -45614.5091
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.5091
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269134775E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   63
+    Energy  9.8452E-06 Target: 5.0000E-06 converged?   no
+  Max step  5.8346E-03 Target: 1.8000E-03 converged?   no component   142
+  RMS step  1.4438E-03 Target: 1.2000E-03 converged?   no
+  Max grad  1.4071E-04 Target: 4.5000E-04 converged?  yes component   138
+  RMS grad  4.4528E-05 Target: 3.0000E-04 converged?  yes
+
+Converting HDLC to Cartesians
+
+ NSTEP =       64   TIME(PS) =       0.000  TEMP(K) =     0.00  PRESS =     0.0
+ Etot   =    -45614.5101  EKtot   =         0.0000  EPtot      =    -45614.5101
+ BOND   =         0.0000  ANGLE   =         0.0000  DIHED      =         0.0000
+ 1-4 NB =         0.0000  1-4 EEL =         0.0000  VDWAALS    =         0.0000
+ EELEC  =         0.0000  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ DFTBPLUSESCF=    -45614.5101
+ ------------------------------------------------------------------------------
+
+ Energy calculation finished, energy: -7.269134935E+01
+Saving coordinates to restart: min.rst
+
+Converting Cartesians to HDLC
+Testing convergence  in cycle   64
+    Energy  1.6051E-06 Target: 5.0000E-06 converged?  yes
+  Max step  1.5097E-03 Target: 1.8000E-03 converged?  yes component   138
+  RMS step  3.0737E-04 Target: 1.2000E-03 converged?  yes
+  Max grad  1.1823E-04 Target: 4.5000E-04 converged?  yes component   133
+  RMS grad  3.4985E-05 Target: 3.0000E-04 converged?  yes
+Convergence reached
+
+ Optimisation converged
+ ----------------------
+ Final converged energy:     -72.691349353514
+
+Destroying all HDLC residues
+
+
+DL-FIND Report:
+===============
+Optimisation algorithm: L-BFGS
+Number of steps in L-BFGS memory ...............          5
+
+Step length: simple scaled
+Maximum step length ............................  5.000E-01
+Scaling step by ................................  1.000E+00
+
+Coordinate system: Hybrid delocalised internal coordinates (HDLC)
+
+Number of atoms ................................         61
+Number of input geometries .....................          1
+Variables to be optimised ......................        183
+No restart information is written
+This run has not been restarted.
+Number of energy evaluations on this processor .         64
+Number of steps ................................         64
+Number of accepted steps / line searches .......         64
+
+
+| Timing report
+| =============
+| Module                                      CPU time            Wall clock time
+| Total ...............................  3311.442 (100.00%)    53.536 (100.00%) seconds
+| Energy and Gradient .................  3295.996 ( 99.53%)    53.178 ( 99.33%) seconds
+| Step direction ......................     0.125 (  0.00%)     0.000 (  0.00%) seconds
+| Coordinate transformation ...........    10.306 (  0.31%)     0.179 (  0.33%) seconds
+| Checkpoint file I/O .................     0.000 (  0.00%)     0.000 (  0.00%) seconds
+| XYZ-file I/O ........................     0.002 (  0.00%)     0.000 (  0.00%) seconds
+| Maximum memory usage ......................... 3.4620E+02 kB
+
+--------------------------------------------------------------------------------
+   5.  TIMINGS
+--------------------------------------------------------------------------------
+
+|                Build the list             0.00 (77.51% of List )
+|                Other                      0.00 (22.49% of List )
+|             List time                  0.00 ( 8.17% of Nonbo)
+|                   Short_ene time             0.00 (79.47% of Direc)
+|                   Other                      0.00 (20.53% of Direc)
+|                Direct Ewald time          0.00 (66.53% of Ewald)
+|                Force Adjust               0.00 ( 0.03% of Ewald)
+|                Virial junk                0.00 ( 1.84% of Ewald)
+|                Start synchronizatio       0.00 ( 1.37% of Ewald)
+|                Other                      0.00 (30.23% of Ewald)
+|             Ewald time                 0.00 (71.04% of Nonbo)
+|             IPS excludes               0.00 ( 0.77% of Nonbo)
+|             Other                      0.00 (20.01% of Nonbo)
+|          Nonbond force              0.00 ( 0.01% of Force)
+|          QMMM                      53.16 (100.0% of Force)
+|       Force time                53.17 (100.0% of Runmd)
+|    Runmd Time                53.17 (99.29% of Total)
+|    Other                      0.38 ( 0.71% of Total)
+| Total time                53.55 (100.0% of ALL  )
+
+| Number of list builds   :          1
+
+| Highest rstack allocated:          0
+| Highest istack allocated:          0
+|           Job began  at 00:26:26.599  on 04/02/2026
+|           Setup done at 00:26:26.611  on 04/02/2026
+|           Run   done at 00:27:20.147  on 04/02/2026
+|     wallclock() was called    2188 times
+
+|3D-RISM memory allocation summary
+|Type          Maximum        Current   
+|Integer       0.00000 GB     0.00000 GB
+|Real          0.00000 GB     0.00000 GB
+|Logical       0.00000 GB     0.00000 GB
+|Character     0.00000 GB     0.00000 GB
+|---------------------------------------
+|Total         0.00000 GB     0.00000 GB

@@ -1,0 +1,1 @@
+All structures involving MIMH seems not stable. The only stable structures are 1Zn_0MImH_5MeOH and 1Zn_0MImH_6MeOH 

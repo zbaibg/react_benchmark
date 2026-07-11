@@ -1,0 +1,36 @@
+REACT_BENCH=/home/zbai29/data/qmmm_test/react_benchmark
+Output: /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files
+
+Collecting /home/zbai29/data/qmmm_test/react_benchmark/B3LYP_struc/qm_minimize/run23/*/min.xyz ...
+  /home/zbai29/data/qmmm_test/react_benchmark/B3LYP_struc/qm_minimize/run23/1Zn_0MImH_4MeOH/min.xyz -> /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files/1Zn_0MImH_4MeOH.xyz
+  /home/zbai29/data/qmmm_test/react_benchmark/B3LYP_struc/qm_minimize/run23/1Zn_0MImH_5MeOH/min.xyz -> /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files/1Zn_0MImH_5MeOH.xyz
+  /home/zbai29/data/qmmm_test/react_benchmark/B3LYP_struc/qm_minimize/run23/1Zn_0MImH_6MeOH/min.xyz -> /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files/1Zn_0MImH_6MeOH.xyz
+  /home/zbai29/data/qmmm_test/react_benchmark/B3LYP_struc/qm_minimize/run23/1Zn_0MIm_1MeOH/min.xyz -> /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files/1Zn_0MIm_1MeOH.xyz
+  /home/zbai29/data/qmmm_test/react_benchmark/B3LYP_struc/qm_minimize/run23/1Zn_0MIm_4MeOH/min.xyz -> /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files/1Zn_0MIm_4MeOH.xyz
+  /home/zbai29/data/qmmm_test/react_benchmark/B3LYP_struc/qm_minimize/run23/1Zn_0MIm_5MeOH/min.xyz -> /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files/1Zn_0MIm_5MeOH.xyz
+  /home/zbai29/data/qmmm_test/react_benchmark/B3LYP_struc/qm_minimize/run23/1Zn_0MIm_6MeOH/min.xyz -> /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files/1Zn_0MIm_6MeOH.xyz
+  /home/zbai29/data/qmmm_test/react_benchmark/B3LYP_struc/qm_minimize/run23/1Zn_1MImH_0MeOH/min.xyz -> /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files/1Zn_1MImH_0MeOH.xyz
+  /home/zbai29/data/qmmm_test/react_benchmark/B3LYP_struc/qm_minimize/run23/1Zn_1MImH_3MeOH/min.xyz -> /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files/1Zn_1MImH_3MeOH.xyz
+  /home/zbai29/data/qmmm_test/react_benchmark/B3LYP_struc/qm_minimize/run23/1Zn_1MImH_5MeOH/min.xyz -> /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files/1Zn_1MImH_5MeOH.xyz
+  /home/zbai29/data/qmmm_test/react_benchmark/B3LYP_struc/qm_minimize/run23/1Zn_1MIm_0MeOH/min.xyz -> /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files/1Zn_1MIm_0MeOH.xyz
+  /home/zbai29/data/qmmm_test/react_benchmark/B3LYP_struc/qm_minimize/run23/1Zn_1MIm_3MeOH/min.xyz -> /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files/1Zn_1MIm_3MeOH.xyz
+  /home/zbai29/data/qmmm_test/react_benchmark/B3LYP_struc/qm_minimize/run23/1Zn_1MIm_5MeOH/min.xyz -> /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files/1Zn_1MIm_5MeOH.xyz
+  /home/zbai29/data/qmmm_test/react_benchmark/B3LYP_struc/qm_minimize/run23/1Zn_2MImH_2MeOH/min.xyz -> /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files/1Zn_2MImH_2MeOH.xyz
+  /home/zbai29/data/qmmm_test/react_benchmark/B3LYP_struc/qm_minimize/run23/1Zn_2MImH_3MeOH/min.xyz -> /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files/1Zn_2MImH_3MeOH.xyz
+  /home/zbai29/data/qmmm_test/react_benchmark/B3LYP_struc/qm_minimize/run23/1Zn_2MIm_2MeOH/min.xyz -> /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files/1Zn_2MIm_2MeOH.xyz
+  /home/zbai29/data/qmmm_test/react_benchmark/B3LYP_struc/qm_minimize/run23/1Zn_2MIm_3MeOH/min.xyz -> /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files/1Zn_2MIm_3MeOH.xyz
+  /home/zbai29/data/qmmm_test/react_benchmark/B3LYP_struc/qm_minimize/run23/1Zn_3MImH_1MeOH/min.xyz -> /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files/1Zn_3MImH_1MeOH.xyz
+  /home/zbai29/data/qmmm_test/react_benchmark/B3LYP_struc/qm_minimize/run23/1Zn_3MImH_2MeOH/min.xyz -> /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files/1Zn_3MImH_2MeOH.xyz
+  /home/zbai29/data/qmmm_test/react_benchmark/B3LYP_struc/qm_minimize/run23/1Zn_3MIm_1MeOH/min.xyz -> /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files/1Zn_3MIm_1MeOH.xyz
+  /home/zbai29/data/qmmm_test/react_benchmark/B3LYP_struc/qm_minimize/run23/1Zn_4MImH_0MeOH/min.xyz -> /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files/1Zn_4MImH_0MeOH.xyz
+  /home/zbai29/data/qmmm_test/react_benchmark/B3LYP_struc/qm_minimize/run23/1Zn_4MIm_0MeOH/min.xyz -> /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files/1Zn_4MIm_0MeOH.xyz
+  /home/zbai29/data/qmmm_test/react_benchmark/B3LYP_struc/qm_minimize/run23/1Zn_5MImH_0MeOH/min.xyz -> /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files/1Zn_5MImH_0MeOH.xyz
+  /home/zbai29/data/qmmm_test/react_benchmark/B3LYP_struc/qm_minimize/run23/1Zn_5MIm_0MeOH/min.xyz -> /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files/1Zn_5MIm_0MeOH.xyz
+  /home/zbai29/data/qmmm_test/react_benchmark/B3LYP_struc/qm_minimize/run23/H3O_monomer/min.xyz -> /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files/H3O_monomer.xyz
+  /home/zbai29/data/qmmm_test/react_benchmark/B3LYP_struc/qm_minimize/run23/MImH_monomer/min.xyz -> /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files/MImH_monomer.xyz
+  /home/zbai29/data/qmmm_test/react_benchmark/B3LYP_struc/qm_minimize/run23/MIm_monomer/min.xyz -> /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files/MIm_monomer.xyz
+  /home/zbai29/data/qmmm_test/react_benchmark/B3LYP_struc/qm_minimize/run23/MeOH_monomer/min.xyz -> /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files/MeOH_monomer.xyz
+  /home/zbai29/data/qmmm_test/react_benchmark/B3LYP_struc/qm_minimize/run23/Wat_monomer/min.xyz -> /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files/Wat_monomer.xyz
+  /home/zbai29/data/qmmm_test/react_benchmark/B3LYP_struc/qm_minimize/run23/Zn_monomer/min.xyz -> /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files/Zn_monomer.xyz
+
+Done. 30 .xyz file(s) in /home/zbai29/data/qmmm_test/react_benchmark/M052X_struc/xyz/xyz_files

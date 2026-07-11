@@ -1,0 +1,1 @@
+qm_minimize/run23/1Zn_5MIm_0MeOH is hard to converge. I stop it earlier and copied the last frame of path.xyz to min.xyz

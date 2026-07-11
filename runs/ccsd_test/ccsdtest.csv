@@ -1,0 +1,54 @@
+Run,Program,Main setting,Other settings,dE: Zn + MeOH -> Zn(MeOH) (kcal/mol),dE: Zn + MIm -> Zn(MIm) (kcal/mol),dE: Zn + MImH -> Zn(MImH) (kcal/mol),dE: Zn(MeOH) + MIm -> Zn(MIm) + MeOH (kcal/mol),dE: Zn(MeOH) + MImH -> Zn(MImH) + MeOH (kcal/mol),dE: MImH -> MIm + H+ (kcal/mol),dE: Zn(MImH) -> Zn(MIm) + H+ (kcal/mol),dE_RMSE (kcal/mol),Compared to,BSSE_RMSE (kcal/mol)
+,,PNO/RI for ECP,,,,,,,,,,,
+run57,ORCA,CCSD(T) avtz-(pp),VERYTIGHTSCF,-118.9,-400.5,-544.4,-281.6,-67.1,358.4,143.9,,,1.71
+run126,Molpro,CCSD(T) avtz-(pp),,-118.9,-400.5,-544.4,-281.6,-67.1,358.4,143.9,0.00,run57,1.71
+run50,ORCA,DLPNO-CCSD(T) avtz-(pp) RIJCOSX,VERYTIGHTSCF; avtz-(pp)/C,-118.5,-399.7,-544.6,-281.2,-67.3,358.8,144.8,0.54,run57,1.75
+run123,ORCA,DLPNO-CCSD(T) avtz-(pp) TightPNO RIJCOSX,VERYTIGHTSCF; avtz-(pp)/C,-118.6,-399.6,-544.4,-281.0,-67.1,358.7,144.8,0.54,run57,1.76
+run124,ORCA,DLPNO-CCSD(T) avtz-(pp) TightPNO,VERYTIGHTSCF; avtz-(pp)/C,-118.7,-399.7,-544.4,-281.0,-67.0,358.7,144.7,0.52,run57,1.75
+run61,Molpro,PNO-LCCSD(T) avtz-(pp),,-118.8,-400.0,-544.5,-281.2,-67.2,358.5,144.5,0.34,run57,1.53
+,,PNO/RI for Non-ECP,,,,,,,,,,,
+run36,ORCA,CCSD(T) avtz,EXTREMESCF; Thresh=1e-16; TCut=1e-18,-115.1,-391.5,-538.2,-276.4,-64.7,358.4,146.7,,,2.03
+run49,ORCA,DLPNO-CCSD(T) avtz RIJCOSX,VERYTIGHTSCF; avtz/C; AutoAux,-114.7,-390.3,-538.1,-275.5,-64.6,358.8,147.8,0.73,run36,2.04
+run38,ORCA,DLPNO-CCSD(T) avtz TightPNO,EXTREMESCF; Thresh=1e-16; TCut=1e-18; avtz/C,-114.9,-390.5,-538.0,-275.6,-64.5,358.7,147.6,0.59,run36,2.09
+,,Valence-Core Correlation,,,,,,,,,,,
+run50,ORCA,DLPNO-CCSD(T) avtz-(pp) RIJCOSX,VERYTIGHTSCF; avtz-(pp)/C,-118.5,-399.7,-544.6,-281.2,-67.3,358.8,144.8,,,1.75
+run52,ORCA,DLPNO-CCSD(T) a(wc)vtz-(pp) RIJCOSX,VERYTIGHTSCF; a(wc)vtz-(pp)/C,-118.8,-399.6,-544.4,-280.8,-66.8,358.8,144.8,0.29,run50,0.69
+run49,ORCA,DLPNO-CCSD(T) avtz RIJCOSX,VERYTIGHTSCF; avtz/C; AutoAux,-114.7,-390.3,-538.1,-275.5,-64.6,358.8,147.8,,,2.04
+run53,ORCA,DLPNO-CCSD(T) a(wc)vtz RIJCOSX,VERYTIGHTSCF; a(wc)vtz/C,-115.0,-390.6,-538.2,-275.6,-64.5,358.8,147.7,0.17,run49,0.65
+,,Relativity Effect Correction for ORCA F12,,,,,,,,,,,
+run36,ORCA,CCSD(T) avtz,EXTREMESCF; Thresh=1e-16; TCut=1e-18,-115.1,-391.5,-538.2,-276.4,-64.7,358.4,146.7,,,2.03
+run62,ORCA,CCSD(T) DKH2 avtz-DK,VERYTIGHTSCF,-118.8,-400.6,-544.2,-281.8,-67.1,358.4,143.6,,,2.11
+run57,ORCA,CCSD(T) avtz-(pp),VERYTIGHTSCF,-118.9,-400.5,-544.4,-281.6,-67.1,358.4,143.9,0.16,run62,1.71
+run49,ORCA,DLPNO-CCSD(T) avtz RIJCOSX,VERYTIGHTSCF; avtz/C; AutoAux,-114.7,-390.3,-538.1,-275.5,-64.6,358.8,147.8,,,2.04
+run56,ORCA,DLPNO-CCSD(T) DKH2 avtz-DK RIJCOSX,VERYTIGHTSCF; avtz/C; AutoAux,-118.4,-399.4,-544.1,-281.0,-67.0,358.7,144.7,,,2.12
+run50,ORCA,DLPNO-CCSD(T) avtz-(pp) RIJCOSX,VERYTIGHTSCF; avtz-(pp)/C,-118.5,-399.7,-544.6,-281.2,-67.3,358.8,144.8,0.28,run56,1.75
+run37,ORCA,DFT/M052X avtz RIJCOSX,D3ZERO; AutoAux; VERYTIGHTSCF; DEFGRID3; PCDTrimAuxJ,-119.9,-391.7,-541.1,-271.8,-63.2,358.1,149.4,,,0.36
+run45,ORCA,DFT/M052X avtz-(pp)-f12 RIJCOSX,D3ZERO; AutoAux; VERYTIGHTSCF; DEFGRID3; PCDTrimAuxJ,-122.9,-398.7,-545.9,-275.8,-64.9,358.1,147.2,,,0.15
+run62-run36,ORCA,CCSD(T) DKH2 effect,,-3.7,-9.1,-6.0,-5.4,-2.4,0.0,-3.1,,,0.08
+run56-run49,ORCA,DLPNO-CCSD(T) DKH2 effect,,-3.7,-9.1,-6.0,-5.5,-2.4,0.0,-3.1,0.03,run62-run36,0.08
+run57-run36,ORCA,CCSD(T) ECP effect,,-3.8,-9.0,-6.2,-5.2,-2.4,0.0,-2.8,,,0.36
+run50-run49,ORCA,DLPNO-CCSD(T) ECP effect,,-3.8,-9.5,-6.5,-5.7,-2.7,0.0,-3.0,0.31,run57-run36,0.32
+run45-run37,ORCA,DFT-ECP effect,,-3.0,-7.0,-4.8,-4.0,-1.7,0.0,-2.2,1.15,run57-run36,0.22
+run77,ORCA,DLPNO-CCSD(T)-F12 vtz-f12-wis RIJCOSX,VERYTIGHTSCF,-116.1,-391.9,-539.0,-275.7,-64.0,358.9,147.2,,,0.83
+run56-run49+run77,ORCA,DLPNO-CCSD(T)-F12 DKH2 corrected,,-119.8,-401.0,-545.0,-281.2,-66.4,358.9,144.0,,,0.90
+run50-run49+run77,ORCA,DLPNO-CCSD(T)-F12 ECP corrected,,-119.9,-401.4,-545.5,-281.5,-66.7,358.9,144.2,0.28,run56-run49+run77,0.52
+,,Basis Set Limit for ORCA,,,,,,,,,,,
+run50,ORCA,DLPNO-CCSD(T) avtz-(pp) RIJCOSX,VERYTIGHTSCF; avtz-(pp)/C,-118.5,-399.7,-544.6,-281.2,-67.3,358.8,144.8,0.96,run50-run49+run77,1.75
+run59,ORCA,DLPNO-CCSD(T) avqz-(pp) RIJCOSX,VERYTIGHTSCF; avqz-(pp)/C,-119.6,-400.8,-545.7,-281.2,-67.2,358.9,144.9,0.43,run50-run49+run77,1.29
+run50-run49+run77,ORCA,DLPNO-CCSD(T)-F12 ECP corrected,,-119.9,-401.4,-545.5,-281.5,-66.7,358.9,144.2,,,0.52
+,,Basis Set Limit for Molpro,,,,,,,,,,,
+run61,Molpro,PNO-LCCSD(T) avtz-(pp),,-118.8,-400.0,-544.5,-281.2,-67.2,358.5,144.5,1.12,run60,1.53
+run60,Molpro,PNO-LCCSD(T)-F12 avtz-(pp)-f12,,-120.7,-400.9,-546.2,-280.1,-67.0,358.4,145.3,,,0.98
+,,PNO-ECP-F12 vs Canonical-ECP-F12,,,,,,,,,,,
+run125,Molpro,CCSD(T)-F12 avtz-(pp)-f12,,-120.0,-402.0,-545.7,-281.9,-67.4,358.3,143.7,,,0.98
+run50-run49+run77,ORCA,DLPNO-CCSD(T)-F12 ECP corrected,,-119.9,-401.4,-545.5,-281.5,-66.7,358.9,144.2,0.48,run125,0.52
+run60,Molpro,PNO-LCCSD(T)-F12 avtz-(pp)-f12,,-120.7,-400.9,-546.2,-280.1,-67.0,358.4,145.3,1.05,run125,0.98
+,,PNO-ECP/DKH2-F12 vs Canonical-DKH2-F12,,,,,,,,,,,
+run125+run62-run57,Molpro,CCSD(T)-F12 avtz-(pp)-f12 + DKH2 correction,,-119.9,-402.1,-545.5,-282.2,-67.4,358.3,143.4,,,1.40
+run56-run49+run77,ORCA,DLPNO-CCSD(T)-F12 DKH2 corrected,,-119.8,-401.0,-545.0,-281.2,-66.4,358.9,144.0,0.75,run125+run62-run57,0.90
+run50-run49+run77,ORCA,DLPNO-CCSD(T)-F12 ECP corrected,,-119.9,-401.4,-545.5,-281.5,-66.7,358.9,144.2,0.58,run125+run62-run57,0.52
+run60,Molpro,PNO-LCCSD(T)-F12 avtz-(pp)-f12,,-120.7,-400.9,-546.2,-280.1,-67.0,358.4,145.3,1.21,run125+run62-run57,0.98
+,,Canonical-DKH2-F12 vs Canonical-ECP-F12,,,,,,,,,,,
+run125,Molpro,CCSD(T)-F12 avtz-(pp)-f12,,-120.0,-402.0,-545.7,-281.9,-67.4,358.3,143.7,,,0.98
+run125+run62-run57,Molpro,CCSD(T)-F12 avtz-(pp)-f12 + DKH2 correction,,-119.9,-402.1,-545.5,-282.2,-67.4,358.3,143.4,0.16,run125,1.40
+Note,,dE_RMSE and BSSE_RMSE are full-precision RMSE values over the 7 relative-energy columns; total energies are excluded. BSSE_RMSE compares each row with the same row recomputed from BSSE=no data.,,,,,,,,,,,

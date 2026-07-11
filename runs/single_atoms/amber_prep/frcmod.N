@@ -1,0 +1,6 @@
+# From N_monomer.xyz; topology only (QM later)
+MASS
+N0      14.010  0.0
+
+NONBON
+N0      1.5000  0.1000

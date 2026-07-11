@@ -1,0 +1,22 @@
+Remark line goes here
+MASS
+
+BOND
+
+ANGLE
+h4-cc-n1   50.000     121.035   Calculated using h4-c2-n1, penalty score= 30.0
+c3-cd-n1   66.685     116.915   Calculated using c3-ca-n1, penalty score= 23.5
+cc-n1-cd    0.000       0.000   ATTN, need revision
+n1-cd-nd   72.827     122.885   Calculated using n1-ca-nd, penalty score= 23.5
+
+DIHE
+
+IMPROPER
+cc-h4-cc-n1         1.1          180.0         2.0          Using the default value
+c3-n1-cd-nd         1.1          180.0         2.0          Using the default value
+cc-h4-cc-nd         1.1          180.0         2.0          Using the default value
+
+NONBON
+
+
+

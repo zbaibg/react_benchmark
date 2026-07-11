@@ -1,0 +1,2 @@
+1Zn_5MIm_0MeOH dessociate after dl-find relaxation of qm_minimize/run16/ (PBE-D3(BJ) def2-TZVPPD)
+So I used the initial structure as min.xyz (and path.xyz) in qm_minimize/run16/1Zn_5MIm_0MeOH/--the one relaxed by orca- with PBED3(BJ) Def2-TZVP

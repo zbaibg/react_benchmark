@@ -1,0 +1,21 @@
+# Machine-local software paths (absolute paths are expected here only).
+# Project-internal paths should be relative to the repo root.
+
+orca: /home/zbai29/JR/soft/orca_6_1_1_linux_x86-64_shared_openmpi418_frag_move
+orca_legacy: /home/zbai29/JR/soft/orca_6_0_1_linux_x86-64_shared_openmpi416
+molpro_root: /home/zbai29/soft/molpro_2025_4_1
+mrcc: /home/zbai29/soft/mrcc_2022_03_18
+ambertools_sh: /home/zbai29/soft/ambertools25_dev/c4d4a71/install/amber.sh
+ambertools_sh_legacy: /home/zbai29/soft/ambertools25_src_425dd98/install/amber.sh
+xtb_gaussian: /home/zbai29/soft/xtb-gaussian/xtb-gaussian
+condainit: ~/condainit.sh
+scratch_root: /scratch
+dftb_skf:
+  "3ob-3-1": /home/zbai29/soft/3ob-3-1
+  "3ob-3-1_modify_O": /home/zbai29/soft/3ob-3-1_modify_O
+  m3ob_Zn: /home/zbai29/soft/m3ob-test_Zn
+  m3ob_prime_Zn: /home/zbai29/soft/m3ob-test_prime_Zn
+gxtb:
+  home: /home/zbai29/soft/g-xtb/parameters
+  binary: /home/zbai29/soft/g-xtb/binary
+apptainer: /home/zbai29/JR/soft/apptainer/amber_mdftb_fix.sif

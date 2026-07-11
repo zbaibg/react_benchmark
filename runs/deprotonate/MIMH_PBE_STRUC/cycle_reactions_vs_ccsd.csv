@@ -1,0 +1,36 @@
+﻿Phase,Run,Method,BSSE,Reaction,dE_method,dE_CCSD_ref,Error_vs_CCSD
+SP_init,run24,DLPNO-CCSD(T) RIJCOSX def2-TZVPPD def2-TZVPPD/C AutoAux,yes,[Zn·MeOH4]²⁺ + MImH → [Zn·MImH·MeOH3]²⁺ + MeOH,-35.032,-35.032,0.0
+SP_init,run24,DLPNO-CCSD(T) RIJCOSX def2-TZVPPD def2-TZVPPD/C AutoAux,yes,[Zn·MImH·MeOH3]²⁺ → [Zn·MIm·MeOH3]⁺ + H⁺,196.697,196.697,0.0
+SP_init,run24,DLPNO-CCSD(T) RIJCOSX def2-TZVPPD def2-TZVPPD/C AutoAux,yes,[Zn·MeOH4]²⁺ + MIm⁻ → [Zn·MIm·MeOH3]⁺ + MeOH,-197.956,-197.956,0.0
+SP_init,run24,DLPNO-CCSD(T) RIJCOSX def2-TZVPPD def2-TZVPPD/C AutoAux,yes,MImH → MIm⁻ + H⁺,359.621,359.621,0.0
+SP_init,run24,DLPNO-CCSD(T) RIJCOSX def2-TZVPPD def2-TZVPPD/C AutoAux,yes,MImH + H₂O → MIm⁻ + H₃O⁺,187.627,187.627,0.0
+SP_init,run24,DLPNO-CCSD(T) RIJCOSX def2-TZVPPD def2-TZVPPD/C AutoAux,yes,[Zn·MImH·MeOH3]²⁺ + H₂O → [Zn·MIm·MeOH3]⁺ + H₃O⁺,24.703,24.703,0.0
+SP_init,run24,DLPNO-CCSD(T) RIJCOSX def2-TZVPPD def2-TZVPPD/C AutoAux,yes,H₂O + H⁺ → H₃O⁺,-171.994,-171.994,0.0
+SP_init,run23,B3LYP def2-TZVPPD D3BJ AutoAux,yes,[Zn·MeOH4]²⁺ + MImH → [Zn·MImH·MeOH3]²⁺ + MeOH,-36.451,-35.032,-1.418
+SP_init,run23,B3LYP def2-TZVPPD D3BJ AutoAux,yes,[Zn·MImH·MeOH3]²⁺ → [Zn·MIm·MeOH3]⁺ + H⁺,197.377,196.697,0.68
+SP_init,run23,B3LYP def2-TZVPPD D3BJ AutoAux,yes,[Zn·MeOH4]²⁺ + MIm⁻ → [Zn·MIm·MeOH3]⁺ + MeOH,-200.106,-197.956,-2.15
+SP_init,run23,B3LYP def2-TZVPPD D3BJ AutoAux,yes,MImH → MIm⁻ + H⁺,361.032,359.621,1.412
+SP_init,run23,B3LYP def2-TZVPPD D3BJ AutoAux,yes,MImH + H₂O → MIm⁻ + H₃O⁺,189.805,187.627,2.179
+SP_init,run23,B3LYP def2-TZVPPD D3BJ AutoAux,yes,[Zn·MImH·MeOH3]²⁺ + H₂O → [Zn·MIm·MeOH3]⁺ + H₃O⁺,26.15,24.703,1.447
+SP_init,run23,B3LYP def2-TZVPPD D3BJ AutoAux,yes,H₂O + H⁺ → H₃O⁺,-171.227,-171.994,0.767
+SP_opt,run8,mDFTB3D3/3ob_prime,no,[Zn·MeOH4]²⁺ + MImH → [Zn·MImH·MeOH3]²⁺ + MeOH,-37.05,-35.032,-2.018
+SP_opt,run8,mDFTB3D3/3ob_prime,no,[Zn·MImH·MeOH3]²⁺ → [Zn·MIm·MeOH3]⁺ + H⁺,202.732,196.697,6.036
+SP_opt,run8,mDFTB3D3/3ob_prime,no,[Zn·MeOH4]²⁺ + MIm⁻ → [Zn·MIm·MeOH3]⁺ + MeOH,-219.194,-197.956,-21.238
+SP_opt,run8,mDFTB3D3/3ob_prime,no,MImH → MIm⁻ + H⁺,384.877,359.621,25.256
+SP_opt,run8,mDFTB3D3/3ob_prime,no,MImH + H₂O → MIm⁻ + H₃O⁺,205.457,187.627,17.83
+SP_opt,run8,mDFTB3D3/3ob_prime,no,[Zn·MImH·MeOH3]²⁺ + H₂O → [Zn·MIm·MeOH3]⁺ + H₃O⁺,23.313,24.703,-1.39
+SP_opt,run8,mDFTB3D3/3ob_prime,no,H₂O + H⁺ → H₃O⁺,-179.42,-171.994,-7.426
+SP_opt,run17,DFTB3 DampingH,no,[Zn·MeOH4]²⁺ + MImH → [Zn·MImH·MeOH3]²⁺ + MeOH,-38.491,-35.032,-3.458
+SP_opt,run17,DFTB3 DampingH,no,[Zn·MImH·MeOH3]²⁺ → [Zn·MIm·MeOH3]⁺ + H⁺,200.556,196.697,3.859
+SP_opt,run17,DFTB3 DampingH,no,[Zn·MeOH4]²⁺ + MIm⁻ → [Zn·MIm·MeOH3]⁺ + MeOH,-215.212,-197.956,-17.256
+SP_opt,run17,DFTB3 DampingH,no,MImH → MIm⁻ + H⁺,377.277,359.621,17.657
+SP_opt,run17,DFTB3 DampingH,no,MImH + H₂O → MIm⁻ + H₃O⁺,204.571,187.627,16.944
+SP_opt,run17,DFTB3 DampingH,no,[Zn·MImH·MeOH3]²⁺ + H₂O → [Zn·MIm·MeOH3]⁺ + H₃O⁺,27.85,24.703,3.147
+SP_opt,run17,DFTB3 DampingH,no,H₂O + H⁺ → H₃O⁺,-172.706,-171.994,-0.712
+SP_opt,run27,g-xTB,no,[Zn·MeOH4]²⁺ + MImH → [Zn·MImH·MeOH3]²⁺ + MeOH,-36.582,-35.032,-1.55
+SP_opt,run27,g-xTB,no,[Zn·MImH·MeOH3]²⁺ → [Zn·MIm·MeOH3]⁺ + H⁺,192.032,196.697,-4.664
+SP_opt,run27,g-xTB,no,[Zn·MeOH4]²⁺ + MIm⁻ → [Zn·MIm·MeOH3]⁺ + MeOH,-204.601,-197.956,-6.645
+SP_opt,run27,g-xTB,no,MImH → MIm⁻ + H⁺,360.052,359.621,0.431
+SP_opt,run27,g-xTB,no,MImH + H₂O → MIm⁻ + H₃O⁺,190.672,187.627,3.046
+SP_opt,run27,g-xTB,no,[Zn·MImH·MeOH3]²⁺ + H₂O → [Zn·MIm·MeOH3]⁺ + H₃O⁺,22.653,24.703,-2.05
+SP_opt,run27,g-xTB,no,H₂O + H⁺ → H₃O⁺,-169.379,-171.994,2.614

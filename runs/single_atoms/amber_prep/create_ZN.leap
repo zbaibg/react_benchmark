@@ -1,0 +1,22 @@
+logFile create_ZN.log
+loadamberparams frcmod.ZN
+
+addAtomTypes {
+    { "ZN0" "ZN" "sp3" }
+}
+
+a0 = createAtom  ZN1  ZN0  0.00000
+
+set a0 element "Zn"
+
+set a0 position {  0.00000  0.00000  0.00000 }
+
+r = createResidue ZN
+add r a0
+
+
+ZN = createUnit ZN
+add ZN r
+
+saveOff ZN ZN.lib
+quit

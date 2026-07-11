@@ -1,0 +1,19 @@
+!  D3ZERO RIJCOSX TIGHTSCF DEFGRID3 PrintBasis 
+%basis
+  Basis "aug-cc-pVTZ"
+  AuxJ  "AutoAux"
+  PCDTrimAuxJ  Coulomb # Trim the AuxJ basis in the Coulomb metric
+  PCDThresh    -1      # Threshold for the PCD: chosen automatically if <0
+end
+%method 
+  method      dft
+  exchange    hyb_mgga_x_m05_2x
+  correlation mgga_c_m05_2x
+  D3S6     1.000
+  D3RS6    1.417
+  D3S8     0.000
+  D3alpha6 14
+end
+%pal
+    nprocs 16
+end

@@ -1,0 +1,17 @@
+﻿Phase,Run,Method,BSSE,MImH → MIm⁻ + H⁺,[Zn·MImH·MeOH₃]²⁺ → [Zn·MIm·MeOH₃]⁺ + H⁺,MImH + H₂O → MIm⁻ + H₃O⁺,[Zn·MImH·MeOH₃]²⁺ + H₂O → [Zn·MIm·MeOH₃]⁺ + H₃O⁺,H₂O + H⁺ → H₃O⁺
+SP_opt,run9,mDFTB3D3/3ob,no,393.3,205.9,216.9,29.4,-176.4
+SP_opt,run8,mDFTB3D3/3ob_prime,no,384.9,202.7,205.5,23.3,-179.4
+SP_opt,run15,mDFTB3D3/3ob_prime O_unmodified,no,384.9,202.2,207.1,24.4,-177.8
+SP_opt,run6,DFTB3-D3 DampingH,no,377.7,200.8,204.9,28.0,-172.8
+SP_opt,run2,DFTB3-D3H5,no,377.5,200.6,201.1,24.1,-176.5
+SP_opt,run17,DFTB3 DampingH,no,377.3,200.6,204.6,27.8,-172.7
+SP_opt,run1,DFTB3-D3,no,377.1,201.2,199.9,24.0,-177.2
+SP_init,run13,M06L-D3 def2-TZVPPD DEFGRID3,yes,363.3,197.0,188.8,22.4,-174.5
+SP_init,run23,B3LYP def2-TZVPPD D3BJ AutoAux,yes,361.0,197.4,189.8,26.2,-171.2
+SP_opt,run27,g-xTB,no,360.1,192.0,190.7,22.7,-169.4
+SP_init,run24,DLPNO-CCSD(T) RIJCOSX def2-TZVPPD def2-TZVPPD/C AutoAux,yes,359.6,196.7,187.6,24.7,-172.0
+SP_init,run16,PBE-D3(BJ) def2-TZVPPD,yes,358.4,193.2,187.4,22.2,-171.0
+SP_init,run22,RI-MP2 RIJCOSX def2-TZVPPD def2-TZVPPD/C AutoAux,yes,355.2,192.8,184.6,22.2,-170.7
+SP_opt,run7,GFN2-xTB,no,343.1,166.5,188.0,11.3,-155.1
+SP_opt,run25,mDFTB3D3/m3ob-test_prime_Zn,no,-170.1,322.0,-609.5,-117.3,-439.3
+SP_opt,run26,mDFTB3D3/m3ob-test_Zn,no,-170.1,85.5,-608.6,-352.9,-438.4

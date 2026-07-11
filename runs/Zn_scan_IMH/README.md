@@ -1,0 +1,2 @@
+For generated run112 (QM-Zn, MM-IMH, MM-Wat), I have to manually change ifqnt=1 to ifqnt=0 for the min.in files of those structures without Zn 
+For run113(MM-Zn, QM-IMH, MM-Wat) and 114(MM-Zn,QM-IMH, QM-Wat), and run116(QM-WAT, MM-ZN,IMH), run118(QM-IMH, MM-WAT,ZN using M052X), I have to manually change qmcharge to 0 for min.in files of structures including Zn.

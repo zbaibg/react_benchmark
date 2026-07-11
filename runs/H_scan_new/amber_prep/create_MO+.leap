@@ -1,0 +1,58 @@
+logFile create_MO+.log
+loadamberparams frcmod.MO+
+
+addAtomTypes {
+    { "H1" "H" "sp3" }
+    { "C1" "C" "sp3" }
+    { "H2" "H" "sp3" }
+    { "H3" "H" "sp3" }
+    { "O1" "O" "sp3" }
+    { "H4" "H" "sp3" }
+    { "H5" "H" "sp3" }
+}
+
+a0 = createAtom  HC1  H1  0.14286
+a1 = createAtom  C1  C1  0.14286
+a2 = createAtom  HC2  H2  0.14286
+a3 = createAtom  HC3  H3  0.14286
+a4 = createAtom  O1  O1  0.14286
+a5 = createAtom  HO1  H4  0.14286
+a6 = createAtom  HO2  H5  0.14286
+
+set a0 element "H"
+set a1 element "C"
+set a2 element "H"
+set a3 element "H"
+set a4 element "O"
+set a5 element "H"
+set a6 element "H"
+
+set a0 position {  -1.10553  -0.78931  0.61111 }
+set a1 position {  -0.71323  0.01217  0.02066 }
+set a2 position {  -1.02336  -0.10900  -0.99621 }
+set a3 position {  -1.07955  0.94458  0.39658 }
+set a4 position {  0.71512  -0.00089  0.08816 }
+set a5 position {  1.04379  -0.83744  -0.24912 }
+set a6 position {  1.06709  0.71820  -0.44159 }
+
+r = createResidue MO+
+add r a0
+add r a1
+add r a2
+add r a3
+add r a4
+add r a5
+add r a6
+
+bond a0 a1
+bond a1 a2
+bond a1 a3
+bond a1 a4
+bond a4 a5
+bond a4 a6
+
+MO+ = createUnit MO+
+add MO+ r
+
+saveOff MO+ MO+.lib
+quit

@@ -1,0 +1,12 @@
+! CCSD(T)-F12 VERYTIGHTSCF NoAutoStart
+%basis
+  Basis "aug-cc-pVTZ-PP"
+  CABS "aug-cc-pVTZ-PP-OptRI"
+  NewECP Zn "SK-MCDHF-RSC" end
+end
+%maxcore 6000
+%pal
+    nprocs 32
+end
+! Angs NoUseSym
+*xyzfile 2 1 MOL.xyz

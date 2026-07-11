@@ -1,0 +1,22 @@
+logFile create_H.log
+loadamberparams frcmod.H
+
+addAtomTypes {
+    { "H0" "H" "sp3" }
+}
+
+a0 = createAtom  H1  H0  1.00000
+
+set a0 element "H"
+
+set a0 position {  0.00000  0.00000  0.00000 }
+
+r = createResidue H
+add r a0
+
+
+H = createUnit H
+add H r
+
+saveOff H H.lib
+quit

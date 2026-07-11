@@ -1,0 +1,112 @@
+!!index array str
+ "MI+"
+!entry.MI+.unit.atoms table  str name  str type  int typex  int resx  int flags  int seq  int elmnt  dbl chg
+ "N1" "N1" 0 1 131072 1 7 0.076920
+ "N2" "N2" 0 1 131072 2 7 0.076920
+ "C3" "C1" 0 1 131072 3 6 0.076920
+ "C4" "C2" 0 1 131072 4 6 0.076920
+ "C1" "C3" 0 1 131072 5 6 0.076920
+ "C2" "C4" 0 1 131072 6 6 0.076920
+ "H6" "H1" 0 1 131072 7 1 0.076920
+ "H1" "H2" 0 1 131072 8 1 0.076920
+ "H2" "H3" 0 1 131072 9 1 0.076920
+ "H3" "H4" 0 1 131072 10 1 0.076920
+ "H4" "H5" 0 1 131072 11 1 0.076920
+ "H5" "H6" 0 1 131072 12 1 0.076920
+ "H7" "H7" 0 1 131072 13 1 0.076920
+!entry.MI+.unit.atomspertinfo table  str pname  str ptype  int ptypex  int pelmnt  dbl pchg
+ "N1" "N1" 0 -1 0.0
+ "N2" "N2" 0 -1 0.0
+ "C3" "C1" 0 -1 0.0
+ "C4" "C2" 0 -1 0.0
+ "C1" "C3" 0 -1 0.0
+ "C2" "C4" 0 -1 0.0
+ "H6" "H1" 0 -1 0.0
+ "H1" "H2" 0 -1 0.0
+ "H2" "H3" 0 -1 0.0
+ "H3" "H4" 0 -1 0.0
+ "H4" "H5" 0 -1 0.0
+ "H5" "H6" 0 -1 0.0
+ "H7" "H7" 0 -1 0.0
+!entry.MI+.unit.boundbox array dbl
+ -1.000000
+ 0.0
+ 0.0
+ 0.0
+ 0.0
+!entry.MI+.unit.childsequence single int
+ 2
+!entry.MI+.unit.connect array int
+ 0
+ 0
+!entry.MI+.unit.connectivity table  int atom1x  int atom2x  int flags
+ 1 3 1
+ 1 5 1
+ 1 7 1
+ 2 3 1
+ 2 6 1
+ 2 13 1
+ 3 4 1
+ 4 8 1
+ 4 9 1
+ 4 10 1
+ 5 6 1
+ 5 11 1
+ 6 12 1
+!entry.MI+.unit.hierarchy table  str abovetype  int abovex  str belowtype  int belowx
+ "U" 0 "R" 1
+ "R" 1 "A" 1
+ "R" 1 "A" 2
+ "R" 1 "A" 3
+ "R" 1 "A" 4
+ "R" 1 "A" 5
+ "R" 1 "A" 6
+ "R" 1 "A" 7
+ "R" 1 "A" 8
+ "R" 1 "A" 9
+ "R" 1 "A" 10
+ "R" 1 "A" 11
+ "R" 1 "A" 12
+ "R" 1 "A" 13
+!entry.MI+.unit.name single str
+ "MI+"
+!entry.MI+.unit.positions table  dbl x  dbl y  dbl z
+ 0.130930 1.046740 0.297460
+ 0.030670 -1.002090 -0.336860
+ -0.687240 0.020920 0.021280
+ -2.224220 0.049810 0.113200
+ 1.383860 0.635420 0.101450
+ 1.322170 -0.652130 -0.297240
+ -0.149070 1.958720 0.597310
+ -2.523110 0.740260 0.874020
+ -2.632060 0.356780 -0.827200
+ -2.585410 -0.927520 0.356640
+ 2.271830 1.217240 0.235230
+ 2.154660 -1.279710 -0.538090
+ -0.322810 -1.900270 -0.598240
+!entry.MI+.unit.residueconnect table  int c1x  int c2x  int c3x  int c4x  int c5x  int c6x
+ 0 0 0 0 0 0
+!entry.MI+.unit.residues table  str name  int seq  int childseq  int startatomx  str restype  int imagingx
+ "MI+" 1 14 1 "?" 0
+!entry.MI+.unit.residuesPdbSequenceNumber array int
+ 0
+!entry.MI+.unit.solventcap array dbl
+ -1.000000
+ 0.0
+ 0.0
+ 0.0
+ 0.0
+!entry.MI+.unit.velocities table  dbl x  dbl y  dbl z
+ 0.0 0.0 0.0
+ 0.0 0.0 0.0
+ 0.0 0.0 0.0
+ 0.0 0.0 0.0
+ 0.0 0.0 0.0
+ 0.0 0.0 0.0
+ 0.0 0.0 0.0
+ 0.0 0.0 0.0
+ 0.0 0.0 0.0
+ 0.0 0.0 0.0
+ 0.0 0.0 0.0
+ 0.0 0.0 0.0
+ 0.0 0.0 0.0
