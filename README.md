@@ -208,3 +208,22 @@ runs/<campaign>/
   ├── prepare_template.sh  ──source──────────►  tools/repo_env.sh
   └── amber_prep/prepare.sh ──► tools/*.py + structures/monomers/
 ```
+
+---
+
+## 5. Symlink repair after the move
+
+After relocating this tree out of `qmmm_test`, many absolute / wrong-depth symlinks broke. They were remapped into the new layout as **relative** links (e.g. old `qmmm_test/react_benchmark/X` → `runs/X`, `python_scripts/` → `tools/`, JR monomers → `structures/monomers/`, plus a few structural substitutes such as gas → `lig_exchange` and `1Zn_6Wat_*` → `1ImH_6Wat_*`).
+
+**Geometry `MOL.xyz` / `amber_prep` links** were then checked and, where needed, retargeted so inputs match the job’s own `MOL.pdb` (within PDB 3-decimal precision):
+
+| Stage | Expected target (general jobs) |
+|-------|--------------------------------|
+| `SP_init` / `SP_opt` | Prefer `qm_minimize/**/min.xyz` if it exists and matches PDB; else `xyz/xyz_files/...` |
+| `qm_minimize` | `xyz/xyz_files/...` (not same-dir `min.xyz`) |
+| `minimize` | corresponding `qm_minimize/**/min.xyz` |
+| `amber_prep` | geometry that matches same-stem `*.pdb` |
+
+**Restart / hand-edit cases** (`old/`, `initial_run/`, `manually_created_*.xyz`, `waste/`, etc.): only require that `MOL.xyz` agrees with the same-directory `MOL.pdb`; same-dir links are allowed there (as in the original tree).
+
+**Final check:** no broken symlinks; general jobs do not point `MOL.xyz` at same-dir files; targets follow the table above and match same-dir PDB; restart/manual exceptions match PDB (and match old_data link text). One known job has no `MOL.pdb` (`lig_exchange/.../1Zn_5MIm_0MeOH`) and was verified against `path.xyz` instead.
