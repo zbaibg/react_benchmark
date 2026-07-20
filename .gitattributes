@@ -1,0 +1,29 @@
+# Default: store everything in Git LFS (objects on intranet LFS server).
+* filter=lfs diff=lfs merge=lfs -text
+
+# Keep source / config / docs as normal Git objects.
+*.py text !filter !diff !merge
+*.sh text !filter !diff !merge eol=lf
+*.bash text !filter !diff !merge eol=lf
+*.yaml text !filter !diff !merge
+*.yml text !filter !diff !merge
+*.md text !filter !diff !merge
+*.txt text !filter !diff !merge
+*.json text !filter !diff !merge
+*.toml text !filter !diff !merge
+*.cfg text !filter !diff !merge
+*.ini text !filter !diff !merge
+*.csv text !filter !diff !merge
+*.hsd text !filter !diff !merge
+*.sbatch text !filter !diff !merge
+*.input text !filter !diff !merge
+*.in text !filter !diff !merge
+*.frcmod text !filter !diff !merge
+*.lib text !filter !diff !merge
+*.mol2 text !filter !diff !merge
+.gitignore text !filter !diff !merge
+.gitattributes text !filter !diff !merge
+.lfsconfig text !filter !diff !merge
+README* text !filter !diff !merge
+LICENSE* text !filter !diff !merge
+software.yaml text !filter !diff !merge
