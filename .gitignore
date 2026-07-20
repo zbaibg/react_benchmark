@@ -1,4 +1,21 @@
-# Junk only — large scientific artifacts are tracked via Git LFS.
+# =============================================================================
+# react_benchmark .gitignore
+#
+# KEEP on remote:
+#   - tools/, structures/, params/, software.yaml, README, scripts, templates
+#   - run_configs.yaml and other YAML settings
+#   - optimized geometries: **/min.xyz (and campaign xyz/ inputs)
+#   - tabulated results: **/*.csv (and small summary outs)
+#   - amber_prep libraries / force-field files
+#
+# DROP (regenerable or huge scratch):
+#   - QM wavefunctions, integrals, DIIS/tmp, Molpro/MRCC scratch
+#   - gen_struc_* numbered worker trees (keep ana_* summaries)
+#   - optimization trajectories (path*.xyz)
+#   - waste copies, caches, slurm logs
+# =============================================================================
+
+# ----- Python / editor / OS -----
 __pycache__/
 *.py[cod]
 *$py.class
@@ -17,6 +34,92 @@ Thumbs.db
 .cursor/
 .vscode/
 .idea/
-software.local.yaml
+
+
+
+# ----- QM binary / integral / scratch dumps -----
+*.gbw
+*.densities
+*.densitiesinfo
+*.loc
+*.ges
+*.bas0
+*.bas1
+*.bas2
+*.bas3
+*.bas4
+*.bas5
+*.pc
+*.qro
+*.uno
+*.unso
+*.prop
+*.hess
+*.cipci
+*.dmat*
+*.tmp
+*.tmp.*
+*.diisao.tmp*
+*.xml-sidecar
+*.chk
+*.chk.*
+orc_job.bibtex
+
+# Molpro / MRCC scratch-like names (often no extension)
+FOCK
+FOCK_*
+SROOT
+SROOT_*
+OEINT
+PRINT
+MOCOEF
+MOCOEF_*
+SCHOL
+VARS
+VARS_*
+VARS.old
+DFINV
+DFINVLOC
+DFINT*
+F12INT*
+S12MAT*
+SCFDENSITIES
+TEDAT
+SYMTRA
+OCCUP
+KEYWD
+EXIT
+DOMAIN_AO
+DAO
+iface
+fort.*
+
+# Bare numeric MRCC unit files (e.g. "55")
+**/[0-9]
+**/[0-9][0-9]
+**/[0-9][0-9][0-9]
+**/[0-9][0-9][0-9][0-9]
+
+# ----- Verbose / regenerable QM text dumps (energies live in csv / notes) -----
+**/run.xml
+*.out_[0-9]*
+out_[0-9]*
+**/out_[0-9]*
+**/GENBAS
+*.bin
+*.engrad
+
+# ----- Slurm / job noise -----
+slurm-*.out
+slurm-*.err
+sbatch.log
+*sbatch.log
+prepare_sbatch.log
+core.*
+*.err
+
+# ----- Optional local overrides -----
 .env
 .env.*
+
+# ----- Backups last (override job-tree allowlists) -----
