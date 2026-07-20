@@ -1,43 +1,66 @@
 #!/usr/bin/env python3
+"""Ligand-exchange energies: ZnLSolv5 + Solv -> ZnSolv6 + L."""
+
 import glob
 import os
 import re
 import sys
+from dataclasses import dataclass
 from typing import Dict, List, Optional, Tuple
 
 import numpy as np
 import pandas as pd
 import yaml
 
-# Make repo root and python_scripts/ importable.
+# Make repo tools/ importable (analib lives there).
 _BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.abspath(os.path.join(_BASE_DIR, "..", "..", ".."))
-PYTHON_SCRIPTS_DIR = os.path.join(ROOT_DIR, "python_scripts")
-for _path in (PYTHON_SCRIPTS_DIR, ROOT_DIR):
+TOOLS_DIR = os.path.join(ROOT_DIR, "tools")
+for _path in (TOOLS_DIR, ROOT_DIR):
     if _path not in sys.path:
         sys.path.insert(0, _path)
 
 from analib import get_Etot_amber, get_complex_energies  # type: ignore
 
-FORMULA_RE = re.compile(r"^1Zn_(\d+)(ImH|Im-)_(\d+)Wat$")
-RUN_RE = re.compile(r"^run(\d+)$")
-MONOMER_H_REACTION_TYPE = "monomer Protonation (+H)"
-MONOMER_H_REACTIONS = (
-    ("Im-_monomer", "ImH_monomer", "Im-", "ImH"),
+# Legacy: 1Zn_1ImH_5Wat / 1Zn_1Im-_5Wat / 1Zn_0ImH_6Wat
+LEGACY_RE = re.compile(r"^1Zn_(\d+)(ImH|Im-)_(\d+)Wat$")
+# Explicit: 1Zn_1Im-_0ImH_5MeOH / 1Zn_1MIm_0MImH_5Wat / ...
+EXPLICIT_RE = re.compile(
+    r"^1Zn_(\d+)(Im-|MIm)_(\d+)(ImH|MImH)_(\d+)(Wat|MeOH)$"
 )
-REACTION_TYPE_ORDER = {
-    "Add Wat": 0,
-    "Add ImH": 1,
-    "Add Im(-)": 2,
-    "Deprotonation (-H+)": 3,
-    "Exchange (-Wat, +Im(-))": 4,
-    "Exchange (-Wat, +ImH)": 5,
-    MONOMER_H_REACTION_TYPE: 6,
-}
+RUN_RE = re.compile(r"^run(\d+)$")
+
+REACTION_TYPE = "Exchange (-L, +Solv)"
 DEFAULT_BASE_DIR = "SP_init"
 RUN_SOURCE_OVERRIDES = {
     "run41": "qm_minimize",
 }
+
+MONOMER_DIRS = {
+    "Im-": "Im-_monomer",
+    "ImH": "ImH_monomer",
+    "MIm": "MIm_monomer",
+    "MImH": "MImH_monomer",
+    "Wat": "Wat_monomer",
+    "MeOH": "MeOH_monomer",
+}
+
+
+@dataclass(frozen=True)
+class ComplexInfo:
+    formula: str
+    ligand: Optional[str]  # None for ZnSolv6
+    n_ligand: int
+    solvent: str
+    n_solvent: int
+
+    @property
+    def is_zn_l_solv5(self) -> bool:
+        return self.n_ligand == 1 and self.n_solvent == 5 and self.ligand is not None
+
+    @property
+    def is_zn_solv6(self) -> bool:
+        return self.n_ligand == 0 and self.n_solvent == 6
 
 
 def _run_sort_key(path: str) -> Tuple[int, str]:
@@ -61,24 +84,87 @@ def _load_method_name(run_path: str) -> str:
     return str(notes.get("name", run_name))
 
 
-def _parse_formula_counts(formula: str) -> Optional[Tuple[int, int, int]]:
-    match = FORMULA_RE.fullmatch(formula)
-    if match is None:
-        return None
-    n_ligand = int(match.group(1))
-    ligand = match.group(2)
-    n_wat = int(match.group(3))
-    n_im_minus = n_ligand if ligand == "Im-" else 0
-    n_imh = n_ligand if ligand == "ImH" else 0
-    return (n_im_minus, n_imh, n_wat)
+def _parse_complex(formula: str) -> Optional[ComplexInfo]:
+    match = LEGACY_RE.fullmatch(formula)
+    if match is not None:
+        n_ligand = int(match.group(1))
+        ligand = match.group(2)
+        n_solvent = int(match.group(3))
+        return ComplexInfo(
+            formula=formula,
+            ligand=None if n_ligand == 0 else ligand,
+            n_ligand=n_ligand,
+            solvent="Wat",
+            n_solvent=n_solvent,
+        )
+
+    match = EXPLICIT_RE.fullmatch(formula)
+    if match is not None:
+        n_a = int(match.group(1))
+        lig_a = match.group(2)
+        n_b = int(match.group(3))
+        lig_b = match.group(4)
+        n_solvent = int(match.group(5))
+        solvent = match.group(6)
+        n_ligand = n_a + n_b
+        if n_ligand == 0:
+            ligand = None
+        elif n_a == 1 and n_b == 0:
+            ligand = lig_a
+        elif n_a == 0 and n_b == 1:
+            ligand = lig_b
+        else:
+            return None
+        return ComplexInfo(
+            formula=formula,
+            ligand=ligand,
+            n_ligand=n_ligand,
+            solvent=solvent,
+            n_solvent=n_solvent,
+        )
+
+    return None
 
 
-def _complex_sort_key(formula: str) -> Tuple[int, int, int, str]:
-    counts = _parse_formula_counts(formula)
-    if counts is None:
-        return (10**9, 10**9, 10**9, formula)
-    n_im_minus, n_imh, n_wat = counts
-    return (n_im_minus + n_imh, n_wat, n_im_minus, formula)
+def _pretty_formula(formula: str) -> str:
+    """Drop zero-count species for display, e.g. 1Zn_0MIm_1MImH_5Wat -> 1Zn_1MImH_5Wat."""
+    match = LEGACY_RE.fullmatch(formula)
+    if match is not None:
+        n_ligand = int(match.group(1))
+        ligand = match.group(2)
+        n_solvent = int(match.group(3))
+        parts = ["1Zn"]
+        if n_ligand > 0:
+            parts.append(f"{n_ligand}{ligand}")
+        if n_solvent > 0:
+            parts.append(f"{n_solvent}Wat")
+        return "_".join(parts)
+
+    match = EXPLICIT_RE.fullmatch(formula)
+    if match is not None:
+        n_a = int(match.group(1))
+        lig_a = match.group(2)
+        n_b = int(match.group(3))
+        lig_b = match.group(4)
+        n_solvent = int(match.group(5))
+        solvent = match.group(6)
+        parts = ["1Zn"]
+        if n_a > 0:
+            parts.append(f"{n_a}{lig_a}")
+        if n_b > 0:
+            parts.append(f"{n_b}{lig_b}")
+        if n_solvent > 0:
+            parts.append(f"{n_solvent}{solvent}")
+        return "_".join(parts)
+
+    return formula
+
+
+def _complex_sort_key(formula: str) -> Tuple[str, int, str, str]:
+    info = _parse_complex(formula)
+    if info is None:
+        return ("", 10**9, "", formula)
+    return (info.solvent, -info.n_solvent, info.ligand or "", formula)
 
 
 def _iter_complex_names(run_path: str, source_base_dir: str) -> List[str]:
@@ -89,116 +175,23 @@ def _iter_complex_names(run_path: str, source_base_dir: str) -> List[str]:
             continue
 
         if source_base_dir == "qm_minimize":
-            if _parse_formula_counts(entry) is not None:
+            if _parse_complex(entry) is not None:
                 complex_names.append(entry)
             continue
 
         if entry.endswith("_full"):
-            complex_name = entry[:-len("_full")]
-            if _parse_formula_counts(complex_name) is not None:
+            complex_name = entry[: -len("_full")]
+            if _parse_complex(complex_name) is not None:
                 complex_names.append(complex_name)
     return sorted(set(complex_names), key=_complex_sort_key)
 
 
-def _reaction_type_from_counts(
-    reactant_counts: Tuple[int, int, int],
-    product_counts: Tuple[int, int, int],
-) -> Optional[str]:
-    d_im_minus = product_counts[0] - reactant_counts[0]
-    d_imh = product_counts[1] - reactant_counts[1]
-    d_wat = product_counts[2] - reactant_counts[2]
-
-    if (d_im_minus, d_imh, d_wat) == (0, 0, 1):
-        return "Add Wat"
-    if (d_im_minus, d_imh, d_wat) == (0, 1, 0):
-        return "Add ImH"
-    if (d_im_minus, d_imh, d_wat) == (1, 0, 0):
-        return "Add Im(-)"
-    if (d_im_minus, d_imh, d_wat) == (1, -1, 0):
-        return "Deprotonation (-H+)"
-    if (d_im_minus, d_imh, d_wat) == (1, 0, -1):
-        return "Exchange (-Wat, +Im(-))"
-    if (d_im_minus, d_imh, d_wat) == (0, 1, -1):
-        return "Exchange (-Wat, +ImH)"
-    return None
-
-
-def _balanced_reaction_plain(edge_type: str, from_formula: str, to_formula: str) -> str:
-    if edge_type == MONOMER_H_REACTION_TYPE:
-        return f"{from_formula} + H -> {to_formula}"
-    if edge_type == "Add Wat":
-        return f"{from_formula} + Wat -> {to_formula}"
-    if edge_type == "Add ImH":
-        return f"{from_formula} + ImH -> {to_formula}"
-    if edge_type == "Add Im(-)":
-        return f"{from_formula} + Im- -> {to_formula}"
-    if edge_type == "Deprotonation (-H+)":
-        return f"{from_formula} -> {to_formula} + H+"
-    if edge_type == "Exchange (-Wat, +Im(-))":
-        return f"{from_formula} + Im- -> {to_formula} + Wat"
-    if edge_type == "Exchange (-Wat, +ImH)":
-        return f"{from_formula} + ImH -> {to_formula} + Wat"
-    return f"{from_formula} -> {to_formula}"
-
-
-def _compute_de_rxn_kcal(
-    edge_type: str,
-    e_from: float,
-    e_to: float,
-    monomer_refs: Dict[str, float],
-) -> Optional[float]:
-    d_cluster = e_to - e_from
-
-    if edge_type == "Add Im(-)":
-        e_im_minus = monomer_refs.get("Im-")
-        return None if e_im_minus is None else d_cluster - e_im_minus
-    if edge_type == "Add ImH":
-        e_imh = monomer_refs.get("ImH")
-        return None if e_imh is None else d_cluster - e_imh
-    if edge_type == "Deprotonation (-H+)":
-        e_h = monomer_refs.get("H")
-        return None if e_h is None else d_cluster + e_h
-    if edge_type == "Add Wat":
-        e_wat = monomer_refs.get("Wat")
-        return None if e_wat is None else d_cluster - e_wat
-    if edge_type == "Exchange (-Wat, +Im(-))":
-        e_im_minus = monomer_refs.get("Im-")
-        e_wat = monomer_refs.get("Wat")
-        if e_im_minus is None or e_wat is None:
-            return None
-        return d_cluster - e_im_minus + e_wat
-    if edge_type == "Exchange (-Wat, +ImH)":
-        e_imh = monomer_refs.get("ImH")
-        e_wat = monomer_refs.get("Wat")
-        if e_imh is None or e_wat is None:
-            return None
-        return d_cluster - e_imh + e_wat
-    return None
-
-
-def _collect_monomer_refs(run_path: str, warn_missing_h: bool = True) -> Dict[str, float]:
-    monomer_dirs = {
-        "Im-": "Im-_monomer",
-        "ImH": "ImH_monomer",
-        "Wat": "Wat_monomer",
-        "Zn": "Zn_monomer",
-    }
+def _collect_monomer_refs(run_path: str) -> Dict[str, float]:
     refs: Dict[str, float] = {}
-    for label, subdir in monomer_dirs.items():
+    for label, subdir in MONOMER_DIRS.items():
         energy = get_Etot_amber(os.path.join(run_path, subdir, "min.out"))
         if energy is not None:
             refs[label] = energy
-
-    e_h = get_Etot_amber(os.path.join(run_path, "H_monomer", "min.out"))
-    if e_h is not None:
-        refs["H"] = e_h
-    else:
-        refs["H"] = 0.0
-        if warn_missing_h:
-            h_dir = os.path.join(run_path, "H_monomer")
-            reason = "H_monomer energy parse failed" if os.path.isdir(h_dir) else "missing H_monomer"
-            print(f"  WARNING: {os.path.basename(run_path)} {reason}, using E(H)=0.0")
-
     return refs
 
 
@@ -227,63 +220,69 @@ def _collect_complex_energies(
     return energies
 
 
+def _find_zn_solv6(
+    solvent: str,
+    complex_infos: Dict[str, ComplexInfo],
+) -> Optional[str]:
+    candidates = [
+        formula
+        for formula, info in complex_infos.items()
+        if info.is_zn_solv6 and info.solvent == solvent
+    ]
+    if not candidates:
+        return None
+    return sorted(candidates, key=_complex_sort_key)[0]
+
+
 def _collect_reaction_rows_for_run(
     run_path: str,
     source_base_dir: str,
     use_bsse: bool,
 ) -> Dict[Tuple[str, str, str, str], float]:
-    monomer_refs = _collect_monomer_refs(run_path, warn_missing_h=not use_bsse)
+    monomer_refs = _collect_monomer_refs(run_path)
     complex_energies = _collect_complex_energies(
         run_path,
         source_base_dir=source_base_dir,
         use_bsse=use_bsse,
     )
-    if use_bsse and not complex_energies:
+    if not complex_energies:
         return {}
-    formulas = sorted(complex_energies.keys(), key=_complex_sort_key)
+
+    complex_infos = {
+        formula: info
+        for formula in complex_energies
+        for info in [_parse_complex(formula)]
+        if info is not None
+    }
+    zn_solv6_by_solvent: Dict[str, str] = {}
+    for solvent in {info.solvent for info in complex_infos.values()}:
+        zn6 = _find_zn_solv6(solvent, complex_infos)
+        if zn6 is not None:
+            zn_solv6_by_solvent[solvent] = zn6
 
     rows: Dict[Tuple[str, str, str, str], float] = {}
-
-    for from_formula in formulas:
-        from_counts = _parse_formula_counts(from_formula)
-        if from_counts is None:
+    for formula, info in complex_infos.items():
+        if not info.is_zn_l_solv5:
             continue
-        e_from = complex_energies[from_formula]
 
-        for to_formula in formulas:
-            if to_formula == from_formula:
-                continue
-            to_counts = _parse_formula_counts(to_formula)
-            if to_counts is None:
-                continue
+        ligand = info.ligand
+        solvent = info.solvent
+        assert ligand is not None
 
-            edge_type = _reaction_type_from_counts(from_counts, to_counts)
-            if edge_type is None:
-                continue
+        zn6 = zn_solv6_by_solvent.get(solvent)
+        e_l = monomer_refs.get(ligand)
+        e_solv = monomer_refs.get(solvent)
+        if zn6 is None or e_l is None or e_solv is None:
+            continue
 
-            e_to = complex_energies[to_formula]
-            dE_rxn = _compute_de_rxn_kcal(edge_type, e_from, e_to, monomer_refs)
-            if dE_rxn is None:
-                continue
-
-            balanced = _balanced_reaction_plain(edge_type, from_formula, to_formula)
-            rows[(edge_type, from_formula, to_formula, balanced)] = dE_rxn
-
-    e_h = monomer_refs.get("H")
-    if e_h is not None:
-        for from_formula, to_formula, from_key, to_key in MONOMER_H_REACTIONS:
-            e_from = monomer_refs.get(from_key)
-            e_to = monomer_refs.get(to_key)
-            if e_from is None or e_to is None:
-                continue
-            balanced = _balanced_reaction_plain(
-                MONOMER_H_REACTION_TYPE,
-                from_formula,
-                to_formula,
-            )
-            rows[(MONOMER_H_REACTION_TYPE, from_formula, to_formula, balanced)] = (
-                e_to - e_from - e_h
-            )
+        e_from = complex_energies[formula]
+        e_to = complex_energies[zn6]
+        # ZnLSolv5 + Solv -> ZnSolv6 + L
+        dE_rxn = e_to + e_l - e_from - e_solv
+        from_disp = _pretty_formula(formula)
+        to_disp = _pretty_formula(zn6)
+        balanced = f"{from_disp} + {solvent} -> {to_disp} + {ligand}"
+        rows[(REACTION_TYPE, from_disp, to_disp, balanced)] = dE_rxn
 
     return rows
 
@@ -292,7 +291,10 @@ def _collect_run_sources(default_base_dir: str) -> List[Tuple[str, str, str]]:
     run_sources: Dict[str, Tuple[str, str]] = {}
 
     if os.path.exists(default_base_dir):
-        for run_path in sorted(glob.glob(os.path.join(default_base_dir, "run*")), key=_run_sort_key):
+        for run_path in sorted(
+            glob.glob(os.path.join(default_base_dir, "run*")),
+            key=_run_sort_key,
+        ):
             if not os.path.isdir(run_path):
                 continue
             run_name = os.path.basename(run_path)
@@ -357,10 +359,8 @@ def analyze_runs(base_dir: str = DEFAULT_BASE_DIR) -> pd.DataFrame:
             record[column_name] = values.get(column_name, np.nan)
         records.append(record)
 
-    def _record_sort_key(record: Dict[str, object]) -> Tuple[int, str, str, str]:
-        reaction_type = str(record["reaction_type"])
+    def _record_sort_key(record: Dict[str, object]) -> Tuple[str, str, str]:
         return (
-            REACTION_TYPE_ORDER.get(reaction_type, 10**9),
             str(record["from_formula"]),
             str(record["to_formula"]),
             str(record["balanced_reaction"]),
@@ -376,7 +376,10 @@ if __name__ == "__main__":
     df = analyze_runs(base_dir="SP_init")
 
     if df.empty:
-        print("No reaction energies found under SP_init/run*.")
+        print(
+            "No ligand-exchange energies found "
+            "(need ZnLSolv5, ZnSolv6, and monomer refs)."
+        )
     else:
         output_file = "dE.csv"
         df.to_csv(output_file, index=False)
@@ -391,8 +394,19 @@ if __name__ == "__main__":
                 print(f"  {run_name} [{source_desc}]: {method_map[run_name]}")
 
         value_cols = [
-            col for col in df.columns
-            if col not in ("reaction_type", "from_formula", "to_formula", "balanced_reaction")
+            col
+            for col in df.columns
+            if col
+            not in (
+                "reaction_type",
+                "from_formula",
+                "to_formula",
+                "balanced_reaction",
+            )
         ]
-        print("\nReaction energies (kcal/mol):")
-        print(df[["reaction_type", "balanced_reaction"] + value_cols].to_string(index=False))
+        print("\nLigand exchange: ZnLSolv5 + Solv -> ZnSolv6 + L (kcal/mol):")
+        print(
+            df[["reaction_type", "balanced_reaction"] + value_cols].to_string(
+                index=False
+            )
+        )

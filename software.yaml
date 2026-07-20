@@ -4,8 +4,11 @@
 orca: /home/zbai29/JR/soft/orca_6_1_1_linux_x86-64_shared_openmpi418_frag_move
 orca_legacy: /home/zbai29/JR/soft/orca_6_0_1_linux_x86-64_shared_openmpi416
 molpro_root: /home/zbai29/soft/molpro_2025_4_1
+# Fraction f of Slurm mem-per-cpu available to Molpro -m (decimal megawords):
+#   m = floor(0.131072 * f * P - 300),  P = mem-per-cpu in MiB
+molpro_memory_fraction: 0.90 #0.85
 mrcc: /home/zbai29/soft/mrcc_2022_03_18
-ambertools_sh: /home/zbai29/soft/ambertools25_dev/c4d4a71/install/amber.sh
+ambertools_sh: /home/zbai29/soft/ambertools25_dev/d07d0b1_noamber/amber.sh
 ambertools_sh_legacy: /home/zbai29/soft/ambertools25_src_425dd98/install/amber.sh
 xtb_gaussian: /home/zbai29/soft/xtb-gaussian/xtb-gaussian
 condainit: ~/condainit.sh
@@ -18,4 +21,4 @@ dftb_skf:
 gxtb:
   home: /home/zbai29/soft/g-xtb/parameters
   binary: /home/zbai29/soft/g-xtb/binary
-apptainer: /home/zbai29/JR/soft/apptainer/amber_mdftb_fix.sif
+apptainer: /home/zbai29/JR/soft/apptainer/noamber.sif

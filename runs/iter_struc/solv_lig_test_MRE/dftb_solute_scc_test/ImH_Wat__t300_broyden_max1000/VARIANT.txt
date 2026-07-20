@@ -1,0 +1,6 @@
+source=/home/zbai29/data/ZIF/react_benchmark/runs/iter_struc/solv_lig_test_MRE/SP_init/run110/1Zn_1ImH_5Wat_solute_full
+system=ImH_Wat
+variant=t300_broyden_max1000
+tfermi=300
+mixer=BROYDEN
+maxiter=1000

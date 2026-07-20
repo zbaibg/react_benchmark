@@ -1,0 +1,95 @@
+logFile create_MI+.log
+loadamberparams frcmod.MI+
+
+addAtomTypes {
+    { "N1" "N" "sp3" }
+    { "N2" "N" "sp3" }
+    { "C1" "C" "sp3" }
+    { "C2" "C" "sp3" }
+    { "C3" "C" "sp3" }
+    { "C4" "C" "sp3" }
+    { "H1" "H" "sp3" }
+    { "H2" "H" "sp3" }
+    { "H3" "H" "sp3" }
+    { "H4" "H" "sp3" }
+    { "H5" "H" "sp3" }
+    { "H6" "H" "sp3" }
+    { "H7" "H" "sp3" }
+}
+
+a0 = createAtom  N1  N1  0.07692
+a1 = createAtom  N2  N2  0.07692
+a2 = createAtom  C3  C1  0.07692
+a3 = createAtom  C4  C2  0.07692
+a4 = createAtom  C1  C3  0.07692
+a5 = createAtom  C2  C4  0.07692
+a6 = createAtom  H6  H1  0.07692
+a7 = createAtom  H1  H2  0.07692
+a8 = createAtom  H2  H3  0.07692
+a9 = createAtom  H3  H4  0.07692
+a10 = createAtom  H4  H5  0.07692
+a11 = createAtom  H5  H6  0.07692
+a12 = createAtom  H7  H7  0.07692
+
+set a0 element "N"
+set a1 element "N"
+set a2 element "C"
+set a3 element "C"
+set a4 element "C"
+set a5 element "C"
+set a6 element "H"
+set a7 element "H"
+set a8 element "H"
+set a9 element "H"
+set a10 element "H"
+set a11 element "H"
+set a12 element "H"
+
+set a0 position {  0.13093  1.04674  0.29746 }
+set a1 position {  0.03067  -1.00209  -0.33686 }
+set a2 position {  -0.68724  0.02092  0.02128 }
+set a3 position {  -2.22422  0.04981  0.11320 }
+set a4 position {  1.38386  0.63542  0.10145 }
+set a5 position {  1.32217  -0.65213  -0.29724 }
+set a6 position {  -0.14907  1.95872  0.59731 }
+set a7 position {  -2.52311  0.74026  0.87402 }
+set a8 position {  -2.63206  0.35678  -0.82720 }
+set a9 position {  -2.58541  -0.92752  0.35664 }
+set a10 position {  2.27183  1.21724  0.23523 }
+set a11 position {  2.15466  -1.27971  -0.53809 }
+set a12 position {  -0.32281  -1.90027  -0.59824 }
+
+r = createResidue MI+
+add r a0
+add r a1
+add r a2
+add r a3
+add r a4
+add r a5
+add r a6
+add r a7
+add r a8
+add r a9
+add r a10
+add r a11
+add r a12
+
+bond a0 a2
+bond a0 a4
+bond a0 a6
+bond a1 a2
+bond a1 a5
+bond a1 a12
+bond a2 a3
+bond a3 a7
+bond a3 a8
+bond a3 a9
+bond a4 a5
+bond a4 a10
+bond a5 a11
+
+MI+ = createUnit MI+
+add MI+ r
+
+saveOff MI+ MI+.lib
+quit

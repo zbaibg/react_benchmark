@@ -1,0 +1,17 @@
+ligand,solvent,reaction,component,CCSD(T)_run102_BSSE,mDFTB_run110.tfermi300,delta_110_minus_102
+Im-,MeOH,1Zn_1Im-_5MeOH + MeOH -> 1Zn_6MeOH + Im-,dE,179.19,180.56,1.37
+Im-,MeOH,1Zn_1Im-_5MeOH + MeOH -> 1Zn_6MeOH + Im-,dE(solute),382.82,413.80,30.99
+Im-,MeOH,1Zn_1Im-_5MeOH + MeOH -> 1Zn_6MeOH + Im-,dE(solvent),7.55,6.49,-1.06
+Im-,MeOH,1Zn_1Im-_5MeOH + MeOH -> 1Zn_6MeOH + Im-,dE(I),-211.19,-239.74,-28.55
+Im-,Wat,1Zn_1Im-_5Wat + Wat -> 1Zn_6Wat + Im-,dE,188.82,181.18,-7.64
+Im-,Wat,1Zn_1Im-_5Wat + Wat -> 1Zn_6Wat + Im-,dE(solute),383.06,414.41,31.35
+Im-,Wat,1Zn_1Im-_5Wat + Wat -> 1Zn_6Wat + Im-,dE(solvent),6.22,10.00,3.78
+Im-,Wat,1Zn_1Im-_5Wat + Wat -> 1Zn_6Wat + Im-,dE(I),-200.46,-243.23,-42.77
+ImH,MeOH,1Zn_1ImH_5MeOH + MeOH -> 1Zn_6MeOH + ImH,dE,21.97,22.11,0.13
+ImH,MeOH,1Zn_1ImH_5MeOH + MeOH -> 1Zn_6MeOH + ImH,dE(solute),170.21,184.20,13.99
+ImH,MeOH,1Zn_1ImH_5MeOH + MeOH -> 1Zn_6MeOH + ImH,dE(solvent),4.60,5.95,1.35
+ImH,MeOH,1Zn_1ImH_5MeOH + MeOH -> 1Zn_6MeOH + ImH,dE(I),-152.84,-168.04,-15.20
+ImH,Wat,1Zn_1ImH_5Wat + Wat -> 1Zn_6Wat + ImH,dE,28.90,22.36,-6.54
+ImH,Wat,1Zn_1ImH_5Wat + Wat -> 1Zn_6Wat + ImH,dE(solute),170.45,185.55,15.10
+ImH,Wat,1Zn_1ImH_5Wat + Wat -> 1Zn_6Wat + ImH,dE(solvent),5.26,8.84,3.58
+ImH,Wat,1Zn_1ImH_5Wat + Wat -> 1Zn_6Wat + ImH,dE(I),-146.80,-172.03,-25.23

@@ -1,0 +1,51 @@
+current_cluster: CHTC-HPC
+clusters:
+  CHTC-HPC:
+    scheduler: slurm
+    # Node-local scratch for Molpro/ORCA/MRCC temp files (mktemp parent).
+    local_scratch: /local/zbai29
+    # OpenMPI renumbers the cgroup-restricted topology inside Apptainer.
+    mpi_cpu_list_mode: local
+    node_cpus: 82
+    memory_per_cpu: 4G
+    limits:
+      GrpTRES:
+        cpu: 1744
+      GrpJobs: 10
+    qos:
+      pre:
+        limits:
+          MaxTRESPU:
+            cpu: 720
+          MaxJobsPU: 10
+          MaxSubmitJobsPU:
+      shared:
+        limits:
+          MaxTRESPU:
+            cpu: 720
+          MaxJobsPU: 10
+          MaxSubmitJobsPU:
+    partitions:
+      pre:
+        use: true
+        qos: pre
+        MaxJobs_manual: 8
+        time: 1-00:00:00
+      shared:
+        use: true
+        qos: shared
+        MaxJobs_manual: 2
+        time: 7-00:00:00
+
+  # NREL Kestrel: node-local scratch lives under /scratch
+  Kestrel:
+    scheduler: slurm
+    local_scratch: /scratch
+    mpi_cpu_list_mode: host
+    node_cpus: 32
+    memory_per_cpu: 8G
+    partitions:
+      batch:
+        use: true
+        time: 7-00:00:00
+    exclude: compute-0-[0-40]

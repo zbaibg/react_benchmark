@@ -7,7 +7,7 @@ Usage:
     python generate_workflow.py --mode sp_opt
     python generate_workflow.py --mode qm_minimize
 """
-from math import e
+from math import e, floor
 import os
 import re
 import sys
@@ -32,6 +32,12 @@ from paths import (  # noqa: E402
     resolve_dftb_skroot,
     resolve_project_path,
 )
+from read_cluster_setting import (  # noqa: E402
+    first_enabled_partition,
+    memory_per_cpu_setting,
+    optional_cluster_setting,
+    read_cluster_setting,
+)
 from zif_meoh_assign_name import xyz_to_mda  # noqa: E402
 from make_mrcc_genbas import (  # noqa: E402
     generate_genbas as make_mrcc_generate_genbas,
@@ -43,9 +49,61 @@ _ORCA_PATH = str(_SOFTWARE["orca"])
 _MOLPRO_ROOT = str(_SOFTWARE["molpro_root"])
 _MRCC_PATH = str(_SOFTWARE["mrcc"])
 _CONDAINIT = str(_SOFTWARE["condainit"])
-_SCRATCH_ROOT = str(_SOFTWARE["scratch_root"])
+# Prefer cluster.yaml local_scratch for the active cluster; fall back to software.yaml.
+_CLUSTER_YAML = REPO_ROOT / "cluster.yaml"
+_SCRATCH_ROOT = read_cluster_setting(
+    _CLUSTER_YAML,
+    "local_scratch",
+    default=str(_SOFTWARE.get("scratch_root") or "/scratch"),
+)
+# First partitions entry with use: true → default Slurm partition/time.
+_SLURM_PARTITION, _SLURM_TIME = first_enabled_partition(_CLUSTER_YAML)
+_SLURM_MEM_PER_CPU = memory_per_cpu_setting(_CLUSTER_YAML)
+# Optional cluster-level exclude; empty/missing → omit #SBATCH --exclude entirely.
+_SLURM_EXCLUDE = optional_cluster_setting(_CLUSTER_YAML, "exclude")
+_SLURM_EXCLUDE_LINE = (
+    f"#SBATCH --exclude={_SLURM_EXCLUDE}\n" if _SLURM_EXCLUDE else ""
+)
+_MOLPRO_MEMORY_FRACTION = float(_SOFTWARE.get("molpro_memory_fraction", 0.85))
 _GXTB_HOME_DEFAULT = str((_SOFTWARE.get("gxtb") or {}).get("home") or "")
 _GXTB_BINARY_DEFAULT = str((_SOFTWARE.get("gxtb") or {}).get("binary") or "")
+
+
+def _mem_per_cpu_to_mib(value: str) -> float:
+    """Parse Slurm mem-per-cpu (e.g. 4G, 9000M) to MiB (1G = 1024 MiB)."""
+    s = str(value).strip()
+    match = re.fullmatch(r"([0-9]+(?:\.[0-9]*)?)\s*([KMGT]I?B?)?", s, flags=re.IGNORECASE)
+    if not match:
+        raise ValueError(f"Unrecognized mem-per-cpu value: {value!r}")
+    amount = float(match.group(1))
+    unit = (match.group(2) or "M").upper().replace("IB", "B")
+    if unit in ("K", "KB"):
+        return amount / 1024.0
+    if unit in ("M", "MB"):
+        return amount
+    if unit in ("G", "GB"):
+        return amount * 1024.0
+    if unit in ("T", "TB"):
+        return amount * 1024.0 * 1024.0
+    raise ValueError(f"Unrecognized mem-per-cpu unit in {value!r}")
+
+
+def _molpro_m_megawords(mem_per_cpu: str, fraction: float) -> int:
+    """
+    Molpro -m value (decimal megawords) for 1 MPI rank = 1 Slurm CPU:
+      m = floor(0.131072 * f * P - 300),  P = mem-per-cpu [MiB]
+    """
+    p_mib = _mem_per_cpu_to_mib(mem_per_cpu)
+    m_val = int(floor(0.131072 * float(fraction) * p_mib - 300.0))
+    if m_val < 1:
+        raise ValueError(
+            f"Molpro -m computed too small ({m_val}) from mem-per-cpu={mem_per_cpu!r}, "
+            f"fraction={fraction!r}"
+        )
+    return m_val
+
+
+_MOLPRO_M = _molpro_m_megawords(_SLURM_MEM_PER_CPU, _MOLPRO_MEMORY_FRACTION)
 
 
 def _detect_run_dir() -> Path:
@@ -875,19 +933,29 @@ def generate_orca_only_structure(
 #SBATCH --job-name=prepare
 #SBATCH --output=prepare_sbatch.log
 #SBATCH --error=prepare_sbatch.err
-#SBATCH --time=7-00:00:00
-#SBATCH --partition=batch
+#SBATCH --time={_SLURM_TIME}
+#SBATCH --partition={_SLURM_PARTITION}
 #SBATCH --nodes=1
 #SBATCH --ntasks={core}
 #SBATCH --cpus-per-task=1
-#SBATCH --mem-per-cpu=8G
-#SBATCH --exclude=compute-0-[0-40,44]
+#SBATCH --mem-per-cpu={_SLURM_MEM_PER_CPU}
+{_SLURM_EXCLUDE_LINE}set -euo pipefail
 source {_CONDAINIT}
 export LD_LIBRARY_PATH="$CONDA_PREFIX/lib:${{LD_LIBRARY_PATH:-}}"
 export PATH="$PWD:$PATH:{_ORCA_PATH}/"
+TEMPLATE="${{SLURM_JOB_ID}}_XXXXXX"
+mkdir -p "{_SCRATCH_ROOT}"
+SCRATCH_DIR=$(mktemp -d "{_SCRATCH_ROOT}/${{TEMPLATE}}")
+cp orc_job.inp MOL.xyz "${{SCRATCH_DIR}}/"
+(
+cd "${{SCRATCH_DIR}}"
+export PATH="$PWD:$PATH:{_ORCA_PATH}/"
 orca orc_job.inp > orc_job.dat 2>&1
 rm -f orc_job.gbw orc_job.densities
-cp orc_job.xyz min.xyz
+[[ -f orc_job.xyz ]] && cp orc_job.xyz min.xyz
+cp -rf ./* "$SLURM_SUBMIT_DIR/"
+)
+rm -rf "${{SCRATCH_DIR}}"
 """
     with open(sbatch_prepare_path, "w") as f:
         f.write(sbatch_content)
@@ -1142,37 +1210,39 @@ def generate_molpro_only_structure(
     core = int(config.get("core_number", config.get("core", 32)))
     # Reference script uses --ntasks=31 for -n 32
     ntasks = max(1, core)
+    molpro_m = _MOLPRO_M
     sbatch = f"""#!/bin/bash
 #SBATCH --job-name=prepare
 #SBATCH --output=prepare_sbatch.log
 #SBATCH --error=prepare_sbatch.err
-#SBATCH --time=7-00:00:00
-#SBATCH --partition=batch
+#SBATCH --time={_SLURM_TIME}
+#SBATCH --partition={_SLURM_PARTITION}
 #SBATCH --nodes=1
 #SBATCH --ntasks={ntasks}
 #SBATCH --cpus-per-task=1
-#SBATCH --mem-per-cpu=8448M
-#SBATCH --exclude=compute-0-[0-40,44]
+#SBATCH --mem-per-cpu={_SLURM_MEM_PER_CPU}
+{_SLURM_EXCLUDE_LINE}set -euo pipefail
 
 export inputfilename='run.input'
 export LANG=en_US
 export PATH="{_MOLPRO_ROOT}/bin:/sbin:/usr/sbin:/bin:/usr/bin:${{PATH}}"
 export LD_LIBRARY_PATH="{_MOLPRO_ROOT}/lib:$LD_LIBRARY_PATH"
 TEMPLATE="${{SLURM_JOB_ID}}_XXXXXX"
-SCRATCH_DIR=$(mktemp -d "{_SCRATCH_ROOT}/${{TEMPLATE}}" 2>&1)
-rm -rf /tmp/molpro*
+mkdir -p "{_SCRATCH_ROOT}"
+SCRATCH_DIR=$(mktemp -d "{_SCRATCH_ROOT}/${{TEMPLATE}}")
 cp $inputfilename "${{SCRATCH_DIR}}/"
 (
 cd "${{SCRATCH_DIR}}"
 unshare --net --user --map-root-user bash -lc "
 ip link set lo up
-for var in \$(compgen -v | grep SLURM); do unset \$var; done
+for var in \\$(compgen -v | grep SLURM); do unset \\$var; done
 export I_MPI_HYDRA_BOOTSTRAP=fork
 export HYDRA_BOOTSTRAP=fork
-export I_MPI_FABRICS=shm; molpro -n {core} --ga-impl disk -m 660m --stdout $inputfilename > $SLURM_SUBMIT_DIR/molpro.log 2>&1
+export I_MPI_FABRICS=shm; molpro -d ${{SCRATCH_DIR}} -n {core} --ga-impl disk -m {molpro_m}m --stdout $inputfilename > $SLURM_SUBMIT_DIR/molpro.log 2>&1
 "
 cp -rf ./* "$SLURM_SUBMIT_DIR/"
 )
+rm -rf "${{SCRATCH_DIR}}"
 """
     sbatch_path = struc_dir / "sbatch_prepare.sh"
     sbatch_path.write_text(sbatch)
@@ -1259,21 +1329,21 @@ def generate_mrcc_only_structure(
 #SBATCH --job-name=prepare
 #SBATCH --output=prepare_sbatch.log
 #SBATCH --error=prepare_sbatch.err
-#SBATCH --time=7-00:00:00
-#SBATCH --partition=batch
+#SBATCH --time={_SLURM_TIME}
+#SBATCH --partition={_SLURM_PARTITION}
 #SBATCH --nodes=1
 #SBATCH --ntasks={core}
 #SBATCH --cpus-per-task=1
-#SBATCH --mem-per-cpu=8G
-#SBATCH --exclude=compute-0-[0-40,44]
-
+#SBATCH --mem-per-cpu={_SLURM_MEM_PER_CPU}
+{_SLURM_EXCLUDE_LINE}
 export OMP_NUM_THREADS={core}
 export MKL_NUM_THREADS={core}
 export OMP_PLACES=cores
 export OMP_PROC_BIND=spread,close
 export PATH="{_MRCC_PATH}:$PATH"
 TEMPLATE="${{SLURM_JOB_ID}}_XXXXXX"
-SCRATCH_DIR=$(mktemp -d "{_SCRATCH_ROOT}/${{TEMPLATE}}" 2>&1)
+mkdir -p "{_SCRATCH_ROOT}"
+SCRATCH_DIR=$(mktemp -d "{_SCRATCH_ROOT}/${{TEMPLATE}}")
 cp GENBAS MINP "${{SCRATCH_DIR}}/"
 
 export I_MPI_SPAWN=on
@@ -1344,13 +1414,13 @@ def write_gxtb_prepare_script(mode, charge, config, run_id, trim_script_path: Pa
 #SBATCH --job-name=prepare
 #SBATCH --output=prepare.log
 #SBATCH --error=prepare.err
-#SBATCH --time=7-00:00:00
-#SBATCH --partition=batch
+#SBATCH --time={_SLURM_TIME}
+#SBATCH --partition={_SLURM_PARTITION}
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task={nproc}
-#SBATCH --mem-per-cpu=8G
-set -euo pipefail
+#SBATCH --mem-per-cpu={_SLURM_MEM_PER_CPU}
+{_SLURM_EXCLUDE_LINE}set -euo pipefail
 
 # gxtb mode: no Amber; create input.xyz on the fly if needed
 source {_CONDAINIT}
@@ -1407,13 +1477,13 @@ def write_dftbplus_custom_prepare_script(mode, config, run_id, dftb_input_filena
 #SBATCH --job-name=prepare
 #SBATCH --output=prepare.log
 #SBATCH --error=prepare.err
-#SBATCH --time=7-00:00:00
-#SBATCH --partition=batch
+#SBATCH --time={_SLURM_TIME}
+#SBATCH --partition={_SLURM_PARTITION}
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task={nproc}
-#SBATCH --mem-per-cpu=8G
-set -euo pipefail
+#SBATCH --mem-per-cpu={_SLURM_MEM_PER_CPU}
+{_SLURM_EXCLUDE_LINE}set -euo pipefail
 
 source {_CONDAINIT}
 conda activate {conda_env}
@@ -1440,9 +1510,34 @@ def prepare_template_base(config, script_dir):
     """
     Read prepare_template.sh and fill run-wide configuration variables.
     Structure-specific variables (%CHARGE_MOL%, etc.) are left for finalize_prepare_script.
+
+    Slurm partition/time/mem/exclude come from cluster.yaml.
+    REPO_ROOT is baked in here so prepare.sh need not probe at runtime
+    (sbatch often runs a spool copy where BASH_SOURCE is unhelpful).
     """
     with open(script_dir / "prepare_template.sh") as f:
         content = f.read()
+
+    repo_root = str(REPO_ROOT)
+    repo_bootstrap = (
+        "# REPO_ROOT baked in by generate_workflow.py (prepare_template_base).\n"
+        "# shellcheck source=/dev/null\n"
+        f'source "{repo_root}/tools/repo_env.sh"\n'
+    )
+    # Older templates: replace the runtime software.yaml walk with a baked-in source.
+    content = re.sub(
+        r"(?ms)^# Resolve repo root.*?^source [^\n]*repo_env\.sh\n",
+        repo_bootstrap,
+        content,
+    )
+    # New templates: %REPO_ROOT% placeholder → absolute path.
+    content = content.replace("%REPO_ROOT%", repo_root)
+    # Belts and braces: any remaining repo_env.sh source uses the absolute path.
+    content = re.sub(
+        r'(?m)^source\s+"[^"]*tools/repo_env\.sh"\s*$',
+        f'source "{repo_root}/tools/repo_env.sh"',
+        content,
+    )
 
     # Water model
     water_model = config.get('water_model', 'spce')
@@ -1482,9 +1577,52 @@ def prepare_template_base(config, script_dir):
         # Top-level run_configs.yaml (expand_nh_oh_radius, delete_wrong_bonds)
         '%EXPAND_NH_OH_BOND_RADIUS%': str(EXPAND_NH_OH_RADIUS).lower(),
         '%DELETE_WRONG_BONDS%':       str(DELETE_WRONG_BONDS).lower(),
+        '%NODE_PARTITION%': _SLURM_PARTITION,
+        '%WALLTIME%': _SLURM_TIME,
+        '%MEM_PER_CPU%': _SLURM_MEM_PER_CPU,
+        # Full line including trailing newline, or empty (omit exclude entirely).
+        '%SBATCH_EXCLUDE%\n': _SLURM_EXCLUDE_LINE,
+        '%SBATCH_EXCLUDE%': _SLURM_EXCLUDE_LINE.rstrip("\n"),
     }
     for placeholder, value in replacements.items():
         content = content.replace(placeholder, value)
+
+    # Force cluster partition/time/mem even if the template still has hard-coded values.
+    content = re.sub(
+        r'(?m)^node_partition=.*$',
+        f'node_partition="{_SLURM_PARTITION}"',
+        content,
+    )
+    content = re.sub(
+        r'(?m)^mem_per_cpu=.*$',
+        f'mem_per_cpu={_SLURM_MEM_PER_CPU}',
+        content,
+    )
+    content = re.sub(
+        r'(?m)^#SBATCH --time=\S+',
+        f'#SBATCH --time={_SLURM_TIME}',
+        content,
+    )
+    content = re.sub(
+        r'(?m)^#SBATCH --partition=(?!\$)\S+',
+        f'#SBATCH --partition={_SLURM_PARTITION}',
+        content,
+    )
+    content = re.sub(
+        r'(?m)^#SBATCH --mem-per-cpu=(?!\$)\S+',
+        f'#SBATCH --mem-per-cpu={_SLURM_MEM_PER_CPU}',
+        content,
+    )
+    # Drop any leftover hard-coded exclude lines, then reinject if configured.
+    content = re.sub(r'(?m)^#+SBATCH --exclude=.*\n?', '', content)
+    if _SLURM_EXCLUDE:
+        # Insert exclude after the first mem-per-cpu (prepare.sh header) and
+        # after each mem-per-cpu in create_sbatch heredocs.
+        content = re.sub(
+            r'(?m)^(#SBATCH --mem-per-cpu=\S+)\n',
+            rf'\1\n#SBATCH --exclude={_SLURM_EXCLUDE}\n',
+            content,
+        )
 
     return content
 

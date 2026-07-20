@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Resolve repo root and software paths
+_SCRIPT_DIR_FOR_REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+_REPO_CANDIDATE="$_SCRIPT_DIR_FOR_REPO"
+while [ "$_REPO_CANDIDATE" != "/" ] && [ ! -f "$_REPO_CANDIDATE/software.yaml" ]; do
+  _REPO_CANDIDATE="$(dirname "$_REPO_CANDIDATE")"
+done
+if [ ! -f "$_REPO_CANDIDATE/software.yaml" ]; then
+  echo "ERROR: could not locate repo root (software.yaml)" >&2
+  exit 1
+fi
+# shellcheck source=/dev/null
+source "$_REPO_CANDIDATE/tools/repo_env.sh"
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "${SCRIPT_DIR}"
+
+OUT_DIR="${SCRIPT_DIR}/xyz_files"
+LOG_DIR="${SCRIPT_DIR}/transform_logs"
+SRC_DIR="${REPO_ROOT}/runs/iter_struc/relax_struc2/qm_minimize/run41"
+
+mkdir -p "${OUT_DIR}" "${LOG_DIR}"
+rm -f "${OUT_DIR}"/*.xyz
+
+run_transform() {
+    if command -v python3 >/dev/null 2>&1; then
+        if python3 -c "import MDAnalysis, numpy" >/dev/null 2>&1; then
+            python3 "${SCRIPT_DIR}/transform_xyz.py" \
+                --source-dir "${SRC_DIR}" \
+                --out-dir "${OUT_DIR}" \
+                --log-dir "${LOG_DIR}"
+            return 0
+        fi
+    fi
+
+    if [[ -f "${HOME}/condainit.sh" ]]; then
+        # shellcheck source=/dev/null
+        source "${HOME}/condainit.sh"
+    elif [[ -n "${CONDAINIT:-}" && -f "${CONDAINIT}" ]]; then
+        # shellcheck source=/dev/null
+        source "${CONDAINIT}"
+    fi
+    conda activate amber
+    python3 "${SCRIPT_DIR}/transform_xyz.py" \
+        --source-dir "${SRC_DIR}" \
+        --out-dir "${OUT_DIR}" \
+        --log-dir "${LOG_DIR}"
+}
+
+run_transform
+echo "Wrote demethylated water XYZ files to ${OUT_DIR}"
+echo "Sources: ${SRC_DIR}/1Zn_*/min.xyz (ligand + MeOH demethylation)"

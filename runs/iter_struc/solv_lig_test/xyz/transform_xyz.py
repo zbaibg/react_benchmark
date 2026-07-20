@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Transform methylated Zn/imidazole/MeOH complexes into variant XYZ files."""
 
+from __future__ import annotations
+
 # --- repo path bootstrap (auto) ---
 from pathlib import Path as _Path
 import sys as _sys
@@ -19,8 +21,6 @@ except Exception:
     _SW = {}
 # --- end bootstrap ---
 
-from __future__ import annotations
-
 import argparse
 import importlib.util
 import os
@@ -31,9 +31,7 @@ from typing import Iterable
 
 import numpy as np
 
-ASSIGN_NAME_SCRIPT = Path(
-    str(REPO_ROOT / "structures" / "Net_React" / "run28.leg5_5morewat_MBE3_fixN4/scripts/zif_meoh_assign_name.py")
-)
+ASSIGN_NAME_SCRIPT = TOOLS_DIR / "zif_meoh_assign_name.py"
 _C_H_BOND_A = 1.09
 _O_H_BOND_A = 0.96
 _HOH_ANGLE_RAD = np.radians(104.5)
@@ -49,34 +47,29 @@ class SourceComplex:
     variants: tuple[tuple[bool, bool], ...] | None = None
 
 
+_RELAX2_RUN41 = REPO_ROOT / "runs" / "iter_struc" / "relax_struc2" / "qm_minimize" / "run41"
+_EXTRA_RUN41 = REPO_ROOT / "runs" / "iter_struc" / "extra_test" / "qm_minimize" / "run41"
+
 SOURCE_COMPLEXES = (
     SourceComplex(
-        path=Path(
-            str(REPO_ROOT / "runs" / "iter_struc/")
-            "relax_struc2/qm_minimize/run41/1Zn_1MIm_0MImH_5MeOH/min.xyz"
-        ),
+        path=_RELAX2_RUN41 / "1Zn_1MIm_0MImH_5MeOH" / "min.xyz",
         n_mim=1,
         n_mih=0,
         n_meoh=5,
     ),
     SourceComplex(
-        path=Path(
-            str(REPO_ROOT / "runs" / "iter_struc/")
-            "relax_struc2/qm_minimize/run41/1Zn_0MIm_1MImH_5MeOH/min.xyz"
-        ),
+        path=_RELAX2_RUN41 / "1Zn_0MIm_1MImH_5MeOH" / "min.xyz",
         n_mim=0,
         n_mih=1,
         n_meoh=5,
     ),
     SourceComplex(
-        path=Path(
-            str(REPO_ROOT / "runs" / "iter_struc/")
-            "relax_struc2/qm_minimize/run41/1Zn_0MIm_0MImH_6MeOH/min.xyz"
-        ),
+        path=_RELAX2_RUN41 / "1Zn_0MIm_0MImH_6MeOH" / "min.xyz",
         n_mim=0,
         n_mih=0,
         n_meoh=6,
-        variants=((True, True),),
+        # Keep original Zn(MeOH)6 and demethyl-solvent -> Zn(Wat)6.
+        variants=((False, False), (True, True)),
     ),
 )
 
@@ -296,34 +289,13 @@ def _copy_monomer(src: Path, dst: Path) -> None:
 
 def copy_monomers(out_dir: Path) -> list[Path]:
     monomers = {
-        "MIm_monomer.xyz": Path(
-            str(REPO_ROOT / "runs" / "iter_struc/")
-            "relax_struc2/qm_minimize/run41/MIm_monomer/min.xyz"
-        ),
-        "MImH_monomer.xyz": Path(
-            str(REPO_ROOT / "runs" / "iter_struc/")
-            "relax_struc2/qm_minimize/run41/MImH_monomer/min.xyz"
-        ),
-        "MeOH_monomer.xyz": Path(
-            str(REPO_ROOT / "runs" / "iter_struc/")
-            "relax_struc2/qm_minimize/run41/MeOH_monomer/min.xyz"
-        ),
-        "Wat_monomer.xyz": Path(
-            str(REPO_ROOT / "runs" / "iter_struc/")
-            "extra_test/qm_minimize/run41/Wat_monomer/min.xyz"
-        ),
-        "ImH_monomer.xyz": Path(
-            str(REPO_ROOT / "runs" / "iter_struc/")
-            "extra_test/qm_minimize/run41/ImH_monomer/min.xyz"
-        ),
-        "Im-_monomer.xyz": Path(
-            str(REPO_ROOT / "runs" / "iter_struc/")
-            "extra_test/qm_minimize/run41/Im-_monomer/min.xyz"
-        ),
-        "Zn_monomer.xyz": Path(
-            str(REPO_ROOT / "runs" / "iter_struc/")
-            "extra_test/qm_minimize/run41/Zn_monomer/min.xyz"
-        ),
+        "MIm_monomer.xyz": _RELAX2_RUN41 / "MIm_monomer" / "min.xyz",
+        "MImH_monomer.xyz": _RELAX2_RUN41 / "MImH_monomer" / "min.xyz",
+        "MeOH_monomer.xyz": _RELAX2_RUN41 / "MeOH_monomer" / "min.xyz",
+        "Wat_monomer.xyz": _EXTRA_RUN41 / "Wat_monomer" / "min.xyz",
+        "ImH_monomer.xyz": _EXTRA_RUN41 / "ImH_monomer" / "min.xyz",
+        "Im-_monomer.xyz": _EXTRA_RUN41 / "Im-_monomer" / "min.xyz",
+        "Zn_monomer.xyz": _EXTRA_RUN41 / "Zn_monomer" / "min.xyz",
     }
     written = []
     for name, src in monomers.items():
