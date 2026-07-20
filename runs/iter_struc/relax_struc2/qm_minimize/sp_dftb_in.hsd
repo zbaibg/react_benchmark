@@ -1,0 +1,194 @@
+Geometry = {
+  TypeNames = {
+ "Zn" "C" "N" "H" "O"
+  }
+  TypesAndCoordinates = {
+ 1 0.0000000000000000e+00 0.0000000000000000e+00 0.0000000000000000e+00
+ 2 4.0440585133514908e+00 -3.1207841362513973e+00 6.4039160311793628e+00
+ 2 3.8594777377554319e+00 -6.9205822139347195e-01 5.0737447694828752e+00
+ 3 5.7778648634110770e+00 9.6686154230700094e-01 4.7817947082043846e+00
+ 2 4.8064825056177716e+00 3.0013058174904188e+00 3.5889689736900028e+00
+ 2 2.2844894452447808e+00 2.5473653161577725e+00 3.1327830790140179e+00
+ 3 1.7200251638256139e+00 2.2587160060095396e-01 4.0256925042803786e+00
+ 4 5.8450614795882876e+00 -3.2744712658694373e+00 7.4086427276742235e+00
+ 4 3.9012865315968028e+00 -4.6799677973644505e+00 5.0544071681901483e+00
+ 4 2.5142998834869950e+00 -3.2857382475620356e+00 7.7862944278121526e+00
+ 4 5.8887410041781685e+00 4.6651455750888156e+00 3.1227314115806553e+00
+ 4 9.2803564004671768e-01 3.7768957378333803e+00 2.2353675914884881e+00
+ 2 1.5310907547692920e+00 1.2085898141513700e+00 -5.8753525109961959e+00
+ 5 -6.2583302314674428e-03 6.1695019914362629e-03 -4.0453350410843560e+00
+ 4 1.7604432730827844e+00 3.1942796539118552e+00 -5.3584487578491871e+00
+ 4 3.3805681865022286e+00 2.9295518036081614e-01 -5.9252109084167435e+00
+ 4 6.3229079321011328e-01 1.0879755743307664e+00 -7.7314805781879956e+00
+ 4 -6.7464735218018124e-01 -1.5222873716373091e+00 -4.8151270851439110e+00
+ 2 5.4484264420232940e+00 4.2395066885635906e+00 -1.7441941425517034e+00
+ 2 5.9457953503136904e+00 1.5752395620654156e+00 -1.1468361650731063e+00
+ 3 8.1529908918155645e+00 3.6236097915049997e-01 -1.5664301211631357e+00
+ 2 7.9004804702011215e+00 -1.9741917462308669e+00 -5.6960801601990851e-01
+ 2 5.5109110843450466e+00 -2.1732573305557357e+00 4.3999039096775916e-01
+ 3 4.2955176581064753e+00 2.7194491886373115e-02 2.6541264979980654e-02
+ 4 6.3998786560925778e+00 5.4465098412289601e+00 -3.6044346468693711e-01
+ 4 3.4197586252979866e+00 4.6402822039622080e+00 -1.6771237056620365e+00
+ 4 6.1435996188135329e+00 4.7015084297184373e+00 -3.6347133708023289e+00
+ 4 9.3747529078499010e+00 -3.3821839003388670e+00 -5.8461468043963738e-01
+ 4 4.6773574986242670e+00 -3.7590774208892910e+00 1.4134721985280558e+00
+ 2 -4.5596361484569687e+00 3.7231851669538751e+00 -4.1225562021808386e+00
+ 2 -3.8707374876859535e+00 4.8327790497767369e+00 -1.6472724326326043e+00
+ 3 -2.2441787650428271e+00 3.9012976592026956e+00 -3.0566441673887484e-02
+ 2 -2.1396469042457413e+00 5.5233073794039207e+00 1.9659503312843150e+00
+ 2 -3.7740329797757046e+00 7.4952453798937499e+00 1.5806824565536004e+00
+ 3 -4.8758736737698705e+00 7.0297090129972863e+00 -7.1525745891617176e-01
+ 4 -4.9678468794006161e+00 5.1948425707861539e+00 -5.5139575570758783e+00
+ 4 -6.2185352979137249e+00 2.5043412974769548e+00 -3.9312116242893693e+00
+ 4 -3.0037488363279317e+00 2.5693528697670462e+00 -4.8561665332566379e+00
+ 4 -8.9460596115966362e-01 5.1725788545882345e+00 3.5521398508132829e+00
+ 4 -4.2263857141642198e+00 9.1333846079990426e+00 2.7059673027495736e+00
+ 4 -6.1800641388445232e+00 8.1113131567782535e+00 -1.5895959114176066e+00
+ 2 7.1959973547599221e-01 -7.1523073176318031e+00 -1.5728825963177209e+00
+ 2 -1.5284477595675070e+00 -6.1246711908038849e+00 -2.6370746270432616e-01
+ 3 -2.2424193097746619e+00 -3.8993763590559776e+00 -5.0206683945687829e-02
+ 2 -4.4966686968929972e+00 -3.6718776968104945e+00 1.0163602185170704e+00
+ 2 -5.2815092624847608e+00 -6.0767358293872862e+00 1.5798545607088292e+00
+ 3 -3.3405406261448567e+00 -7.6149435483184211e+00 8.3312951456225204e-01
+ 4 1.7049230558010100e+00 -8.5349735947510954e+00 -3.9681758326334454e-01
+ 4 1.4398335385398606e-01 -8.0676134008410170e+00 -3.3365803526912092e+00
+ 4 2.0488290297548457e+00 -5.6396816770990910e+00 -2.0518711124232003e+00
+ 4 -5.4902935270038888e+00 -1.9043891666013060e+00 1.2925471011435514e+00
+ 4 -6.9998375532482155e+00 -6.8001402669069586e+00 2.4051068650826748e+00
+ 4 -3.2816296677099914e+00 -9.5166255988617010e+00 9.6453893752643483e-01
+  }
+  Periodic = No
+  Helical = No
+}
+
+Hamiltonian = Dftb {
+  Scc = Yes
+  SccTolerance = 9.9999999999999995E-008
+  MaxSCCIterations = 250
+  ConvergentSCCOnly = Yes
+  Charge = 0
+  ReadInitialCharges = No
+  Filling = Fermi {
+    Temperature [K] = 0.0000000000000000
+  }
+  ThirdOrderFull = Yes
+  HubbardDerivs = {
+    Zn = -2.9999999999999999E-002
+    H = -0.18570000000000000
+    C = -0.14920000000000000
+    O = -0.15750000000000000
+    N = -0.15350000000000000
+}
+  ShellResolvedSCC = No
+  MaxAngularMomentum = {
+    Zn = "d"
+    H = "s"
+    C = "p"
+    O = "p"
+    N = "p"
+}
+  SlaterKosterFiles = {
+    Zn-Zn = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/Zn-Zn.skf"
+    Zn-H = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/Zn-H.skf"
+    Zn-C = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/Zn-C.skf"
+    Zn-O = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/Zn-O.skf"
+    Zn-N = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/Zn-N.skf"
+    H-Zn = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/H-Zn.skf"
+    H-H = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/H-H.skf"
+    H-C = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/H-C.skf"
+    H-O = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/H-O.skf"
+    H-N = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/H-N.skf"
+    C-Zn = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/C-Zn.skf"
+    C-H = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/C-H.skf"
+    C-C = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/C-C.skf"
+    C-O = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/C-O.skf"
+    C-N = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/C-N.skf"
+    O-Zn = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/O-Zn.skf"
+    O-H = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/O-H.skf"
+    O-C = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/O-C.skf"
+    O-O = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/O-O.skf"
+    O-N = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/O-N.skf"
+    N-Zn = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/N-Zn.skf"
+    N-H = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/N-H.skf"
+    N-C = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/N-C.skf"
+    N-O = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/N-O.skf"
+    N-N = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/N-N.skf"
+    Prefix = ""
+}
+  HCorrection = Damping {
+    Exponent = 4.0000000000000000
+  }
+  Dispersion = SimpleDftD3 {
+    s6 = 1.0000000000000000
+    s8 = 3.2090000000000001
+    a1 = 0.74600000000000000
+    a2 = 4.1909999999999998
+    s10 = 0.0000000000000000
+    alpha = 14.000000000000000
+    weightingFactor = 4.0000000000000000
+    cutoffInter = 64.000000000000000
+    CoordinationNumber = exp {
+      CutCN = 0.0000000000000000
+      Cutoff = 40.000000000000000
+      Radii = CovalentRadiiD3 {}
+    }
+  }
+  Mixer = Broyden {
+    MixingParameter = 0.20000000000000001
+    InverseJacobiWeight = 1.0000000000000000E-002
+    MinimalWeight = 1.0000000000000000
+    MaximalWeight = 100000.00000000000
+    WeightFactor = 1.0000000000000000E-002
+  }
+  PolynomialRepulsive = {}
+  Hybrid = None {}
+  OldSKInterpolation = No
+  InitialCharges = {}
+  SpinPolarisation = {}
+  ElectricField = {}
+  Solver = RelativelyRobust {}
+  OnSiteCorrection = {}
+  Solvation = {}
+  ElectronicConstraints = {}
+  Electrostatics = GammaFunctional {}
+  Mdftb = None {}
+  ThirdOrder = No
+  Differentiation = FiniteDiff {
+    Delta = 1.2207031250000000E-004
+  }
+  ForceEvaluation = "Traditional"
+}
+Analysis = {
+  PrintForces = Yes
+  WriteBandOut = No
+  ProjectStates = {}
+  WriteEigenvectors = No
+  MullikenAnalysis = No
+  AtomResolvedEnergies = No
+}
+ParserOptions = {
+  ParserVersion = 14
+  WriteHSDInput = No
+  StopAfterParsing = No
+  IgnoreUnprocessedNodes = No
+}
+Options = {
+  WriteDetailedOut = No
+  WriteCharges = No
+  WriteAutotestTag = No
+  WriteDetailedXML = No
+  WriteResultsTag = No
+  RandomSeed = 0
+  WriteHS = No
+  WriteRealHS = No
+  MinimiseMemoryUsage = No
+  ShowFoldedCoords = No
+  TimingVerbosity = 0
+  BinaryAccessTypes = {
+ "stream"
+  }
+}
+Reks = None {}
+Driver = {}
+
+ExcitedState = {}

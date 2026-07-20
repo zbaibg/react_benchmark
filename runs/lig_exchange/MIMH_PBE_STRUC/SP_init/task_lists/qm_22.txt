@@ -1,0 +1,5 @@
+./run14/1Zn_4MImH_0MeOH_monomer_3_ghost/sbatch_prepare.sh
+./run14/1Zn_4MImH_0MeOH_monomer_4/sbatch_prepare.sh
+./run14/1Zn_4MImH_0MeOH_monomer_4_ghost/sbatch_prepare.sh
+./run14/MImH_monomer/sbatch_prepare.sh
+./run14/MeOH_monomer/sbatch_prepare.sh

@@ -1,0 +1,2 @@
+ ZN X     1     ZN     1
+MIH X     2    MIH     2

@@ -1,0 +1,11 @@
+####
+&cntrl
+  imin=1,        ! Perform energy minimization
+  maxcyc=99999,   ! Maximum number of minimization steps
+  !ncyc=10,      ! Use steepest descent for the first 10 steps, then conjugate gradient
+  cut=99999,       ! (Default: 8.0) Non-bonded interaction cutoff distance (in Å).
+  ntb=0,         ! Periodic boundary conditions, constant volume
+/
+&ewald
+  !verbose=3,
+/

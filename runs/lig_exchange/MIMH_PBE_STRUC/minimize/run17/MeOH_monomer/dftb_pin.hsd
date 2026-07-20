@@ -1,0 +1,114 @@
+Geometry = {
+  TypeNames = {
+ "H" "C" "O"
+  }
+  TypesAndCoordinates = {
+ 1 -2.1108240904189035 -1.4550891223120463 1.2982418532836051
+ 2 -1.3341466498081880 -2.8345891993091812E-002 -9.4486306643639367E-003
+ 1 -2.1108240904189035 -0.36660686977732077 -1.9142925726001334
+ 1 -1.9558665475233348 1.8424829795509676 0.62360962384801988
+ 3 1.3643822679341524 7.5589045314911497E-003 1.8897261328727874E-003
+ 1 1.9577562736562080 -1.6327233788020883 -0.55368975693172673
+  }
+  Periodic = No
+  Helical = No
+}
+Hamiltonian = Dftb {
+  Scc = Yes
+  SccTolerance = 9.9999999999999995E-008
+  MaxSCCIterations = 250
+  ConvergentSCCOnly = Yes
+  Charge = 0.0000000000000000
+  ReadInitialCharges = No
+  Filling = Fermi {
+    Temperature [K] = 0.0000000000000000
+  }
+  ThirdOrderFull = Yes
+  HubbardDerivs = {
+    H = -0.18570000000000000
+    C = -0.14920000000000000
+    O = -0.15750000000000000
+  }
+  ShellResolvedSCC = No
+  MaxAngularMomentum = {
+    H = "s"
+    C = "p"
+    O = "p"
+  }
+  SlaterKosterFiles = {
+    H-H = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/H-H.skf"
+    H-C = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/H-C.skf"
+    H-O = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/H-O.skf"
+    C-H = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/C-H.skf"
+    C-C = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/C-C.skf"
+    C-O = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/C-O.skf"
+    O-H = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/O-H.skf"
+    O-C = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/O-C.skf"
+    O-O = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/O-O.skf"
+    Prefix = ""
+  }
+  HCorrection = Damping {
+    Exponent = 4.0000000000000000
+  }
+  Mixer = Broyden {
+    MixingParameter = 0.20000000000000001
+    InverseJacobiWeight = 1.0000000000000000E-002
+    MinimalWeight = 1.0000000000000000
+    MaximalWeight = 100000.00000000000
+    WeightFactor = 1.0000000000000000E-002
+  }
+  PolynomialRepulsive = {}
+  Hybrid = None {}
+  OldSKInterpolation = No
+  InitialCharges = {}
+  SpinPolarisation = {}
+  ElectricField = {}
+  Solver = RelativelyRobust {}
+  OnSiteCorrection = {}
+  Dispersion = {}
+  Solvation = {}
+  ElectronicConstraints = {}
+  Electrostatics = GammaFunctional {}
+  Mdftb = None {}
+  ThirdOrder = No
+  Differentiation = FiniteDiff {
+    Delta = 1.2207031250000000E-004
+  }
+  ForceEvaluation = "Traditional"
+}
+Analysis = {
+  PrintForces = Yes
+  WriteBandOut = No
+  ProjectStates = {}
+  WriteEigenvectors = No
+  MullikenAnalysis = Yes
+  WriteNetCharges = No
+  AtomResolvedEnergies = No
+}
+ParserOptions = {
+  ParserVersion = 14
+  WriteHSDInput = Yes
+  StopAfterParsing = No
+  IgnoreUnprocessedNodes = No
+}
+Options = {
+  WriteDetailedOut = Yes
+  WriteCharges = Yes
+  WriteAutotestTag = No
+  WriteDetailedXML = No
+  WriteResultsTag = No
+  RestartFrequency = 20
+  RandomSeed = 0
+  WriteHS = No
+  WriteRealHS = No
+  MinimiseMemoryUsage = No
+  ShowFoldedCoords = No
+  TimingVerbosity = 1
+  WriteChargesAsText = No
+  BinaryAccessTypes = {
+ "stream"
+  }
+}
+Reks = None {}
+Driver = {}
+ExcitedState = {}

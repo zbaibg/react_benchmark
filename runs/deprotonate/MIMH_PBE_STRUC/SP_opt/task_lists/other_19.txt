@@ -1,0 +1,1 @@
+./run6/Wat_monomer/sbatch_prepare.sh

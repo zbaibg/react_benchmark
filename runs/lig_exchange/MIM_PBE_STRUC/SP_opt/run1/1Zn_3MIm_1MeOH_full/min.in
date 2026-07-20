@@ -1,0 +1,54 @@
+####
+&cntrl
+  imin=1,        ! Perform energy minimization
+  ntmin=5, ! use DL-Find module for minimization.
+  ntc=1, ! do not use SHAKE. Suggested by DL-Find setting
+  ntf=1, ! calculate all forces. Suggested by DL-Find setting
+  !ncyc=10,      ! Use steepest descent for the first 10 steps, then conjugate gradient
+  cut=99999,       ! (Default: 8.0) Non-bonded interaction cutoff distance (in Å).
+  ntb=0,         ! Periodic boundary conditions, constant volume
+  ifqnt=1,           ! QM/MM calculation
+/
+&ewald
+  !verbose=3,
+/
+&qmmm
+  qm_theory='DFTBPLUS',
+  qmcut=99999, 
+  !writepdb=1,
+  qmmm_int=1, 
+  qm_ewald=1, 
+  !verbosity=3,
+  kmaxqx=8,
+  kmaxqy=8,
+  kmaxqz=8,
+  ksqmaxq=100,
+  qmmask=':*', qmcharge=-1,
+/
+&dftbplus
+  qm_level = 'DFTB3-D3', 
+  tfermi = 0.0, 
+  scftol = 1.d-7, 
+  maxiter = 250, 
+  hcorrection = 0, 
+  !silent = T, 
+  !debug = F, 
+  mixer = "BROYDEN" 
+  mdftb= .false.,
+  mdftb_scale= .false.,
+  skroot= '',
+/
+&xtb
+  qm_level='DFTB3-D3',
+  maxiter=250,
+  mmhardness=0,
+/
+&orc
+  use_template=1,
+/
+&dlfind
+ ! use the default method (LBFGS minimization)
+ maxcycle=1,
+ tol=4.5d-5 ! maximum gradient component in a.u. (default: 4.5d-4)
+ tole=1.0d-6 ! maximum predicted energy change in a.u. (default: 1.0d-6)
+/

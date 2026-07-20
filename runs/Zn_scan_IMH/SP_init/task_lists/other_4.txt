@@ -1,0 +1,13 @@
+./run0/1ImH_6Wat_2Hbond_IMH_1.5_full/sbatch_prepare.sh
+./run0/1ImH_6Wat_2Hbond_IMH_2.0_full/sbatch_prepare.sh
+./run0/1ImH_6Wat_2Hbond_IMH_2.5_full/sbatch_prepare.sh
+./run0/1ImH_6Wat_2Hbond_IMH_3.0_full/sbatch_prepare.sh
+./run0/1ImH_6Wat_2Hbond_IMH_4.0_full/sbatch_prepare.sh
+./run0/1ImH_6Wat_2Hbond_IMH_5.0_full/sbatch_prepare.sh
+./run0/1ImH_6Wat_2Hbond_IMH_6.0_full/sbatch_prepare.sh
+./run0/1ImH_6Wat_2Hbond_IMH_7.0_full/sbatch_prepare.sh
+./run0/1ImH_6Wat_2Hbond_IMH_8.0_full/sbatch_prepare.sh
+./run0/1ImH_6Wat_2Hbond_IMH_9.0_full/sbatch_prepare.sh
+./run0/1ImH_6Wat_2Hbond_IMH_m0.1_full/sbatch_prepare.sh
+./run0/1ImH_6Wat_2Hbond_full/sbatch_prepare.sh
+./run110/1Zn_1ImH_6Wat_1Hbond_IMH_0.1_full/sbatch_prepare.sh

@@ -1,0 +1,1 @@
+./run14/MIm_monomer/sbatch_prepare.sh

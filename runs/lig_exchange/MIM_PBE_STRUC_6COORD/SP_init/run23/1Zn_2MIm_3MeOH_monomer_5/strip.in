@@ -1,0 +1,5 @@
+parm box_orig.prmtop
+trajin min_orig.rst
+strip !(:6) parmout box.prmtop
+trajout init.rst restart
+run

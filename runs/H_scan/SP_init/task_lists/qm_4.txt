@@ -1,0 +1,2 @@
+./run23/H3O_m0.2_monomer/sbatch_prepare.sh
+./run23/MImH_0.0_monomer/sbatch_prepare.sh

@@ -1,0 +1,1 @@
+old/min.rst

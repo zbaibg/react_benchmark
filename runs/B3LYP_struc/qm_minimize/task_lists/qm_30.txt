@@ -1,0 +1,1 @@
+./run23/Zn_monomer/sbatch_prepare.sh

@@ -1,0 +1,7 @@
+selected_candidate=deprot_mih_00
+energy_Hartree=None
+reference=1Zn_3MIm_1MImH_1MeOH
+reference_geometry=/home/zbai29/data/qmmm_test/react_benchmark/iter_struc/relax_struc/qm_minimize/run35_new/1Zn_3MIm_1MImH_1MeOH/manually_created_1Zn_3MIm_1MImH_1MeOH.xyz
+mode=deprot
+cycid=1
+iterative_wave=1

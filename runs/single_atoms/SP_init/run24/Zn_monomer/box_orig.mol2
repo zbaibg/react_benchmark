@@ -1,0 +1,10 @@
+@<TRIPOS>MOLECULE
+default_name
+    1     0     1     0     1 
+SMALL
+USER_CHARGES
+@<TRIPOS>ATOM
+  1 ZN1     0.000000    0.000000    0.000000 Z     1 ZN      0.0000 ****
+@<TRIPOS>BOND
+@<TRIPOS>SUBSTRUCTURE
+      1   ZN              1 ****               0 ****  **** 

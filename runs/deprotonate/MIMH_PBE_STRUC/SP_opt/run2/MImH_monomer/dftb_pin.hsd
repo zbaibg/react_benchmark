@@ -1,0 +1,137 @@
+Geometry = {
+  TypeNames = {
+ "N" "C" "H"
+  }
+  TypesAndCoordinates = {
+ 1 0.18836550749984596 2.1010872200499984 -3.6402113508067557E-005
+ 1 8.6442596962746712E-002 -2.1147191066482414 -5.6022599083779689E-005
+ 2 -1.3148778713063980 1.0086477826449602E-003 -1.0828841101908611E-004
+ 2 -4.1306406753393432 0.10134663922620403 -4.5750850557340256E-004
+ 2 2.6696651409326160 1.2971797236737834 8.7810535623923932E-005
+ 2 2.5628081248848007 -1.3146804922747941 7.5772191151243575E-005
+ 3 -0.40694002899606541 3.9206824005641425 -6.5122923100707693E-005
+ 3 -4.8632703026719275 1.0895959497497578 1.6592317685777596
+ 3 -4.8629225512679612 1.0881908266081430 -1.6611466841087097
+ 3 -4.8974171798276815 -1.8015270618497330 2.7924985535988462E-004
+ 3 4.2309683999006396 2.6176026365670388 1.5552577399196980E-004
+ 3 4.1067698389781278 -2.6507356346387403 1.5017559421910901E-004
+  }
+  Periodic = No
+  Helical = No
+}
+Hamiltonian = Dftb {
+  Scc = Yes
+  SccTolerance = 9.9999999999999995E-008
+  MaxSCCIterations = 250
+  ConvergentSCCOnly = Yes
+  Charge = 0.0000000000000000
+  ReadInitialCharges = No
+  Filling = Fermi {
+    Temperature [K] = 0.0000000000000000
+  }
+  ThirdOrderFull = Yes
+  HubbardDerivs = {
+    N = -0.15350000000000000
+    C = -0.14920000000000000
+    H = -0.18570000000000000
+  }
+  ShellResolvedSCC = No
+  MaxAngularMomentum = {
+    N = "p"
+    C = "p"
+    H = "s"
+  }
+  SlaterKosterFiles = {
+    N-N = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/N-N.skf"
+    N-C = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/N-C.skf"
+    N-H = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/N-H.skf"
+    C-N = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/C-N.skf"
+    C-C = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/C-C.skf"
+    C-H = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/C-H.skf"
+    H-N = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/H-N.skf"
+    H-C = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/H-C.skf"
+    H-H = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/H-H.skf"
+    Prefix = ""
+  }
+  HCorrection = H5 {
+    RScaling = 0.71399999999999997
+    WScaling = 0.25000000000000000
+    H5Scaling = {
+      N = 0.17999999999999999
+      C = -1.0000000000000000
+      H = -1.0000000000000000
+    }
+  }
+  Dispersion = DftD3 {
+    Damping = ZeroDamping {
+      sr6 = 1.2500000000000000
+      alpha6 = 29.609999999999999
+    }
+    s6 = 1.0000000000000000
+    s8 = 0.48999999999999999
+    HHRepulsion = Yes
+    cutoff = 94.868329805051374
+    cutoffcn = 40.000000000000000
+    threebody = No
+  }
+  Mixer = Broyden {
+    MixingParameter = 0.20000000000000001
+    InverseJacobiWeight = 1.0000000000000000E-002
+    MinimalWeight = 1.0000000000000000
+    MaximalWeight = 100000.00000000000
+    WeightFactor = 1.0000000000000000E-002
+  }
+  PolynomialRepulsive = {}
+  Hybrid = None {}
+  OldSKInterpolation = No
+  InitialCharges = {}
+  SpinPolarisation = {}
+  ElectricField = {}
+  Solver = RelativelyRobust {}
+  OnSiteCorrection = {}
+  Solvation = {}
+  ElectronicConstraints = {}
+  Electrostatics = GammaFunctional {}
+  Mdftb = None {}
+  ThirdOrder = No
+  Differentiation = FiniteDiff {
+    Delta = 1.2207031250000000E-004
+  }
+  ForceEvaluation = "Traditional"
+}
+Analysis = {
+  PrintForces = Yes
+  WriteBandOut = No
+  ProjectStates = {}
+  WriteEigenvectors = No
+  MullikenAnalysis = Yes
+  WriteNetCharges = No
+  AtomResolvedEnergies = No
+}
+ParserOptions = {
+  ParserVersion = 14
+  WriteHSDInput = Yes
+  StopAfterParsing = No
+  IgnoreUnprocessedNodes = No
+}
+Options = {
+  WriteDetailedOut = Yes
+  WriteCharges = Yes
+  WriteAutotestTag = No
+  WriteDetailedXML = No
+  WriteResultsTag = No
+  RestartFrequency = 20
+  RandomSeed = 0
+  WriteHS = No
+  WriteRealHS = No
+  MinimiseMemoryUsage = No
+  ShowFoldedCoords = No
+  TimingVerbosity = 1
+  WriteChargesAsText = No
+  BinaryAccessTypes = {
+ "stream"
+  }
+}
+Reks = None {}
+Driver = {}
+ExcitedState = {}

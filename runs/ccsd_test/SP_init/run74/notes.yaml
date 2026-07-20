@@ -1,0 +1,4 @@
+id: run74
+name: Molpro PNO-LCCSD(T) avqz (Zn avqz-pp)
+comment: |-
+  Molpro-only mode (auto-generate run.input from xyz)

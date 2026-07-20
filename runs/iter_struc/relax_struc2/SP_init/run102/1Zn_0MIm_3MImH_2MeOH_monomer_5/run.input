@@ -1,0 +1,27 @@
+***,none
+gprint,basis
+basis=avtz-f12,zn=avtz-pp-f12
+
+geometry={
+angstrom
+H1           1.80657625      -2.75674438      -1.22897398
+C1           0.90962672      -3.21534896      -0.82992035
+H2           1.17685497      -4.09905291      -0.26119336
+H3           0.23532031      -3.47677803      -1.63857269
+O1           0.29644352      -2.23836732       0.03823880
+H4          -0.37965611      -2.65734649       0.57628888
+}
+
+
+symmetry,nosym
+wf,charge=0,spin=0
+gthresh,energy=1.d-8
+gthresh,orbital=1.d-7
+gthresh,twoint=1.e-15
+gthresh,oneint=1.e-15
+{ldf-hf;
+}
+STATUS,LAST,CRASH
+{pno-lccsd(t)-f12;
+ core,large,Zn=0000
+}

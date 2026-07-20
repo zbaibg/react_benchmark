@@ -1,0 +1,21 @@
+***,none
+gprint,basis
+basis=vtz-f12,zn=vtz-pp-f12
+
+geometry={
+angstrom
+ZN1         -0.63573945       0.17235561      -1.02689362
+}
+
+
+
+wf,charge=2,spin=0
+gthresh,energy=1.d-9
+gthresh,orbital=1.d-8
+gthresh,twoint=1.d-14
+{ldf-hf;
+  maxit,100
+}
+{pno-lccsd(t)-f12;
+ core,large,Zn=0000
+}

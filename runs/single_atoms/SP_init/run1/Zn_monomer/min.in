@@ -1,0 +1,46 @@
+####
+&cntrl
+  imin=1,        ! Perform energy minimization
+  maxcyc=1,   ! Maximum number of minimization steps
+  !ncyc=10,      ! Use steepest descent for the first 10 steps, then conjugate gradient
+  cut=99999,       ! (Default: 8.0) Non-bonded interaction cutoff distance (in Å).
+  ntb=0,         ! Periodic boundary conditions, constant volume
+  ifqnt=1,           ! QM/MM calculation
+/
+&ewald
+  !verbose=3,
+/
+&qmmm
+  qm_theory='DFTBPLUS',
+  qmcut=99999, 
+  !writepdb=1,
+  qmmm_int=1, 
+  qm_ewald=1, 
+  !verbosity=3,
+  kmaxqx=8,
+  kmaxqy=8,
+  kmaxqz=8,
+  ksqmaxq=100,
+  qmmask=':*', qmcharge=0, spin=1,
+/
+&dftbplus
+  qm_level = 'DFTB3-D3', 
+  tfermi = 0, 
+  scftol = 1.d-7, 
+  maxiter = 250, 
+  hcorrection = 0, 
+  silent = F, 
+  debug = T, 
+  mixer = "BROYDEN" 
+  mdftb= .false.,
+  mdftb_scale= .false.,
+  skroot= '',
+/
+&xtb
+  qm_level='DFTB3-D3',
+  maxiter=250,
+  mmhardness=0,
+/
+&orc
+  use_template=1,
+/

@@ -1,6 +1,3 @@
-# From H_monomer.xyz; topology only (QM later)
-MASS
-H1      1.008  0.0
-
-NONBON
-H1      0.0000  0.0000
+version https://git-lfs.github.com/spec/v1
+oid sha256:f92a390d3ed56dffe20dc0c699aaa016a37a8a21b6e70b2b12366bee295e3a99
+size 102

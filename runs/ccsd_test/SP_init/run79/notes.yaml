@@ -1,0 +1,4 @@
+id: run79
+name: Molpro PNO-LCCSD(T)-F12 avtz-f12 (Zn avtz-pp-f12) DF-HF,energy=1.d-7,orbital=1.d-6;twoint=1.d-12;compress=1.d-12;maxit,100
+comment: |-
+  Molpro-only mode (auto-generate run.input from xyz)

@@ -1,0 +1,4 @@
+id: run40
+name: CCSD(T) aug-cc-pVQZ EXTREMESCF Thresh=1e-16 TCut=1e-18 NoAutoStart
+comment: |-
+  CCSD(T) aug-cc-pVQZ EXTREMESCF Thresh=1e-16 TCut=1e-18 NoAutoStart

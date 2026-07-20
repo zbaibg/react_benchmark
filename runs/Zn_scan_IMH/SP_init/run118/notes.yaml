@@ -1,0 +1,4 @@
+id: run118
+name: M052X D3 aug-cc-pVTZ QM-IMH MM-Zn,Wat
+comment: |-
+  Use M052X aug-cc-pVTZ D3ZERO RIJCOSX AutoAux VERYTIGHTSCF DEFGRID3 PCDTrimAuxJ NoAutoStart

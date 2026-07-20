@@ -1,0 +1,3 @@
+./run16/1Zn_2MIm_2MeOH_full/sbatch_prepare.sh
+./run16/1Zn_2MIm_2MeOH_monomer_0_ghost/sbatch_prepare.sh
+./run16/1Zn_2MIm_2MeOH_monomer_1_ghost/sbatch_prepare.sh

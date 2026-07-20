@@ -1,11 +1,3 @@
-CRYST1    1.000    1.000    1.000  90.00  90.00  90.00 P 1            
-HETATM    1  N2  IMH X   1       1.047   2.117  -0.122  1.00  0.00           N  
-HETATM    2  C2  IMH X   1       1.612   2.949   0.823  1.00  0.00           C  
-HETATM    3  C3  IMH X   1       0.706   2.887  -1.139  1.00  0.00           C  
-HETATM    4  C1  IMH X   1       1.604   4.224   0.358  1.00  0.00           C  
-HETATM    5  H5  IMH X   1       1.982   2.585   1.761  1.00  0.00           H  
-HETATM    6  N1  IMH X   1       1.026   4.160  -0.881  1.00  0.00           N  
-HETATM    7  H4  IMH X   1       1.949   5.144   0.789  1.00  0.00           H  
-HETATM    8  HN1 IMH X   1       0.869   4.939  -1.499  1.00  0.00           H  
-HETATM    9  H6  IMH X   1       0.237   2.561  -2.047  1.00  0.00           H  
-END                                                                             
+version https://git-lfs.github.com/spec/v1
+oid sha256:254235409d7b3694bd99472596e7b1fcca7519e410b545ab6262847b1ff17580
+size 881

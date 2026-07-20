@@ -1,0 +1,7 @@
+ ZN X     1     ZN     1
+MOH X     2    MOH     2
+MOH X     3    MOH     3
+MOH X     4    MOH     4
+NO3 X     5    NO3     5
+NO3 X     6    NO3     6
+NO3 X     7    NO3     7

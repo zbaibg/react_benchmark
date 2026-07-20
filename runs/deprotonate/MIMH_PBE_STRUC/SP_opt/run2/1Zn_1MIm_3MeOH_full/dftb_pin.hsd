@@ -1,0 +1,177 @@
+Geometry = {
+  TypeNames = {
+ "Zn" "H" "C" "O" "N"
+  }
+  TypesAndCoordinates = {
+ 1 0.81936051093927331 -1.3021692517550156 3.9243250929631868E-003
+ 2 -6.0927447108086108 -2.7812855237562220 -2.7051004666597405
+ 3 -4.4835332097820952 -1.5542108933396823 -2.2877783461881149
+ 2 -4.0145659927434405 -0.40879465940224491 -3.9476977220817600
+ 2 -4.9377176818594313 -0.32093381318989994 -0.70241794679267022
+ 4 -2.3567457493810995 -3.0838229985925385 -1.5701799889964851
+ 2 -2.0184965300303142 -4.3456346859770223 -2.8591769550211041
+ 2 -2.9340356563877426 -3.5290786995784829 4.6914592987382040
+ 3 -1.2516622676314557 -4.6762051270098670 4.3082715807944698
+ 2 -0.69059098304427724 -5.6976285774913640 6.0141517465549557
+ 2 -1.6578590892410683 -6.0163643269769178 2.7966546889806909
+ 4 0.79615788647760455 -3.0968913527174387 3.4995068731843126
+ 2 1.3560850083831786 -2.0311331288617023 4.8875971286169397
+ 2 6.1515928844311754 -4.2383785575911430 -4.4331040086765965
+ 3 5.2229859022891523 -2.6567648758076814 -3.4827995974900534
+ 2 6.6332213780696865 -1.4628661091747031 -2.5480144511821883
+ 2 4.1670541935425778 -1.5410459741817355 -4.8547007523669166
+ 4 3.4572720326524706 -3.6261986335065264 -1.6616495544642542
+ 2 4.2767396405583673 -4.8472928485524021 -0.56312938487101449
+ 2 -0.68999157331009053 2.3569415851230735 5.2542133109191536
+ 2 -3.0626044959383907 1.2411135353365992 3.2161058122716759
+ 2 1.7744728114702002 7.9990042401908266 -2.2767292500472807
+ 2 3.0571066691487134 3.0538263332473661 -3.4817960034050119
+ 2 -3.1906926595888354 4.3702569691303559 4.3884186986419476
+ 3 -1.9314498786586360 2.9095711078629765 3.6904556590603117
+ 3 1.2688543959357028 6.2611818783781734 -1.3327202987763012
+ 3 -0.47441284976836889 3.8447816818428802 1.4622953929473812
+ 3 1.9258181986814680 3.8158505038910384 -1.9579717078012497
+ 5 -0.22844391023478278 6.2679356100538364 0.79606228058804462
+ 5 0.80768951928511956 2.2423194365897605 -0.15462752498407134
+  }
+  Periodic = No
+  Helical = No
+}
+Hamiltonian = Dftb {
+  Scc = Yes
+  SccTolerance = 9.9999999999999995E-008
+  MaxSCCIterations = 250
+  ConvergentSCCOnly = Yes
+  Charge = 1.0000000000000000
+  ReadInitialCharges = No
+  Filling = Fermi {
+    Temperature [K] = 0.0000000000000000
+  }
+  ThirdOrderFull = Yes
+  HubbardDerivs = {
+    Zn = -2.9999999999999999E-002
+    H = -0.18570000000000000
+    C = -0.14920000000000000
+    O = -0.15750000000000000
+    N = -0.15350000000000000
+  }
+  ShellResolvedSCC = No
+  MaxAngularMomentum = {
+    Zn = "d"
+    H = "s"
+    C = "p"
+    O = "p"
+    N = "p"
+  }
+  SlaterKosterFiles = {
+    Zn-Zn = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/Zn-Zn.skf"
+    Zn-H = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/Zn-H.skf"
+    Zn-C = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/Zn-C.skf"
+    Zn-O = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/Zn-O.skf"
+    Zn-N = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/Zn-N.skf"
+    H-Zn = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/H-Zn.skf"
+    H-H = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/H-H.skf"
+    H-C = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/H-C.skf"
+    H-O = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/H-O.skf"
+    H-N = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/H-N.skf"
+    C-Zn = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/C-Zn.skf"
+    C-H = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/C-H.skf"
+    C-C = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/C-C.skf"
+    C-O = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/C-O.skf"
+    C-N = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/C-N.skf"
+    O-Zn = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/O-Zn.skf"
+    O-H = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/O-H.skf"
+    O-C = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/O-C.skf"
+    O-O = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/O-O.skf"
+    O-N = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/O-N.skf"
+    N-Zn = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/N-Zn.skf"
+    N-H = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/N-H.skf"
+    N-C = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/N-C.skf"
+    N-O = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/N-O.skf"
+    N-N = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/N-N.skf"
+    Prefix = ""
+  }
+  HCorrection = H5 {
+    RScaling = 0.71399999999999997
+    WScaling = 0.25000000000000000
+    H5Scaling = {
+      Zn = -1.0000000000000000
+      H = -1.0000000000000000
+      C = -1.0000000000000000
+      O = 5.9999999999999998E-002
+      N = 0.17999999999999999
+    }
+  }
+  Dispersion = DftD3 {
+    Damping = ZeroDamping {
+      sr6 = 1.2500000000000000
+      alpha6 = 29.609999999999999
+    }
+    s6 = 1.0000000000000000
+    s8 = 0.48999999999999999
+    HHRepulsion = Yes
+    cutoff = 94.868329805051374
+    cutoffcn = 40.000000000000000
+    threebody = No
+  }
+  Mixer = Broyden {
+    MixingParameter = 0.20000000000000001
+    InverseJacobiWeight = 1.0000000000000000E-002
+    MinimalWeight = 1.0000000000000000
+    MaximalWeight = 100000.00000000000
+    WeightFactor = 1.0000000000000000E-002
+  }
+  PolynomialRepulsive = {}
+  Hybrid = None {}
+  OldSKInterpolation = No
+  InitialCharges = {}
+  SpinPolarisation = {}
+  ElectricField = {}
+  Solver = RelativelyRobust {}
+  OnSiteCorrection = {}
+  Solvation = {}
+  ElectronicConstraints = {}
+  Electrostatics = GammaFunctional {}
+  Mdftb = None {}
+  ThirdOrder = No
+  Differentiation = FiniteDiff {
+    Delta = 1.2207031250000000E-004
+  }
+  ForceEvaluation = "Traditional"
+}
+Analysis = {
+  PrintForces = Yes
+  WriteBandOut = No
+  ProjectStates = {}
+  WriteEigenvectors = No
+  MullikenAnalysis = Yes
+  WriteNetCharges = No
+  AtomResolvedEnergies = No
+}
+ParserOptions = {
+  ParserVersion = 14
+  WriteHSDInput = Yes
+  StopAfterParsing = No
+  IgnoreUnprocessedNodes = No
+}
+Options = {
+  WriteDetailedOut = Yes
+  WriteCharges = Yes
+  WriteAutotestTag = No
+  WriteDetailedXML = No
+  WriteResultsTag = No
+  RestartFrequency = 20
+  RandomSeed = 0
+  WriteHS = No
+  WriteRealHS = No
+  MinimiseMemoryUsage = No
+  ShowFoldedCoords = No
+  TimingVerbosity = 1
+  WriteChargesAsText = No
+  BinaryAccessTypes = {
+ "stream"
+  }
+}
+Reks = None {}
+Driver = {}
+ExcitedState = {}

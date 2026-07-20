@@ -1,0 +1,7 @@
+selected_candidate=prot_mim_00
+energy_Hartree=None
+reference=1Zn_1MIm_4MImH_1MeOH
+reference_geometry=/home/zbai29/data/qmmm_test/react_benchmark/iter_struc/relax_struc/qm_minimize/run35/1Zn_1MIm_4MImH_1MeOH/path.xyz
+mode=prot
+cycid=27
+iterative_wave=1

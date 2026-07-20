@@ -1,0 +1,1 @@
+../../../../../M052X_struc/qm_minimize/run30/1Zn_4MIm_0MeOH/min.rst

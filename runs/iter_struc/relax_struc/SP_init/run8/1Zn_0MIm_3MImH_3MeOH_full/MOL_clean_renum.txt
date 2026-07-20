@@ -1,0 +1,7 @@
+ ZN X     1     ZN     1
+MIH X     2    MIH     2
+MOH X     3    MOH     3
+MIH X     4    MIH     4
+MOH X     5    MOH     5
+MIH X     6    MIH     6
+MOH X     7    MOH     7

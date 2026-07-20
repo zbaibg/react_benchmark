@@ -1,0 +1,1 @@
+./run7/MeOH_monomer/sbatch_prepare.sh

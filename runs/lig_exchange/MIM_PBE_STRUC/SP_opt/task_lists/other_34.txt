@@ -1,0 +1,2 @@
+./run9/MIm_monomer/sbatch_prepare.sh
+./run9/MeOH_monomer/sbatch_prepare.sh

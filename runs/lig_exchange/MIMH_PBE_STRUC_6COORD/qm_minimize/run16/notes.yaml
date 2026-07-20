@@ -1,0 +1,5 @@
+id: run16
+name: PBE-D3(BJ) def2-TZVPPD
+comment: |-
+  Use PBE-D3(BJ) def2-TZVPPD.
+  1Zn_5MImH_0MeOH 1Zn_3MImH_2MeOH take too long to optimize. I increase tol from 4.5d-5 to 4.5d-4 for dl-find and use TIGHTSCF for ORCA to reduce numerical gradient error.

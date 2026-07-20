@@ -1,0 +1,22 @@
+####
+&cntrl
+  imin=1,        ! Perform energy minimization
+  ntmin=5, ! use DL-Find module for minimization.
+  ntc=1, ! do not use SHAKE. Suggested by DL-Find setting
+  ntf=1, ! calculate all forces. Suggested by DL-Find setting
+  !ncyc=10,      ! Use steepest descent for the first 10 steps, then conjugate gradient
+  cut=99999,       ! (Default: 8.0) Non-bonded interaction cutoff distance (in Å).
+  ntb=0,         ! Periodic boundary conditions, constant volume
+/
+&ewald
+  !verbose=3,
+/
+&dlfind
+ ! use the default method (LBFGS minimization)
+ maxcycle=1,
+ tol=4.5d-4 ! maximum gradient component in a.u. (default: 4.5d-4)
+ tole=5.0d-6 ! maximum predicted energy change in a.u. (default: 1.0d-6)
+ !optalg='NR'
+ !hessupd='BFGS'
+ crdrep='DLC'
+/

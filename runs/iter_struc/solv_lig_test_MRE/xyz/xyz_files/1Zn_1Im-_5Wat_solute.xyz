@@ -1,11 +1,3 @@
-9
-1Zn_1Im-_5Wat_solute from /mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/runs/iter_struc/solv_lig_test/qm_minimize/run41/1Zn_1Im-_5Wat/min.xyz; solvent stripped
-ZN      -0.08894376       0.10457743      -0.06308797
-H        0.80576819       1.17688310       4.87698650
-H        1.48414516       1.63048744       2.27032161
-C        0.33897045       0.80194890       3.98521185
-C       -1.03720498      -0.25952086       2.77297354
-H       -1.87373888      -0.86576945       2.46123457
-C        0.69375885       1.02407932       2.67976856
-N       -0.75133628      -0.01097611       4.03086329
-N       -0.20161863       0.33661762       1.88545179
+version https://git-lfs.github.com/spec/v1
+oid sha256:ca926985582b0138bdac22a155a517728cef98e9065763d01d8ea4c3e66ec75d
+size 657

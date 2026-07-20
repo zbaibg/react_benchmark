@@ -1,0 +1,2 @@
+./run24/MImH_0.5_monomer/sbatch_prepare.sh
+./run24/MImH_0.6_monomer/sbatch_prepare.sh

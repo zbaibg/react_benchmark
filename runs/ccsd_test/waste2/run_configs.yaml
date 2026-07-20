@@ -1,0 +1,154 @@
+ref_qmrun_to_minimize: run35
+
+# distribute_tasks.py: worker limits and Slurm cpus-per-task (optional; script defaults match)
+distribute_tasks:
+  max_qm_workers: 40
+  max_other_workers: 300
+  qm_cpus_per_task: 16
+  other_cpus_per_task: 1
+
+expand_nh_oh_radius: false
+
+#run24:
+#  name: DLPNO-CCSD(T) RIJCOSX def2-TZVPPD def2-TZVPPD/C AutoAux
+#  comment: Use DLPNO-CCSD(T) RIJCOSX def2-TZVPPD def2-TZVPPD/C AutoAux
+#  qm_level: "-"
+#  DFTBPLUS_hcorrection: 0
+#  mol_mask: ":*"
+#  open_qm_min: true
+#  open_qm_min_wat: true
+#  water_model: spce
+#  DFTBPLUS_mdftb: false
+#  DFTBPLUS_mdftb_scale: false
+#  DFTBPLUS_skroot: ""
+#  qm_theory: EXTERN
+#  XTB_mm_hardness: 0
+#  core_number: 16
+#  min_maxcyc: 1
+#  orca_template: |
+#    ! DLPNO-CCSD(T) RIJCOSX def2-TZVPPD def2-TZVPPD/C AutoAux
+#
+#    %pal
+#        nprocs 16
+#    end
+#
+#run31:
+#  name: DLPNO-CCSD(T1) RIJCOSX aug-cc-pVTZ aug-cc-pVTZ/C AutoAux VeryTightSCF TightPNO
+#  comment: Use DLPNO-CCSD(T1) RIJCOSX aug-cc-pVTZ aug-cc-pVTZ/C AutoAux VeryTightSCF TightPNO
+#  qm_level: "-"
+#  DFTBPLUS_hcorrection: 0
+#  mol_mask: ":*"
+#  open_qm_min: true
+#  open_qm_min_wat: true
+#  water_model: spce
+#  DFTBPLUS_mdftb: false
+#  DFTBPLUS_mdftb_scale: false
+#  DFTBPLUS_skroot: ""
+#  qm_theory: EXTERN
+#  XTB_mm_hardness: 0
+#  core_number: 16
+#  min_maxcyc: 1
+#  orca_template: |
+#    ! DLPNO-CCSD(T1) RIJCOSX aug-cc-pVTZ VeryTightSCF TightPNO
+#    %maxcore 6000 
+#    %basis
+#      AuxC "aug-cc-pVTZ/C"
+#      AuxJ "AutoAux"
+#    end
+#    %pal
+#        nprocs 16
+#    end
+#
+#run32:
+#  name: DLPNO-CCSD(T1)-F12/D RIJCOSX aug-cc-pVTZ VeryTightSCF TightPNO aug-cc-pVTZ/C AutoAux cc-pVTZ-F12-OptRI
+#  comment: |
+#    Though these basis sets are not F12-optimized. It is used by 10.1063/5.0012753 {aug-cc-pVTZ, cc-pVDZ-F12-OptRI, aug-cc-pVTZ/RI}
+#    I updated cc-pVDZ-F12-OptRI to cc-pVTZ-F12-OptRI
+#  qm_level: "-"
+#  DFTBPLUS_hcorrection: 0
+#  mol_mask: ":*"
+#  open_qm_min: true
+#  open_qm_min_wat: true
+#  water_model: spce
+#  DFTBPLUS_mdftb: false
+#  DFTBPLUS_mdftb_scale: false
+#  DFTBPLUS_skroot: ""
+#  qm_theory: EXTERN
+#  XTB_mm_hardness: 0
+#  core_number: 16
+#  min_maxcyc: 1
+#  orca_template: |
+#    ! DLPNO-CCSD(T1)-F12/D RIJCOSX aug-cc-pVTZ VeryTightSCF TightPNO 
+#    %basis
+#      AuxC "aug-cc-pVTZ/C"
+#      AuxJ "AutoAux"
+#      CABS "cc-pVTZ-F12-OptRI"
+#    end
+#    %pal
+#        nprocs 16
+#    end
+
+run35:
+  name: M052X aug-cc-pVTZ D3ZERO RIJCOSX AutoAux TIGHTSCF DEFGRID3 PCDTrimAuxJ NoAutoStart
+  comment: Use M052X aug-cc-pVTZ D3ZERO RIJCOSX AutoAux TIGHTSCF DEFGRID3 PCDTrimAuxJ NoAutoStart
+  qm_level: "-"
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":*"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: false
+  DFTBPLUS_mdftb_scale: false
+  DFTBPLUS_skroot: ""
+  qm_theory: EXTERN
+  XTB_mm_hardness: 0
+  core_number: 16
+  min_maxcyc: 1
+  use_amber_interface: true
+  orca_template: |
+    !  D3ZERO RIJCOSX TIGHTSCF DEFGRID3 PrintBasis NoAutoStart
+    %basis
+      Basis "aug-cc-pVTZ"
+      AuxJ  "AutoAux"
+      PCDTrimAuxJ  Coulomb # Trim the AuxJ basis in the Coulomb metric
+      PCDThresh    -1      # Threshold for the PCD: chosen automatically if <0
+    end
+    %maxcore 6000
+    %method 
+      method      dft
+      exchange    hyb_mgga_x_m05_2x
+      correlation mgga_c_m05_2x
+      D3S6     1.000
+      D3RS6    1.417
+      D3S8     0.000
+      D3alpha6 14
+    end
+    %pal
+        nprocs 16
+    end
+
+run36:
+  name: CCSD(T) aug-cc-pVTZ EXTREMESCF Thresh=1e-16 TCut=1e-16 NoAutoStart
+  comment: CCSD(T) aug-cc-pVTZ EXTREMESCF Thresh=1e-16 TCut=1e-16 NoAutoStart
+  qm_level: "-"
+  DFTBPLUS_hcorrection: 0
+  mol_mask: ":*"
+  open_qm_min: true
+  open_qm_min_wat: true
+  water_model: spce
+  DFTBPLUS_mdftb: false
+  DFTBPLUS_mdftb_scale: false
+  DFTBPLUS_skroot: ""
+  qm_theory: EXTERN
+  XTB_mm_hardness: 0
+  core_number: 32
+  min_maxcyc: 1
+  orca_template: |
+    ! CCSD(T) aug-cc-pVTZ EXTREMESCF NoAutoStart
+    %scf
+      Thresh 1e-16
+      TCut   1e-18
+    end
+    %pal
+        nprocs 32
+    end

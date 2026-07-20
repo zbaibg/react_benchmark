@@ -1,0 +1,178 @@
+Geometry = {
+  TypeNames = {
+ "Zn" "H" "C" "O" "N"
+  }
+  TypesAndCoordinates = {
+ 1 0.43646350380438365 -1.5549835458872225 -7.2490526812545003E-002
+ 2 -5.9773830083268518 -2.3447450426165117 -2.3598490049400613
+ 3 -4.2379310096828275 -2.5618627452626872 -3.4563977549248452
+ 2 -4.5416129642644893 -3.8502010545001277 -5.0392155523102886
+ 2 -3.6100730568867716 -0.72834611493909973 -4.1503709661607777
+ 4 -2.2650739691271138 -3.5704041358029852 -1.8574114086064244
+ 2 -2.6466991105451538 -5.3024979489536674 -1.3797973229073224
+ 2 -1.4829267215693689 -3.3883197809911199 6.8297741456541869
+ 3 -1.6736236680110588 -4.0212241347071336 4.8737760482724211
+ 2 -1.7371785819144980 -6.0861442973786950 4.7917387824630717
+ 2 -3.3857040228197990 -3.2325164293851261 4.0442878426820981
+ 4 0.45304246059245251 -3.1098662238332007 3.4283553616156754
+ 2 2.0336182232544742 -3.6913527772162595 4.1647526716650463
+ 2 5.8755421638566228 -1.0845050590432270 -3.9769334636237508
+ 3 5.9474312573234291 -1.7791195371800765 -2.0299136907508237
+ 2 7.5560039352682296 -3.0460910613208223 -1.7789657223944473
+ 2 6.0869544354093863 -0.19357793736354292 -0.72371951247112365
+ 4 3.6510452275315672 -3.1402712842366762 -1.4514693471971134
+ 2 3.5789797378317556 -4.7021611429322769 -2.4174277287523211
+ 5 -0.15231980214693888 6.2008886247602941 0.34830111327702068
+ 5 0.28534205169264482 2.1223194111603170 -0.42499821720631054
+ 3 -0.28279984450236068 3.8661803682645473 1.3812452607036694
+ 3 -0.94735246145614116 3.3060738396684268 4.0557980160779730
+ 3 0.50748037845574090 5.9904556204352071 -2.1547604899400303
+ 3 0.78061064885732134 3.4494081378091890 -2.6365476553540548
+ 2 -0.48833393903793759 7.8474366333440786 1.2816095991392886
+ 2 0.55698895535315818 2.2453375430207156 4.9853425483464475
+ 2 -2.6608609963357530 2.1630621718780580 4.1669482662502446
+ 2 -1.2621331152628290 5.0370057069847842 5.1113556782135712
+ 2 0.72660690237211123 7.6190298190573458 -3.3696376874800262
+ 2 1.2834074834966311 2.4935338763461274 -4.3668022455225728
+  }
+  Periodic = No
+  Helical = No
+}
+Hamiltonian = Dftb {
+  Scc = Yes
+  SccTolerance = 9.9999999999999995E-008
+  MaxSCCIterations = 250
+  ConvergentSCCOnly = Yes
+  Charge = 2.0000000000000000
+  ReadInitialCharges = No
+  Filling = Fermi {
+    Temperature [K] = 0.0000000000000000
+  }
+  ThirdOrderFull = Yes
+  HubbardDerivs = {
+    Zn = -2.9999999999999999E-002
+    H = -0.18570000000000000
+    C = -0.14920000000000000
+    O = -0.15750000000000000
+    N = -0.15350000000000000
+  }
+  ShellResolvedSCC = No
+  MaxAngularMomentum = {
+    Zn = "d"
+    H = "s"
+    C = "p"
+    O = "p"
+    N = "p"
+  }
+  SlaterKosterFiles = {
+    Zn-Zn = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/Zn-Zn.skf"
+    Zn-H = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/Zn-H.skf"
+    Zn-C = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/Zn-C.skf"
+    Zn-O = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/Zn-O.skf"
+    Zn-N = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/Zn-N.skf"
+    H-Zn = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/H-Zn.skf"
+    H-H = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/H-H.skf"
+    H-C = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/H-C.skf"
+    H-O = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/H-O.skf"
+    H-N = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/H-N.skf"
+    C-Zn = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/C-Zn.skf"
+    C-H = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/C-H.skf"
+    C-C = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/C-C.skf"
+    C-O = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/C-O.skf"
+    C-N = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/C-N.skf"
+    O-Zn = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/O-Zn.skf"
+    O-H = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/O-H.skf"
+    O-C = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/O-C.skf"
+    O-O = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/O-O.skf"
+    O-N = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/O-N.skf"
+    N-Zn = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/N-Zn.skf"
+    N-H = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/N-H.skf"
+    N-C = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/N-C.skf"
+    N-O = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/N-O.skf"
+    N-N = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/N-N.skf"
+    Prefix = ""
+  }
+  HCorrection = H5 {
+    RScaling = 0.71399999999999997
+    WScaling = 0.25000000000000000
+    H5Scaling = {
+      Zn = -1.0000000000000000
+      H = -1.0000000000000000
+      C = -1.0000000000000000
+      O = 5.9999999999999998E-002
+      N = 0.17999999999999999
+    }
+  }
+  Dispersion = DftD3 {
+    Damping = ZeroDamping {
+      sr6 = 1.2500000000000000
+      alpha6 = 29.609999999999999
+    }
+    s6 = 1.0000000000000000
+    s8 = 0.48999999999999999
+    HHRepulsion = Yes
+    cutoff = 94.868329805051374
+    cutoffcn = 40.000000000000000
+    threebody = No
+  }
+  Mixer = Broyden {
+    MixingParameter = 0.20000000000000001
+    InverseJacobiWeight = 1.0000000000000000E-002
+    MinimalWeight = 1.0000000000000000
+    MaximalWeight = 100000.00000000000
+    WeightFactor = 1.0000000000000000E-002
+  }
+  PolynomialRepulsive = {}
+  Hybrid = None {}
+  OldSKInterpolation = No
+  InitialCharges = {}
+  SpinPolarisation = {}
+  ElectricField = {}
+  Solver = RelativelyRobust {}
+  OnSiteCorrection = {}
+  Solvation = {}
+  ElectronicConstraints = {}
+  Electrostatics = GammaFunctional {}
+  Mdftb = None {}
+  ThirdOrder = No
+  Differentiation = FiniteDiff {
+    Delta = 1.2207031250000000E-004
+  }
+  ForceEvaluation = "Traditional"
+}
+Analysis = {
+  PrintForces = Yes
+  WriteBandOut = No
+  ProjectStates = {}
+  WriteEigenvectors = No
+  MullikenAnalysis = Yes
+  WriteNetCharges = No
+  AtomResolvedEnergies = No
+}
+ParserOptions = {
+  ParserVersion = 14
+  WriteHSDInput = Yes
+  StopAfterParsing = No
+  IgnoreUnprocessedNodes = No
+}
+Options = {
+  WriteDetailedOut = Yes
+  WriteCharges = Yes
+  WriteAutotestTag = No
+  WriteDetailedXML = No
+  WriteResultsTag = No
+  RestartFrequency = 20
+  RandomSeed = 0
+  WriteHS = No
+  WriteRealHS = No
+  MinimiseMemoryUsage = No
+  ShowFoldedCoords = No
+  TimingVerbosity = 1
+  WriteChargesAsText = No
+  BinaryAccessTypes = {
+ "stream"
+  }
+}
+Reks = None {}
+Driver = {}
+ExcitedState = {}

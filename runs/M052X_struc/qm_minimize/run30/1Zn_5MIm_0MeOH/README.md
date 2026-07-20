@@ -1,0 +1,1 @@
+I used a more restrict threshold here to converge the gradients. The initial structure is from initial_run/min.xyz.

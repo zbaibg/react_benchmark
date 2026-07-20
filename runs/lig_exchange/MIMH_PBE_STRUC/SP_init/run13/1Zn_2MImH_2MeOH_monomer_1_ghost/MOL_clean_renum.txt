@@ -1,0 +1,5 @@
+ ZN X     1     ZN     1
+MOH X     2    MOH     2
+MOH X     3    MOH     3
+MIH X     4    MIH     4
+MIH X     5    MIH     5

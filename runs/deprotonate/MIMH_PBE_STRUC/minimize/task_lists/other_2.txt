@@ -1,0 +1,1 @@
+./run1/H3O_monomer/sbatch_prepare.sh

@@ -1,0 +1,7 @@
+parm /home/zbai29/data/qmmm_test/Net_React/run28/routes/route006_IMH_IMH1__to__bare_Zn/firstshell_leg4/1.000/box_target_stripped.prmtop
+trajin /home/zbai29/data/qmmm_test/Net_React/run28/routes/route006_IMH_IMH1__to__bare_Zn/firstshell_leg4/1.000/ti_sample_state1.rst
+autoimage anchor !:WAT origin
+solvent :WAT
+closest 6 @1 closestout cpptraj_logs/1Zn_0ImH_6Wat.closest_waters.dat parmout cpptraj_logs/1Zn_0ImH_6Wat.closest_6wat.prmtop
+trajout ./xyz_files/1Zn_0ImH_6Wat.xyz xyz
+run

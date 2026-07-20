@@ -1,0 +1,23 @@
+source leaprc.protein.ff14SB #For amber's native meoh
+source leaprc.water.spce
+source leaprc.gaff2
+# H+, H3O+ from xyz_to_radical_lib.py (load frcmod before lib)
+loadamberparams ../../../amber_prep/frcmod.H
+loadoff ../../../amber_prep/H.lib
+loadamberparams ../../../amber_prep/frcmod.H3O
+loadoff ../../../amber_prep/H3O.lib
+IMH=loadmol2 ../../../amber_prep/IMH.mol2
+loadamberparams ../../../amber_prep/IMH.frcmod
+MIH=loadmol2 ../../../amber_prep/MIH.mol2
+loadamberparams ../../../amber_prep/MIH.frcmod
+NO3=loadmol2 ../../../amber_prep/NO3.mol2
+loadamberparams ../../../amber_prep/NO3.frcmod
+MIM=loadmol2 ../../../amber_prep/MIM.mol2
+loadamberparams ../../../amber_prep/MIM.frcmod
+loadAmberParams frcmod.meoh #get methanol parameters
+loadAmberPrep meoh.in #load meoh geometry and charges (MOH)
+
+box_gas=loadpdb MOL_clean.pdb
+saveamberparm box_gas box_orig.prmtop box_orig.inpcrd
+savemol2 box_gas box_orig.mol2 0
+quit

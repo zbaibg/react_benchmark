@@ -1,12 +1,3 @@
-! CCSD(T)-F12 VERYTIGHTSCF NoAutoStart
-%basis
-  Basis "aug-cc-pVTZ-PP"
-  CABS "aug-cc-pVTZ-PP-OptRI"
-  NewECP Zn "SK-MCDHF-RSC" end
-end
-%maxcore 6000
-%pal
-    nprocs 32
-end
-! Angs NoUseSym
-*xyzfile 2 1 MOL.xyz
+version https://git-lfs.github.com/spec/v1
+oid sha256:de4a92fd89d963cc1cd4383281680501b9a92d62f2c4f1f2da732d5b4a1f11ac
+size 210

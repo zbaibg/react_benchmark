@@ -1,0 +1,2 @@
+./run23/Wat_0.5_monomer/sbatch_prepare.sh
+./run23/Wat_0.6_monomer/sbatch_prepare.sh

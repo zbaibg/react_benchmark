@@ -1,0 +1,32 @@
+
+# H+, H3O+ from xyz_to_radical_lib.py (load frcmod before lib)
+addAtomTypes {
+    { "C0" "C" "sp3" }
+}
+addAtomTypes {
+    { "N0" "N" "sp3" }
+}
+addAtomTypes {
+    { "O0" "O" "sp3" }
+}
+addAtomTypes {
+    { "Zn0" "Zn" "sp3" }
+}
+addAtomTypes {
+    { "H0" "H" "sp3" }
+}
+loadamberparams ../../../amber_prep/frcmod.H
+loadoff ../../../amber_prep/H.lib
+loadamberparams ../../../amber_prep/frcmod.O
+loadoff ../../../amber_prep/O.lib
+loadamberparams ../../../amber_prep/frcmod.C
+loadoff ../../../amber_prep/C.lib
+loadamberparams ../../../amber_prep/frcmod.N
+loadoff ../../../amber_prep/N.lib
+loadamberparams ../../../amber_prep/frcmod.ZN
+loadoff ../../../amber_prep/ZN.lib
+
+box_gas=loadpdb MOL_clean.pdb
+saveamberparm box_gas box_orig.prmtop box_orig.inpcrd
+savemol2 box_gas box_orig.mol2 0
+quit

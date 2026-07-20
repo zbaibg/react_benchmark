@@ -1,0 +1,1 @@
+./run27/1Zn_1MIm_5MeOH_full/sbatch_prepare.sh

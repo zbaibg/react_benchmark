@@ -1,4 +1,3 @@
-ATOM      1  O1  NO3     1       1.211   0.187  -0.000  1.00  0.00           O
-ATOM      2  O2  NO3     1      -0.443  -1.142   0.000  1.00  0.00           O
-ATOM      3  O3  NO3     1      -0.768   0.955   0.000  1.00  0.00           O
-ATOM      4  N1  NO3     1      -0.000   0.000  -0.000  1.00  0.00           N
+version https://git-lfs.github.com/spec/v1
+oid sha256:b85e78c5ffa028cbc78d01bca8610b4edec222c6e98c9c2ad85da00c6f1750be
+size 316

@@ -1,0 +1,27 @@
+***,none
+gprint,basis
+basis=avtz,zn=avtz-pp
+
+geometry={
+angstrom
+ZN1          0.13215507       0.20237766       0.83842335
+H1          -0.19123095      -3.45796344       1.31098171
+C1          -0.44375293      -2.82043696       0.47496325
+H2          -0.21035002      -3.23919725      -0.49430359
+H3          -1.44965166      -2.42940498       0.53290487
+O1           0.49713472      -1.58895014       0.61408693
+H4           1.42269576      -1.88842490       0.56894348
+}
+dummy,h1,c1,h2,h3,o1,h4
+
+symmetry,nosym
+wf,charge=2,spin=0
+gthresh,energy=1.d-9
+gthresh,orbital=1.d-8
+gthresh,twoint=1.d-14
+{df-hf;
+  maxit,100
+}
+{pno-lccsd(t);
+ core,large,Zn=0000
+}

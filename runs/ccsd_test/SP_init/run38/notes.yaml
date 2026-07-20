@@ -1,0 +1,4 @@
+id: run38
+name: DLPNO-CCSD(T) aug-cc-pVTZ EXTREMESCF Thresh=1e-16 TCut=1e-18 NoAutoStart TightPNO aug-cc-pVTZ/C
+comment: |-
+  DLPNO-CCSD(T) aug-cc-pVTZ EXTREMESCF Thresh=1e-16 TCut=1e-18 NoAutoStart TightPNO aug-cc-pVTZ/C

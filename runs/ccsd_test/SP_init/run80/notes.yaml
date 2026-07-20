@@ -1,0 +1,4 @@
+id: run80
+name: Molpro PNO-LCCSD(T)-F12 avtz-f12 (Zn avtz-pp-f12) DF-HF
+comment: |-
+  Molpro-only mode (auto-generate run.input from xyz)

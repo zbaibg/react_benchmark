@@ -1,0 +1,4 @@
+id: run41
+name: M052X D3 aug-cc-pVTZ
+comment: |-
+  Use M052X aug-cc-pVTZ D3ZERO RIJCOSX AutoAux VERYTIGHTSCF DEFGRID3 PCDTrimAuxJ NoAutoStart

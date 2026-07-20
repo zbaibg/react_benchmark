@@ -1,0 +1,162 @@
+Geometry = {
+  TypeNames = {
+ "Zn" "H" "C" "N"
+  }
+  TypesAndCoordinates = {
+ 1 -5.6913270770969139E-005 -6.8902696726054524E-006 1.3307422409972687E-004
+ 2 -3.3976571938153226 4.5840463321653839 -4.0294858648169978
+ 2 -0.69035572363091813 2.9073196290758201 -4.9526638269299630
+ 2 -7.9541223487832244 -3.9707249055921885 -4.3953855982688284
+ 2 -4.3588769273153245 -4.2979220566893206 -0.60826187262803222
+ 2 -3.2057850967507333 3.3488306703059751 -7.1065639811965360
+ 3 -2.7410193912153731 2.9617766537916488 -5.1367202205131459
+ 3 -6.4035828908467414 -2.6833754858039267 -3.9624767348007253
+ 3 -3.9184690882447946 0.53864747987351080 -4.2620788161643652
+ 3 -4.6156071906261635 -2.8685327742601552 -2.0573327689982910
+ 4 -5.9708972562839806 -0.52442468828135891 -5.3683515140446829
+ 4 -3.0304337138521289 -0.80489585679269859 -2.2542755445013540
+ 2 3.4456860816697663 -4.5206629087938976 -4.0659202448431975
+ 2 0.74478747814619062 -2.8321505726642471 -4.9865460851039751
+ 2 7.9968675133805203 4.0419292304091323 -4.2502214285846964
+ 2 4.3618814873140606 4.3086712903286566 -0.49640350632530522
+ 2 3.2802089429887520 -3.2362314287680851 -7.1242725966660618
+ 3 2.7970877328380048 -2.8814359286096694 -5.1527560640052386
+ 3 6.4428809622701415 2.7471271925848879 -3.8533961646975259
+ 3 3.9634946762284047 -0.47140020673315425 -4.2285382858849268
+ 3 4.6349147096065799 2.9018737959571093 -1.9644723651183480
+ 4 6.0265909847672416 0.60980068732961401 -5.2967566971706068
+ 4 3.0534578792660452 0.84056359030812944 -2.2097290858992462
+ 2 2.8423351738409210 0.67870259213251027 4.9917386477286696
+ 2 4.5299663068057541 3.3891079199724166 4.0979797108501730
+ 2 -4.0304590840535006 7.9416329901308913 4.3637627890831645
+ 2 -4.3070457095125052 4.3558622569035830 0.56364957129201765
+ 2 3.2547172910995124 3.1883517112932473 7.1581281804219508
+ 3 2.8936242864601369 2.7288654673622799 5.1821235681447737
+ 3 -2.7370653094996835 6.3925681877627287 3.9437681096412507
+ 3 0.48168257545262688 3.9077781478751201 4.2790271486137677
+ 3 -2.8966821950366350 4.6094296769953109 2.0317901081190839
+ 4 -0.59646021274819871 5.9570287246090254 5.3765640675692694
+ 4 -0.83522354825997069 3.0244168426011302 2.2516175453851592
+ 2 -3.3300968190431863 -3.3026116757758994 7.0714759725624043
+ 2 -2.8971042560289528 -0.75942483432080143 4.9486545578829215
+ 2 4.3033363011858476 -4.3617520337290969 0.54160555255970666
+ 2 3.9893428565882072 -8.0061140522269358 4.2826509413753353
+ 2 -4.5722251764479136 -3.4572010092486889 3.9951148605413604
+ 3 -2.9482720160422367 -2.8123269445369767 5.1068010846318170
+ 3 2.8776002024840306 -4.6390461423383602 1.9904782414330533
+ 3 -0.52555546017773713 -3.9750753367552849 4.2116111362400970
+ 3 2.6989756420186146 -6.4518637036387805 3.8726366593484522
+ 4 0.81232196685990810 -3.0593156394826924 2.2124863585555254
+ 4 0.54263082701579435 -6.0402770899187246 5.2888113809552353
+  }
+  Periodic = No
+  Helical = No
+}
+Hamiltonian = Dftb {
+  Scc = Yes
+  SccTolerance = 9.9999999999999995E-008
+  MaxSCCIterations = 250
+  ConvergentSCCOnly = Yes
+  Charge = -2.0000000000000000
+  ReadInitialCharges = No
+  Filling = Fermi {
+    Temperature [K] = 0.0000000000000000
+  }
+  ThirdOrderFull = Yes
+  HubbardDerivs = {
+    Zn = -2.9999999999999999E-002
+    H = -0.18570000000000000
+    C = -0.14920000000000000
+    N = -0.15350000000000000
+  }
+  ShellResolvedSCC = No
+  MaxAngularMomentum = {
+    Zn = "d"
+    H = "s"
+    C = "p"
+    N = "p"
+  }
+  SlaterKosterFiles = {
+    Zn-Zn = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/Zn-Zn.skf"
+    Zn-H = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/Zn-H.skf"
+    Zn-C = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/Zn-C.skf"
+    Zn-N = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/Zn-N.skf"
+    H-Zn = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/H-Zn.skf"
+    H-H = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/H-H.skf"
+    H-C = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/H-C.skf"
+    H-N = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/H-N.skf"
+    C-Zn = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/C-Zn.skf"
+    C-H = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/C-H.skf"
+    C-C = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/C-C.skf"
+    C-N = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/C-N.skf"
+    N-Zn = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/N-Zn.skf"
+    N-H = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/N-H.skf"
+    N-C = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/N-C.skf"
+    N-N = "/home/zbai29/soft/ambertools25_src_425dd98/install/dat/slko/3ob-3-1/N-N.skf"
+    Prefix = ""
+  }
+  HCorrection = Damping {
+    Exponent = 4.0000000000000000
+  }
+  Mixer = Broyden {
+    MixingParameter = 0.20000000000000001
+    InverseJacobiWeight = 1.0000000000000000E-002
+    MinimalWeight = 1.0000000000000000
+    MaximalWeight = 100000.00000000000
+    WeightFactor = 1.0000000000000000E-002
+  }
+  PolynomialRepulsive = {}
+  Hybrid = None {}
+  OldSKInterpolation = No
+  InitialCharges = {}
+  SpinPolarisation = {}
+  ElectricField = {}
+  Solver = RelativelyRobust {}
+  OnSiteCorrection = {}
+  Dispersion = {}
+  Solvation = {}
+  ElectronicConstraints = {}
+  Electrostatics = GammaFunctional {}
+  Mdftb = None {}
+  ThirdOrder = No
+  Differentiation = FiniteDiff {
+    Delta = 1.2207031250000000E-004
+  }
+  ForceEvaluation = "Traditional"
+}
+Analysis = {
+  PrintForces = Yes
+  WriteBandOut = No
+  ProjectStates = {}
+  WriteEigenvectors = No
+  MullikenAnalysis = Yes
+  WriteNetCharges = No
+  AtomResolvedEnergies = No
+}
+ParserOptions = {
+  ParserVersion = 14
+  WriteHSDInput = Yes
+  StopAfterParsing = No
+  IgnoreUnprocessedNodes = No
+}
+Options = {
+  WriteDetailedOut = Yes
+  WriteCharges = Yes
+  WriteAutotestTag = No
+  WriteDetailedXML = No
+  WriteResultsTag = No
+  RestartFrequency = 20
+  RandomSeed = 0
+  WriteHS = No
+  WriteRealHS = No
+  MinimiseMemoryUsage = No
+  ShowFoldedCoords = No
+  TimingVerbosity = 1
+  WriteChargesAsText = No
+  BinaryAccessTypes = {
+ "stream"
+  }
+}
+Reks = None {}
+Driver = {}
+ExcitedState = {}

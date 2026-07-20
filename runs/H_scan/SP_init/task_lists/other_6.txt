@@ -1,0 +1,3 @@
+./run27/MeOH_0.0_monomer/sbatch_prepare.sh
+./run27/MeOH_0.1_monomer/sbatch_prepare.sh
+./run27/MeOH_0.2_monomer/sbatch_prepare.sh

@@ -1,0 +1,17 @@
+***,none
+gprint,basis
+
+basis=avtz,zn=avtz-pp
+
+geometry={
+angstrom
+ZN1         -0.08565101       0.09603969       0.21285495
+}
+
+
+
+wf,charge=2,spin=0
+{hf;accu,14}
+{ccsd(t)
+ core,large,Zn=0000
+}
