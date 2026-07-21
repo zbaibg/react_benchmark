@@ -1,0 +1,297 @@
+Geometry = {
+  TypeNames = {
+ "Zn" "N" "C" "H" "O"
+  }
+  TypesAndCoordinates = {
+ 1 1.4626480268435376 0.13417055543396789 7.7478771447784284E-002
+ 2 1.9785432611178084 4.0005502232916914 -0.23054658821048007
+ 3 3.0462385261909337 5.5728023658418495 1.5552446073543040
+ 3 1.3341466498081880 5.4556393456037373 -2.1523980653421049
+ 3 3.0311207171279513 7.9822031852546544 0.67652195556845784
+ 4 3.7454371953538645 4.8849420534761556 3.3278077199889786
+ 2 1.9388590123274800 7.8612607127507959 -1.6648487230609257
+ 4 3.6830762329690629 9.7207512274976189 1.4909939188366295
+ 4 1.6421720094664523 9.3333573702586978 -2.8326994731763087
+ 4 0.44786509349085063 4.8395886262872088 -3.8682693939905963
+ 4 3.2559981269398128 -2.2563330026501083 -6.4515250176276968
+ 3 2.7797871414558704 -0.33637125165135617 -5.9148427958918246
+ 4 4.4389666861181780 0.63116852837951110 -5.2118646744631478
+ 4 2.0125583315095184 0.68219113396707620 -7.5173305565679485
+ 5 0.95620142323363044 -0.34959933458146569 -3.8701591201234686
+ 4 -0.66518359877122113 -0.89195073471595565 -4.4805406610413794
+ 4 -5.4594187978694828 2.5794761713713550 -0.72754456115602317
+ 3 -4.2348762637679167 2.3394809524965110 0.89573018698170126
+ 4 -3.0783638704497709 4.0024399494245637 1.1678507501153825
+ 4 -5.3441455037642429 1.9785432611178084 2.5794761713713550
+ 5 -2.5095563044550619 0.24944384953920795 0.45731372415521454
+ 4 -3.3996173130381444 -1.3303671975424423 0.54235140013448990
+ 4 1.4286329564518274 -5.3554838605614794 -2.9857672899390044
+ 3 1.0847028002689798 -6.0338955422628109 -1.0884822525347255
+ 4 -0.70675757369442249 -7.0222223097552785 -1.0053343026883230
+ 4 2.6097117894973194 -7.2735558854273590 -0.51022605587565262
+ 5 1.0053343026883230 -3.8266954190673945 0.53479249560299880
+ 4 0.97698841069523112 -4.3255831181458104 2.2808994423774545
+ 4 -1.5987083084103781 0.49132879454692474 5.5501256522473765
+ 3 0.33070207325273776 0.83525895072977208 6.1283818489064492
+ 4 0.62738907611376549 2.8421481038406724 6.4269585779003497
+ 4 0.74266237021900550 -0.21542877914749778 7.8366942730234497
+ 5 1.9313001077959888 -6.4250688517674778E-002 4.0912570776695851
+ 4 3.6622892455074618 -0.12661165090247678 4.6373879300698206
+ 4 6.1605071931652864 -4.0931468038024574 0.48943906841405199
+ 3 7.0921421766715715 -2.5152254828536802 -0.41573974923201323
+ 4 8.8987203596979558 -2.1712953266708328 0.47999043774968803
+ 4 7.3415860262107788 -2.8912809832953648 -2.4169597239442950
+ 5 5.4650879762681015 -0.33448152551848337 -6.8030140783420345E-002
+ 4 6.3834948768442761 1.1886377375769832 -0.44030618895935952
+  }
+  Periodic = No
+  Helical = No
+}
+Hamiltonian = Dftb {
+  Mdftb = OneCenterApproximation {
+    OneCenterAtomIntegrals = {
+      H:S|XX|S = 0.55976000000000004
+      C:S|X|Px = 0.79620999999999997
+      C:S|XX|S = 0.76688999999999996
+      C:Px|XX|Px = 1.3855000000000000
+      C:Py|XX|Py = 0.46183000000000002
+      N:S|X|Px = 0.68857000000000002
+      N:S|XX|S = 0.57638000000000000
+      N:Px|XX|Px = 1.0530800000000000
+      N:Py|XX|Py = 0.35103000000000001
+      O:S|X|Px = 0.60894000000000004
+      O:S|XX|S = 0.45215000000000000
+      O:Px|XX|Px = 0.83892999999999995
+      O:Py|XX|Py = 0.27964000000000000
+      Zn:S|X|Px = 0.0000000000000000
+      Zn:Px|X|Dxx-yy = 0.0000000000000000
+      Zn:Px|X|Dzz = 0.0000000000000000
+      Zn:Py|Y|Dxx-yy = 0.0000000000000000
+      Zn:Pz|Z|Dzz = 0.0000000000000000
+      Zn:S|XX|S = 0.0000000000000000
+      Zn:Px|XX|Px = 0.0000000000000000
+      Zn:Py|XX|Py = 0.0000000000000000
+      Zn:S|XX|Dxx-yy = 0.0000000000000000
+      Zn:S|XX|Dzz = 0.0000000000000000
+      Zn:S|YY|Dxx-yy = 0.0000000000000000
+      Zn:S|ZZ|Dzz = 0.0000000000000000
+      Zn:Dxy|XX|Dxy = 0.0000000000000000
+      Zn:Dyz|XX|Dyz = 0.0000000000000000
+      Zn:Dzz|XX|Dxx-yy = 0.0000000000000000
+      Zn:Dzz|XX|Dzz = 0.0000000000000000
+      Zn:Dzz|YY|Dxx-yy = 0.0000000000000000
+      Zn:Dzz|ZZ|Dzz = 0.0000000000000000
+      Zn:Dxz|XZ|Dzz = 0.0000000000000000
+      Zn:Dyz|YZ|Dxx-yy = 0.0000000000000000
+      N:Px|X|Dxx-yy = 0.0000000000000000
+      N:Px|X|Dzz = 0.0000000000000000
+      N:Py|Y|Dxx-yy = 0.0000000000000000
+      N:Pz|Z|Dzz = 0.0000000000000000
+      N:S|XX|Dxx-yy = 0.0000000000000000
+      N:S|XX|Dzz = 0.0000000000000000
+      N:S|YY|Dxx-yy = 0.0000000000000000
+      N:S|ZZ|Dzz = 0.0000000000000000
+      N:Dxy|XX|Dxy = 0.0000000000000000
+      N:Dyz|XX|Dyz = 0.0000000000000000
+      N:Dzz|XX|Dxx-yy = 0.0000000000000000
+      N:Dzz|XX|Dzz = 0.0000000000000000
+      N:Dzz|YY|Dxx-yy = 0.0000000000000000
+      N:Dzz|ZZ|Dzz = 0.0000000000000000
+      N:Dxz|XZ|Dzz = 0.0000000000000000
+      N:Dyz|YZ|Dxx-yy = 0.0000000000000000
+      C:Px|X|Dxx-yy = 0.0000000000000000
+      C:Px|X|Dzz = 0.0000000000000000
+      C:Py|Y|Dxx-yy = 0.0000000000000000
+      C:Pz|Z|Dzz = 0.0000000000000000
+      C:S|XX|Dxx-yy = 0.0000000000000000
+      C:S|XX|Dzz = 0.0000000000000000
+      C:S|YY|Dxx-yy = 0.0000000000000000
+      C:S|ZZ|Dzz = 0.0000000000000000
+      C:Dxy|XX|Dxy = 0.0000000000000000
+      C:Dyz|XX|Dyz = 0.0000000000000000
+      C:Dzz|XX|Dxx-yy = 0.0000000000000000
+      C:Dzz|XX|Dzz = 0.0000000000000000
+      C:Dzz|YY|Dxx-yy = 0.0000000000000000
+      C:Dzz|ZZ|Dzz = 0.0000000000000000
+      C:Dxz|XZ|Dzz = 0.0000000000000000
+      C:Dyz|YZ|Dxx-yy = 0.0000000000000000
+      H:S|X|Px = 0.0000000000000000
+      H:Px|X|Dxx-yy = 0.0000000000000000
+      H:Px|X|Dzz = 0.0000000000000000
+      H:Py|Y|Dxx-yy = 0.0000000000000000
+      H:Pz|Z|Dzz = 0.0000000000000000
+      H:Px|XX|Px = 0.0000000000000000
+      H:Py|XX|Py = 0.0000000000000000
+      H:S|XX|Dxx-yy = 0.0000000000000000
+      H:S|XX|Dzz = 0.0000000000000000
+      H:S|YY|Dxx-yy = 0.0000000000000000
+      H:S|ZZ|Dzz = 0.0000000000000000
+      H:Dxy|XX|Dxy = 0.0000000000000000
+      H:Dyz|XX|Dyz = 0.0000000000000000
+      H:Dzz|XX|Dxx-yy = 0.0000000000000000
+      H:Dzz|XX|Dzz = 0.0000000000000000
+      H:Dzz|YY|Dxx-yy = 0.0000000000000000
+      H:Dzz|ZZ|Dzz = 0.0000000000000000
+      H:Dxz|XZ|Dzz = 0.0000000000000000
+      H:Dyz|YZ|Dxx-yy = 0.0000000000000000
+      O:Px|X|Dxx-yy = 0.0000000000000000
+      O:Px|X|Dzz = 0.0000000000000000
+      O:Py|Y|Dxx-yy = 0.0000000000000000
+      O:Pz|Z|Dzz = 0.0000000000000000
+      O:S|XX|Dxx-yy = 0.0000000000000000
+      O:S|XX|Dzz = 0.0000000000000000
+      O:S|YY|Dxx-yy = 0.0000000000000000
+      O:S|ZZ|Dzz = 0.0000000000000000
+      O:Dxy|XX|Dxy = 0.0000000000000000
+      O:Dyz|XX|Dyz = 0.0000000000000000
+      O:Dzz|XX|Dxx-yy = 0.0000000000000000
+      O:Dzz|XX|Dzz = 0.0000000000000000
+      O:Dzz|YY|Dxx-yy = 0.0000000000000000
+      O:Dzz|ZZ|Dzz = 0.0000000000000000
+      O:Dxz|XZ|Dzz = 0.0000000000000000
+      O:Dyz|YZ|Dxx-yy = 0.0000000000000000
+    }
+    AtomDIntegralScalings = {
+      H = 1.0000000000000000
+      C = 0.80000000000000004
+      N = 0.59999999999999998
+      O = 0.20000000000000001
+      Zn = 1.0000000000000000
+    }
+    AtomQIntegralScalings = {
+      H = 1.0000000000000000
+      C = 2.6000000000000001
+      N = 3.3999999999999999
+      O = 3.0000000000000000
+      Zn = 1.0000000000000000
+    }
+  }
+  Scc = Yes
+  SccTolerance = 9.9999999999999995E-008
+  MaxSCCIterations = 250
+  ConvergentSCCOnly = Yes
+  Charge = 2.0000000000000000
+  ReadInitialCharges = No
+  Filling = Fermi {
+    Temperature [K] = 0.0000000000000000
+  }
+  ThirdOrderFull = Yes
+  HubbardDerivs = {
+    Zn = -2.9999999999999999E-002
+    N = -0.15350000000000000
+    C = -0.14920000000000000
+    H = -0.18570000000000000
+    O = -0.15750000000000000
+  }
+  ShellResolvedSCC = No
+  MaxAngularMomentum = {
+    Zn = "d"
+    N = "p"
+    C = "p"
+    H = "s"
+    O = "p"
+  }
+  SlaterKosterFiles = {
+    Zn-Zn = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/Zn-Zn.skf"
+    Zn-N = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/Zn-N.skf"
+    Zn-C = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/Zn-C.skf"
+    Zn-H = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/Zn-H.skf"
+    Zn-O = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/Zn-O.skf"
+    N-Zn = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/N-Zn.skf"
+    N-N = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/N-N.skf"
+    N-C = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/N-C.skf"
+    N-H = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/N-H.skf"
+    N-O = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/N-O.skf"
+    C-Zn = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/C-Zn.skf"
+    C-N = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/C-N.skf"
+    C-C = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/C-C.skf"
+    C-H = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/C-H.skf"
+    C-O = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/C-O.skf"
+    H-Zn = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/H-Zn.skf"
+    H-N = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/H-N.skf"
+    H-C = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/H-C.skf"
+    H-H = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/H-H.skf"
+    H-O = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/H-O.skf"
+    O-Zn = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/O-Zn.skf"
+    O-N = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/O-N.skf"
+    O-C = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/O-C.skf"
+    O-H = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/O-H.skf"
+    O-O = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/O-O.skf"
+    Prefix = ""
+  }
+  Dispersion = SimpleDftD3 {
+    s6 = 1.0000000000000000
+    s8 = 3.2090000000000001
+    a1 = 0.74600000000000000
+    a2 = 4.1909999999999998
+    s10 = 0.0000000000000000
+    alpha = 14.000000000000000
+    weightingFactor = 4.0000000000000000
+    cutoffInter = 64.000000000000000
+    CoordinationNumber = exp {
+      CutCN = 0.0000000000000000
+      Cutoff = 40.000000000000000
+      Radii = CovalentRadiiD3 {}
+    }
+  }
+  Mixer = Broyden {
+    MixingParameter = 0.20000000000000001
+    InverseJacobiWeight = 1.0000000000000000E-002
+    MinimalWeight = 1.0000000000000000
+    MaximalWeight = 100000.00000000000
+    WeightFactor = 1.0000000000000000E-002
+  }
+  PolynomialRepulsive = {}
+  Hybrid = None {}
+  OldSKInterpolation = No
+  InitialCharges = {}
+  HCorrection = None {}
+  SpinPolarisation = {}
+  ElectricField = {}
+  Solver = RelativelyRobust {}
+  OnSiteCorrection = {}
+  Solvation = {}
+  ElectronicConstraints = {}
+  Electrostatics = GammaFunctional {}
+  ThirdOrder = No
+  Differentiation = FiniteDiff {
+    Delta = 1.2207031250000000E-004
+  }
+  ForceEvaluation = "Traditional"
+}
+Analysis = {
+  PrintForces = Yes
+  WriteBandOut = No
+  ProjectStates = {}
+  WriteEigenvectors = No
+  MullikenAnalysis = Yes
+  WriteNetCharges = No
+  AtomResolvedEnergies = No
+}
+ParserOptions = {
+  ParserVersion = 14
+  WriteHSDInput = Yes
+  StopAfterParsing = No
+  IgnoreUnprocessedNodes = No
+}
+Options = {
+  WriteDetailedOut = Yes
+  WriteCharges = Yes
+  WriteAutotestTag = No
+  WriteDetailedXML = No
+  WriteResultsTag = No
+  RestartFrequency = 20
+  RandomSeed = 0
+  WriteHS = No
+  WriteRealHS = No
+  MinimiseMemoryUsage = No
+  ShowFoldedCoords = No
+  TimingVerbosity = 1
+  WriteChargesAsText = No
+  BinaryAccessTypes = {
+ "stream"
+  }
+}
+Reks = None {}
+Driver = {}
+ExcitedState = {}

@@ -35,6 +35,7 @@ ASSIGN_NAME_SCRIPT = TOOLS_DIR / "zif_meoh_assign_name.py"
 _C_H_BOND_A = 1.09
 _O_H_BOND_A = 0.96
 _HOH_ANGLE_RAD = np.radians(104.5)
+_SOLVENT_RESNAMES = frozenset({"MOH", "WAT"})
 
 
 @dataclass(frozen=True)
@@ -222,6 +223,27 @@ def _output_name(source: SourceComplex, demethyl_ligand: bool, demethyl_solvent:
     return f"1Zn_{source.n_mim}{lig_mim}_{source.n_mih}{lig_mih}_{solv}"
 
 
+def _strip_solvent(atoms: Iterable[tuple]) -> list[tuple]:
+    """Keep Zn + imidazole ligands only (drop MeOH/WAT)."""
+    return [atom for atom in atoms if atom[3] not in _SOLVENT_RESNAMES]
+
+
+def _output_name_nosolv(source: SourceComplex, demethyl_ligand: bool) -> str:
+    """Filename for Zn + ligand complex with solvent removed."""
+    if demethyl_ligand:
+        if source.n_mim == 1 and source.n_mih == 0:
+            return "1Zn_1Im-"
+        if source.n_mim == 0 and source.n_mih == 1:
+            return "1Zn_1ImH"
+        return f"1Zn_{source.n_mim}Im-_{source.n_mih}ImH"
+
+    if source.n_mim == 1 and source.n_mih == 0:
+        return "1Zn_1MIm"
+    if source.n_mim == 0 and source.n_mih == 1:
+        return "1Zn_1MImH"
+    return f"1Zn_{source.n_mim}MIm_{source.n_mih}MImH"
+
+
 def _write_xyz(path: Path, atoms: Iterable[tuple], comment: str) -> None:
     atom_list = list(atoms)
     with path.open("w", encoding="utf-8") as handle:
@@ -278,6 +300,33 @@ def _transform_source(source: SourceComplex, out_dir: Path, log_dir: Path) -> li
             encoding="utf-8",
         )
         written.append(out_path)
+
+    # Extra Zn + ligand structures without solvent (IMH / IM- / MIM / MIH).
+    if source.n_mim + source.n_mih > 0:
+        for demethyl_ligand in sorted({dl for dl, _ds in variant_flags}):
+            name = _output_name_nosolv(source, demethyl_ligand)
+            out_path = out_dir / f"{name}.xyz"
+            atoms = _strip_solvent(_transform_universe(universe, demethyl_ligand, False))
+            comment = (
+                f"{name} from {source.path.name}; "
+                f"demethyl_ligand={demethyl_ligand}; solvent_removed=True"
+            )
+            _write_xyz(out_path, atoms, comment)
+            log_path = log_dir / f"{name}.log"
+            log_path.write_text(
+                "\n".join(
+                    [
+                        f"source={source.path}",
+                        f"output={out_path}",
+                        f"demethyl_ligand={demethyl_ligand}",
+                        f"solvent_removed=True",
+                        f"n_atoms={len(atoms)}",
+                    ]
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            written.append(out_path)
     return written
 
 

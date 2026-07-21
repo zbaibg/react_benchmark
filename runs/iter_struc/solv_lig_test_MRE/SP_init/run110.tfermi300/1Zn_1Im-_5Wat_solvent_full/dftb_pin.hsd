@@ -1,0 +1,191 @@
+Geometry = {
+  TypeNames = {
+ "O" "H"
+  }
+  TypesAndCoordinates = {
+ 1 0.13417055543396789 -7.1809593049165926E-002 -4.0704700902079844
+ 2 -1.4399713132490641 -4.9132879454692469E-002 -4.9794283601197948
+ 2 1.3795000769971348 -0.91273772217755633 -5.0871427496935437
+ 1 -0.33070207325273776 4.2443248944322809 -0.55368975693172673
+ 2 -0.34393015618284734 5.0153331566443775 1.0960411570662167
+ 2 0.12850137703534956 5.4972133205269387 -1.7839014694319113
+ 1 -0.76533908381347893 -3.8550413110604866 0.30046645512677322
+ 2 -0.61227126705078316 -4.1914125627118421 2.0881473768244301
+ 2 -5.2912331720438049E-002 -5.2704461845822044 -0.58581510119056412
+ 1 3.8663796678577227 -0.29290755059528206 1.7007535195855086E-002
+ 2 4.2443248944322809 -0.40818084470052207 1.8009090046277663
+ 2 5.1835187824700562 0.70297812142867688 -0.74266237021900550
+ 1 -4.1498385877886417 0.17385480422429644 -1.1168281445278174
+ 2 -5.0266715134416149 -1.3398158282068062 -0.61416099318365591
+ 2 -5.0965913803579079 1.5817007732145230 -0.45920345028808734
+  }
+  Periodic = No
+  Helical = No
+}
+Hamiltonian = Dftb {
+  Mdftb = OneCenterApproximation {
+    OneCenterAtomIntegrals = {
+      H:S|XX|S = 0.55976000000000004
+      C:S|X|Px = 0.79620999999999997
+      C:S|XX|S = 0.76688999999999996
+      C:Px|XX|Px = 1.3855000000000000
+      C:Py|XX|Py = 0.46183000000000002
+      N:S|X|Px = 0.68857000000000002
+      N:S|XX|S = 0.57638000000000000
+      N:Px|XX|Px = 1.0530800000000000
+      N:Py|XX|Py = 0.35103000000000001
+      O:S|X|Px = 0.60894000000000004
+      O:S|XX|S = 0.45215000000000000
+      O:Px|XX|Px = 0.83892999999999995
+      O:Py|XX|Py = 0.27964000000000000
+      O:Px|X|Dxx-yy = 0.0000000000000000
+      O:Px|X|Dzz = 0.0000000000000000
+      O:Py|Y|Dxx-yy = 0.0000000000000000
+      O:Pz|Z|Dzz = 0.0000000000000000
+      O:S|XX|Dxx-yy = 0.0000000000000000
+      O:S|XX|Dzz = 0.0000000000000000
+      O:S|YY|Dxx-yy = 0.0000000000000000
+      O:S|ZZ|Dzz = 0.0000000000000000
+      O:Dxy|XX|Dxy = 0.0000000000000000
+      O:Dyz|XX|Dyz = 0.0000000000000000
+      O:Dzz|XX|Dxx-yy = 0.0000000000000000
+      O:Dzz|XX|Dzz = 0.0000000000000000
+      O:Dzz|YY|Dxx-yy = 0.0000000000000000
+      O:Dzz|ZZ|Dzz = 0.0000000000000000
+      O:Dxz|XZ|Dzz = 0.0000000000000000
+      O:Dyz|YZ|Dxx-yy = 0.0000000000000000
+      H:S|X|Px = 0.0000000000000000
+      H:Px|X|Dxx-yy = 0.0000000000000000
+      H:Px|X|Dzz = 0.0000000000000000
+      H:Py|Y|Dxx-yy = 0.0000000000000000
+      H:Pz|Z|Dzz = 0.0000000000000000
+      H:Px|XX|Px = 0.0000000000000000
+      H:Py|XX|Py = 0.0000000000000000
+      H:S|XX|Dxx-yy = 0.0000000000000000
+      H:S|XX|Dzz = 0.0000000000000000
+      H:S|YY|Dxx-yy = 0.0000000000000000
+      H:S|ZZ|Dzz = 0.0000000000000000
+      H:Dxy|XX|Dxy = 0.0000000000000000
+      H:Dyz|XX|Dyz = 0.0000000000000000
+      H:Dzz|XX|Dxx-yy = 0.0000000000000000
+      H:Dzz|XX|Dzz = 0.0000000000000000
+      H:Dzz|YY|Dxx-yy = 0.0000000000000000
+      H:Dzz|ZZ|Dzz = 0.0000000000000000
+      H:Dxz|XZ|Dzz = 0.0000000000000000
+      H:Dyz|YZ|Dxx-yy = 0.0000000000000000
+    }
+    AtomDIntegralScalings = {
+      H = 1.0000000000000000
+      C = 0.80000000000000004
+      N = 0.59999999999999998
+      O = 0.20000000000000001
+    }
+    AtomQIntegralScalings = {
+      H = 1.0000000000000000
+      C = 2.6000000000000001
+      N = 3.3999999999999999
+      O = 3.0000000000000000
+    }
+  }
+  Scc = Yes
+  SccTolerance = 9.9999999999999995E-008
+  MaxSCCIterations = 250
+  ConvergentSCCOnly = Yes
+  Charge = 0.0000000000000000
+  ReadInitialCharges = No
+  Filling = Fermi {
+    Temperature [K] = 300.00000000000000
+  }
+  ThirdOrderFull = Yes
+  HubbardDerivs = {
+    O = -0.15750000000000000
+    H = -0.18570000000000000
+  }
+  ShellResolvedSCC = No
+  MaxAngularMomentum = {
+    O = "p"
+    H = "s"
+  }
+  SlaterKosterFiles = {
+    O-O = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/O-O.skf"
+    O-H = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/O-H.skf"
+    H-O = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/H-O.skf"
+    H-H = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/H-H.skf"
+    Prefix = ""
+  }
+  Dispersion = SimpleDftD3 {
+    s6 = 1.0000000000000000
+    s8 = 3.2090000000000001
+    a1 = 0.74600000000000000
+    a2 = 4.1909999999999998
+    s10 = 0.0000000000000000
+    alpha = 14.000000000000000
+    weightingFactor = 4.0000000000000000
+    cutoffInter = 64.000000000000000
+    CoordinationNumber = exp {
+      CutCN = 0.0000000000000000
+      Cutoff = 40.000000000000000
+      Radii = CovalentRadiiD3 {}
+    }
+  }
+  Mixer = Broyden {
+    MixingParameter = 0.20000000000000001
+    InverseJacobiWeight = 1.0000000000000000E-002
+    MinimalWeight = 1.0000000000000000
+    MaximalWeight = 100000.00000000000
+    WeightFactor = 1.0000000000000000E-002
+  }
+  PolynomialRepulsive = {}
+  Hybrid = None {}
+  OldSKInterpolation = No
+  InitialCharges = {}
+  HCorrection = None {}
+  SpinPolarisation = {}
+  ElectricField = {}
+  Solver = RelativelyRobust {}
+  OnSiteCorrection = {}
+  Solvation = {}
+  ElectronicConstraints = {}
+  Electrostatics = GammaFunctional {}
+  ThirdOrder = No
+  Differentiation = FiniteDiff {
+    Delta = 1.2207031250000000E-004
+  }
+  ForceEvaluation = "Traditional"
+}
+Analysis = {
+  PrintForces = Yes
+  WriteBandOut = No
+  ProjectStates = {}
+  WriteEigenvectors = No
+  MullikenAnalysis = Yes
+  WriteNetCharges = No
+  AtomResolvedEnergies = No
+}
+ParserOptions = {
+  ParserVersion = 14
+  WriteHSDInput = Yes
+  StopAfterParsing = No
+  IgnoreUnprocessedNodes = No
+}
+Options = {
+  WriteDetailedOut = Yes
+  WriteCharges = Yes
+  WriteAutotestTag = No
+  WriteDetailedXML = No
+  WriteResultsTag = No
+  RestartFrequency = 20
+  RandomSeed = 0
+  WriteHS = No
+  WriteRealHS = No
+  MinimiseMemoryUsage = No
+  ShowFoldedCoords = No
+  TimingVerbosity = 1
+  WriteChargesAsText = No
+  BinaryAccessTypes = {
+ "stream"
+  }
+}
+Reks = None {}
+Driver = {}
+ExcitedState = {}

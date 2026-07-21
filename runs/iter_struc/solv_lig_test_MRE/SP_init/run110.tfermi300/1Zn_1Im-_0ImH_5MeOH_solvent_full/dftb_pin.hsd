@@ -1,0 +1,229 @@
+Geometry = {
+  TypeNames = {
+ "H" "C" "O"
+  }
+  TypesAndCoordinates = {
+ 1 2.5756967191056095 -0.10582466344087610 -6.9976558700279314
+ 2 1.9842124395164269 -1.5061117278996117 -5.6200455191636705
+ 1 3.5753618433953136 -2.0900371029573033 -4.4767612087756339
+ 1 1.1791891069126195 -3.1350556544359542 -6.5686880378658090
+ 3 0.15495754289556857 -0.41573974923201323 -3.9192919995781610
+ 1 -1.4796555620393925 -0.28156919379804529 -4.6959694401888763
+ 1 2.0390144973697377 7.1148188902660454 -2.0541323064327197
+ 2 0.37227604817593912 5.9828729366752453 -2.4339672591401502
+ 1 0.61605071931652877 4.9605310987910674 -4.1895228365789698
+ 1 -1.2850137703534956 7.1828490310494653 -2.5586891839097543
+ 3 3.9684248790328537E-002 4.1158235173969313 -0.48943906841405199
+ 1 -0.16629589969280528 4.8773831489446646 1.1527329410524003
+ 1 -0.13795000769971347 -5.9129530697589523 -2.6456165860219021
+ 2 0.44786509349085063 -6.0565722558572839 -0.69163976463144017
+ 1 -0.28912809832953645 -7.7913408458345028 0.11338356797236725
+ 1 2.4963282215249523 -6.0244469115984467 -0.56691783986183619
+ 3 -0.61227126705078316 -3.9117330950466696 0.60660208865216481
+ 1 -0.39306303563753975 -4.0855878992709664 2.4075110932799313
+ 1 5.6105968884993054 3.3183590893246149 0.33826097778422892
+ 2 5.6956345644785813 1.6327233788020883 -0.82770004619828086
+ 1 5.1041502848893989 2.0900371029573033 -2.7344337142669235
+ 1 7.5985887802814780 0.87494319952010069 -0.85226648592562715
+ 3 3.9646454267671078 -0.25700275407069911 0.10204521117513052
+ 1 4.2915680477541001 -0.54424112626736276 1.8708288715440595
+ 1 -5.4386318104078821 2.1750747789365783 2.1032651858874125
+ 2 -5.7504366223318923 1.9256309293973704 9.0706854377893803E-002
+ 1 -5.3082407072396602 3.6509508887102253 -0.91273772217755633
+ 1 -7.6892956346593717 1.3851692553957531 -0.28534864606379090
+ 3 -4.0610214595436203 5.6691783986183627E-003 -0.88439183018446454
+ 1 -4.6184906687410923 -1.6346131049349610 -0.33259179938561056
+  }
+  Periodic = No
+  Helical = No
+}
+Hamiltonian = Dftb {
+  Mdftb = OneCenterApproximation {
+    OneCenterAtomIntegrals = {
+      H:S|XX|S = 0.55976000000000004
+      C:S|X|Px = 0.79620999999999997
+      C:S|XX|S = 0.76688999999999996
+      C:Px|XX|Px = 1.3855000000000000
+      C:Py|XX|Py = 0.46183000000000002
+      N:S|X|Px = 0.68857000000000002
+      N:S|XX|S = 0.57638000000000000
+      N:Px|XX|Px = 1.0530800000000000
+      N:Py|XX|Py = 0.35103000000000001
+      O:S|X|Px = 0.60894000000000004
+      O:S|XX|S = 0.45215000000000000
+      O:Px|XX|Px = 0.83892999999999995
+      O:Py|XX|Py = 0.27964000000000000
+      H:S|X|Px = 0.0000000000000000
+      H:Px|X|Dxx-yy = 0.0000000000000000
+      H:Px|X|Dzz = 0.0000000000000000
+      H:Py|Y|Dxx-yy = 0.0000000000000000
+      H:Pz|Z|Dzz = 0.0000000000000000
+      H:Px|XX|Px = 0.0000000000000000
+      H:Py|XX|Py = 0.0000000000000000
+      H:S|XX|Dxx-yy = 0.0000000000000000
+      H:S|XX|Dzz = 0.0000000000000000
+      H:S|YY|Dxx-yy = 0.0000000000000000
+      H:S|ZZ|Dzz = 0.0000000000000000
+      H:Dxy|XX|Dxy = 0.0000000000000000
+      H:Dyz|XX|Dyz = 0.0000000000000000
+      H:Dzz|XX|Dxx-yy = 0.0000000000000000
+      H:Dzz|XX|Dzz = 0.0000000000000000
+      H:Dzz|YY|Dxx-yy = 0.0000000000000000
+      H:Dzz|ZZ|Dzz = 0.0000000000000000
+      H:Dxz|XZ|Dzz = 0.0000000000000000
+      H:Dyz|YZ|Dxx-yy = 0.0000000000000000
+      C:Px|X|Dxx-yy = 0.0000000000000000
+      C:Px|X|Dzz = 0.0000000000000000
+      C:Py|Y|Dxx-yy = 0.0000000000000000
+      C:Pz|Z|Dzz = 0.0000000000000000
+      C:S|XX|Dxx-yy = 0.0000000000000000
+      C:S|XX|Dzz = 0.0000000000000000
+      C:S|YY|Dxx-yy = 0.0000000000000000
+      C:S|ZZ|Dzz = 0.0000000000000000
+      C:Dxy|XX|Dxy = 0.0000000000000000
+      C:Dyz|XX|Dyz = 0.0000000000000000
+      C:Dzz|XX|Dxx-yy = 0.0000000000000000
+      C:Dzz|XX|Dzz = 0.0000000000000000
+      C:Dzz|YY|Dxx-yy = 0.0000000000000000
+      C:Dzz|ZZ|Dzz = 0.0000000000000000
+      C:Dxz|XZ|Dzz = 0.0000000000000000
+      C:Dyz|YZ|Dxx-yy = 0.0000000000000000
+      O:Px|X|Dxx-yy = 0.0000000000000000
+      O:Px|X|Dzz = 0.0000000000000000
+      O:Py|Y|Dxx-yy = 0.0000000000000000
+      O:Pz|Z|Dzz = 0.0000000000000000
+      O:S|XX|Dxx-yy = 0.0000000000000000
+      O:S|XX|Dzz = 0.0000000000000000
+      O:S|YY|Dxx-yy = 0.0000000000000000
+      O:S|ZZ|Dzz = 0.0000000000000000
+      O:Dxy|XX|Dxy = 0.0000000000000000
+      O:Dyz|XX|Dyz = 0.0000000000000000
+      O:Dzz|XX|Dxx-yy = 0.0000000000000000
+      O:Dzz|XX|Dzz = 0.0000000000000000
+      O:Dzz|YY|Dxx-yy = 0.0000000000000000
+      O:Dzz|ZZ|Dzz = 0.0000000000000000
+      O:Dxz|XZ|Dzz = 0.0000000000000000
+      O:Dyz|YZ|Dxx-yy = 0.0000000000000000
+    }
+    AtomDIntegralScalings = {
+      H = 1.0000000000000000
+      C = 0.80000000000000004
+      N = 0.59999999999999998
+      O = 0.20000000000000001
+    }
+    AtomQIntegralScalings = {
+      H = 1.0000000000000000
+      C = 2.6000000000000001
+      N = 3.3999999999999999
+      O = 3.0000000000000000
+    }
+  }
+  Scc = Yes
+  SccTolerance = 9.9999999999999995E-008
+  MaxSCCIterations = 250
+  ConvergentSCCOnly = Yes
+  Charge = 0.0000000000000000
+  ReadInitialCharges = No
+  Filling = Fermi {
+    Temperature [K] = 300.00000000000000
+  }
+  ThirdOrderFull = Yes
+  HubbardDerivs = {
+    H = -0.18570000000000000
+    C = -0.14920000000000000
+    O = -0.15750000000000000
+  }
+  ShellResolvedSCC = No
+  MaxAngularMomentum = {
+    H = "s"
+    C = "p"
+    O = "p"
+  }
+  SlaterKosterFiles = {
+    H-H = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/H-H.skf"
+    H-C = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/H-C.skf"
+    H-O = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/H-O.skf"
+    C-H = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/C-H.skf"
+    C-C = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/C-C.skf"
+    C-O = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/C-O.skf"
+    O-H = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/O-H.skf"
+    O-C = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/O-C.skf"
+    O-O = "/mnt/cephfs/scratch/zbai29/data_JR/ZIF/react_benchmark/params/skf/run59/O-O.skf"
+    Prefix = ""
+  }
+  Dispersion = SimpleDftD3 {
+    s6 = 1.0000000000000000
+    s8 = 3.2090000000000001
+    a1 = 0.74600000000000000
+    a2 = 4.1909999999999998
+    s10 = 0.0000000000000000
+    alpha = 14.000000000000000
+    weightingFactor = 4.0000000000000000
+    cutoffInter = 64.000000000000000
+    CoordinationNumber = exp {
+      CutCN = 0.0000000000000000
+      Cutoff = 40.000000000000000
+      Radii = CovalentRadiiD3 {}
+    }
+  }
+  Mixer = Broyden {
+    MixingParameter = 0.20000000000000001
+    InverseJacobiWeight = 1.0000000000000000E-002
+    MinimalWeight = 1.0000000000000000
+    MaximalWeight = 100000.00000000000
+    WeightFactor = 1.0000000000000000E-002
+  }
+  PolynomialRepulsive = {}
+  Hybrid = None {}
+  OldSKInterpolation = No
+  InitialCharges = {}
+  HCorrection = None {}
+  SpinPolarisation = {}
+  ElectricField = {}
+  Solver = RelativelyRobust {}
+  OnSiteCorrection = {}
+  Solvation = {}
+  ElectronicConstraints = {}
+  Electrostatics = GammaFunctional {}
+  ThirdOrder = No
+  Differentiation = FiniteDiff {
+    Delta = 1.2207031250000000E-004
+  }
+  ForceEvaluation = "Traditional"
+}
+Analysis = {
+  PrintForces = Yes
+  WriteBandOut = No
+  ProjectStates = {}
+  WriteEigenvectors = No
+  MullikenAnalysis = Yes
+  WriteNetCharges = No
+  AtomResolvedEnergies = No
+}
+ParserOptions = {
+  ParserVersion = 14
+  WriteHSDInput = Yes
+  StopAfterParsing = No
+  IgnoreUnprocessedNodes = No
+}
+Options = {
+  WriteDetailedOut = Yes
+  WriteCharges = Yes
+  WriteAutotestTag = No
+  WriteDetailedXML = No
+  WriteResultsTag = No
+  RestartFrequency = 20
+  RandomSeed = 0
+  WriteHS = No
+  WriteRealHS = No
+  MinimiseMemoryUsage = No
+  ShowFoldedCoords = No
+  TimingVerbosity = 1
+  WriteChargesAsText = No
+  BinaryAccessTypes = {
+ "stream"
+  }
+}
+Reks = None {}
+Driver = {}
+ExcitedState = {}

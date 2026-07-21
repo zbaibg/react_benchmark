@@ -1,0 +1,5 @@
+ ZN X     1     ZN     1
+IMH X     2    IMH     2
+IMH X     3    IMH     3
+IMH X     4    IMH     4
+WAT X     5    WAT     5

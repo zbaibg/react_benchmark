@@ -1,0 +1,6 @@
+ ZN X     1     ZN     1
+IMH X     2    IMH     2
+IMH X     3    IMH     3
+IMH X     4    IMH     4
+IMH X     5    IMH     5
+IMH X     6    IMH     6

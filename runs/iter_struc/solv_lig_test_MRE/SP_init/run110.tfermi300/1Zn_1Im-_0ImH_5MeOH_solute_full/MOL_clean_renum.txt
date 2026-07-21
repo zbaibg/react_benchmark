@@ -1,0 +1,2 @@
+ ZN X     1     ZN     1
+IM- X     2    IM-     2

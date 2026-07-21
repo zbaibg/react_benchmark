@@ -39,3 +39,4 @@ run_transform() {
 
 run_transform
 echo "Wrote XYZ files to ${OUT_DIR}"
+echo "Includes solvated complexes plus solvent-free Zn+ligand (MIm/MImH/Im-/ImH)."
