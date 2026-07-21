@@ -63,8 +63,10 @@ Thumbs.db
 *.xml-sidecar
 *.chk
 *.chk.*
-orc_job.bibtex
-
+orc_job.*
+!orc_job.tpl
+!orc_job.dat
+!orc_job.inp
 # Molpro / MRCC scratch-like names (often no extension)
 FOCK
 FOCK_*
