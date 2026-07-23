@@ -34,7 +34,7 @@ apptainer exec -e \
     ulimit -s unlimited &&
     export PATH=\"\$PWD:\$PATH:"/home/zbai29/JR/soft/orca_6_1_1_linux_x86-64_shared_openmpi418_frag_move"/\" &&
     source "/home/zbai29/soft/ambertools25_dev/d07d0b1_noamber/amber.sh" &&
-    sander -O -i min.in -o min.out -p box.prmtop -c init.rst -r min.rst -ref init.rst -x min.nc -inf min.info > min.log 2> min.err &&
+    sander -O -i min.in -o min.out -p box.prmtop -c restart.rst -r min.rst -ref restart.rst -x min.nc -inf min.info > min.log 2> min.err &&
  cpptraj -p box.prmtop -y min.rst -x min.xyz > xyz_conv.log 2>&1 &&
   rm -f orc_job.gbw orc_job.densities
   
